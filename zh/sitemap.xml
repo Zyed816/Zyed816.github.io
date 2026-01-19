@@ -2,104 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://Zyed816.github.io/posts/</loc>
     <lastmod>2026-01-11T16:10:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/posts/"
+                href="https://Zyed816.github.io/en/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/posts/"
+                href="https://Zyed816.github.io/posts/"
                 />
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://Zyed816.github.io/</loc>
     <lastmod>2026-01-11T16:10:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/"
+                href="https://Zyed816.github.io/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/"
+                href="https://Zyed816.github.io/"
                 />
   </url><url>
-    <loc>http://localhost:1313/posts/my-first-post/</loc>
+    <loc>https://Zyed816.github.io/posts/my-first-post/</loc>
     <lastmod>2026-01-11T16:10:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/posts/my-first-post/"
+                href="https://Zyed816.github.io/en/posts/my-first-post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/posts/my-first-post/"
+                href="https://Zyed816.github.io/posts/my-first-post/"
                 />
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://Zyed816.github.io/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/about/"
+                href="https://Zyed816.github.io/en/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/about/"
+                href="https://Zyed816.github.io/about/"
                 />
   </url><url>
-    <loc>http://localhost:1313/authors/</loc>
+    <loc>https://Zyed816.github.io/authors/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/authors/"
+                href="https://Zyed816.github.io/en/authors/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/authors/"
+                href="https://Zyed816.github.io/authors/"
                 />
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://Zyed816.github.io/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/categories/"
+                href="https://Zyed816.github.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/categories/"
+                href="https://Zyed816.github.io/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://Zyed816.github.io/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/series/"
+                href="https://Zyed816.github.io/en/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/series/"
+                href="https://Zyed816.github.io/series/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://Zyed816.github.io/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="http://localhost:1313/en/tags/"
+                href="https://Zyed816.github.io/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/tags/"
+                href="https://Zyed816.github.io/tags/"
                 />
   </url>
 </urlset>
