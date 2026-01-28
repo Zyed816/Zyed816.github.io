@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [算法随笔]C&#43;&#43;自定义sort比较函数 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  基础用法
+  
+    
+    链接到标题
+  
+
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; nums = {4, 3, 5, 1, 8, 1};
+    
+    // 1. default: less&lt;&gt;()
+    sort(nums.begin(), nums.end());
+    for(int n : nums) {
+        cout &lt;&lt; n &lt;&lt; &#39; &#39;;
+    }
+    cout &lt;&lt; &#34; : sort with the default third parameter&#34; &lt;&lt; endl;
+
+    // 2. sort the elements in non-descending order -- same as default
+    sort(nums.begin(), nums.end(), less&lt;&gt;());
+    for(int n : nums) {
+        cout &lt;&lt; n &lt;&lt; &#39; &#39;;
+    }
+    cout &lt;&lt; &#34; : sort with parameter: less&lt;&gt;()&#34; &lt;&lt; endl;
+
+    // 3. sort the elements in non-growing order
+    sort(nums.begin(), nums.end(), greater&lt;&gt;());
+    for(int n : nums) {
+        cout &lt;&lt; n &lt;&lt; &#39; &#39;;
+    }
+    cout &lt;&lt; &#34; : sort with parameter: greater&lt;&gt;()&#34; &lt;&lt; endl;
+}
+
+Output:
+1 1 3 4 5 8  : sort with the default third parameter
+1 1 3 4 5 8  : sort with parameter: less&lt;&gt;()
+8 5 4 3 1 1  : sort with parameter: greater&lt;&gt;()
+STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
+首先调用快排，对于数据进行依据pivot的分割，递归调用，
+对于较大的数据，建立heap堆排序，
+对于较小的数据：插入排序">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[算法随笔]C&#43;&#43;自定义sort比较函数">
+  <meta name="twitter:description" content="基础用法 链接到标题 #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; int main() { vector&lt;int&gt; nums = {4, 3, 5, 1, 8, 1}; // 1. default: less&lt;&gt;() sort(nums.begin(), nums.end()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with the default third parameter&#34; &lt;&lt; endl; // 2. sort the elements in non-descending order -- same as default sort(nums.begin(), nums.end(), less&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: less&lt;&gt;()&#34; &lt;&lt; endl; // 3. sort the elements in non-growing order sort(nums.begin(), nums.end(), greater&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: greater&lt;&gt;()&#34; &lt;&lt; endl; } Output: 1 1 3 4 5 8 : sort with the default third parameter 1 1 3 4 5 8 : sort with parameter: less&lt;&gt;() 8 5 4 3 1 1 : sort with parameter: greater&lt;&gt;() STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序 首先调用快排，对于数据进行依据pivot的分割，递归调用， 对于较大的数据，建立heap堆排序， 对于较小的数据：插入排序">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/custom-sort-comparison-function/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[算法随笔]C&#43;&#43;自定义sort比较函数">
+  <meta property="og:description" content="基础用法 链接到标题 #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; int main() { vector&lt;int&gt; nums = {4, 3, 5, 1, 8, 1}; // 1. default: less&lt;&gt;() sort(nums.begin(), nums.end()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with the default third parameter&#34; &lt;&lt; endl; // 2. sort the elements in non-descending order -- same as default sort(nums.begin(), nums.end(), less&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: less&lt;&gt;()&#34; &lt;&lt; endl; // 3. sort the elements in non-growing order sort(nums.begin(), nums.end(), greater&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: greater&lt;&gt;()&#34; &lt;&lt; endl; } Output: 1 1 3 4 5 8 : sort with the default third parameter 1 1 3 4 5 8 : sort with parameter: less&lt;&gt;() 8 5 4 3 1 1 : sort with parameter: greater&lt;&gt;() STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序 首先调用快排，对于数据进行依据pivot的分割，递归调用， 对于较大的数据，建立heap堆排序， 对于较小的数据：插入排序">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-28T21:30:58+08:00">
+    <meta property="article:modified_time" content="2026-01-28T21:30:58+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/custom-sort-comparison-function/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.9da4317e3e63154e3e551247eabf554761a5cf4d5c97d4cbcb3b3ce32eade41c.css" integrity="sha256-naQxfj5jFU4&#43;VRJH6r9VR2Glz01cl9TLyzs84y6t5Bw=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/custom-sort-comparison-function/">
+              [算法随笔]C&#43;&#43;自定义sort比较函数
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-01-28T21:30:58&#43;08:00">
+                一月 28, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="基础用法">
+  基础用法
+  <a class="heading-link" href="#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;algorithm&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;iostream&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;vector&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">int</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> nums <span style="color:#ff7b72;font-weight:bold">=</span> {<span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">5</span>, <span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">8</span>, <span style="color:#a5d6ff">1</span>};
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 1. default: less&lt;&gt;()
+</span></span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end());
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> <span style="color:#79c0ff;font-weight:bold">n</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> n <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34; : sort with the default third parameter&#34;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 2. sort the elements in non-descending order -- same as default
+</span></span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end(), less<span style="color:#ff7b72;font-weight:bold">&lt;&gt;</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> <span style="color:#79c0ff;font-weight:bold">n</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> n <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34; : sort with parameter: less&lt;&gt;()&#34;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 3. sort the elements in non-growing order
+</span></span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end(), greater<span style="color:#ff7b72;font-weight:bold">&lt;&gt;</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> <span style="color:#79c0ff;font-weight:bold">n</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> n <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34; : sort with parameter: greater&lt;&gt;()&#34;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff;font-weight:bold">Output</span>:
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">3</span> <span style="color:#a5d6ff">4</span> <span style="color:#a5d6ff">5</span> <span style="color:#a5d6ff">8</span>  <span style="color:#ff7b72;font-weight:bold">:</span> sort with the <span style="color:#ff7b72">default</span> third parameter
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">3</span> <span style="color:#a5d6ff">4</span> <span style="color:#a5d6ff">5</span> <span style="color:#a5d6ff">8</span>  <span style="color:#ff7b72;font-weight:bold">:</span> sort with <span style="color:#79c0ff;font-weight:bold">parameter</span>: less<span style="color:#ff7b72;font-weight:bold">&lt;&gt;</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">8</span> <span style="color:#a5d6ff">5</span> <span style="color:#a5d6ff">4</span> <span style="color:#a5d6ff">3</span> <span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">1</span>  <span style="color:#ff7b72;font-weight:bold">:</span> sort with <span style="color:#79c0ff;font-weight:bold">parameter</span>: greater<span style="color:#ff7b72;font-weight:bold">&lt;&gt;</span>()
+</span></span></code></pre></div><p>STL库函数的实现是：快速排序 + 堆排序 + 插入排序
+首先调用快排，对于数据进行依据pivot的分割，递归调用，
+对于较大的数据，建立heap堆排序，
+对于较小的数据：插入排序</p>
+<h2 id="自定义比较函数">
+  自定义比较函数
+  <a class="heading-link" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%af%94%e8%be%83%e5%87%bd%e6%95%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="传入自定义函数指针">
+  传入自定义函数指针
+  <a class="heading-link" href="#%e4%bc%a0%e5%85%a5%e8%87%aa%e5%ae%9a%e4%b9%89%e5%87%bd%e6%95%b0%e6%8c%87%e9%92%88">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;algorithm&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;iostream&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;vector&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// 自定义 cmp 实现从大到小排序
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">bool</span> <span style="color:#d2a8ff;font-weight:bold">cmp</span>(<span style="color:#ff7b72">int</span> a, <span style="color:#ff7b72">int</span> b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> a <span style="color:#ff7b72;font-weight:bold">&gt;</span> b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">int</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> nums <span style="color:#ff7b72;font-weight:bold">=</span> {<span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">5</span>, <span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">8</span>, <span style="color:#a5d6ff">1</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end(), cmp);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> <span style="color:#79c0ff;font-weight:bold">n</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> n <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34; : sort with function pointer: cmp&#34;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff;font-weight:bold">Output</span>:
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">8</span> <span style="color:#a5d6ff">5</span> <span style="color:#a5d6ff">4</span> <span style="color:#a5d6ff">3</span> <span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">1</span>  <span style="color:#ff7b72;font-weight:bold">:</span> sort with function <span style="color:#79c0ff;font-weight:bold">pointer</span>: cmp
+</span></span></code></pre></div><h3 id="传入一个包含仿函数的对象">
+  传入一个包含仿函数的对象
+  <a class="heading-link" href="#%e4%bc%a0%e5%85%a5%e4%b8%80%e4%b8%aa%e5%8c%85%e5%90%ab%e4%bb%bf%e5%87%bd%e6%95%b0%e7%9a%84%e5%af%b9%e8%b1%a1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>以下对于仿函数的介绍引用自：https://www.cnblogs.com/kazusarua/p/17960553</p>
+<blockquote>
+<p><strong>仿函数</strong>：</p>
+<p>定义一个类，类里面定义了某个方法，将该类的对象作为函数的入参，那么在函数中就能调用这个类中的方法。</p>
+<p>或者，定义一个类，类里面重载函数运算符（），将该类的对象作为函数的入参，那么在函数中同样能调用重载符（）里面的方法</p>
+<p>函数对象的出现是为了代替函数指针的，最明显的一个特点是：可以使用内联函数。而如果使用内联函数的指针，编译器会把它当普通函数对待。另外，函数对象是类封装的，代码不但看起来简洁，设计也灵活，比如还可以用关联，聚合，依赖的类之间的关系，与用到他们的类组合在一起，这样有利于资源的管理（这点可能是它相对于函数最显著的优点了）。</p>
+<p>仿函数（Functor）也是 <strong>STL 六大模块</strong>之一，其余 5 个分别是容器（Container）、算法（Algorithm）、迭代器（Iterator）、适配器（Adapter）和分配器（Allocator）。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;algorithm&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;iostream&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;vector&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// 利用包含仿函数的类实现从大到小排序
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">cmp2</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">bool</span> <span style="color:#ff7b72">operator</span>() (<span style="color:#ff7b72">int</span> a, <span style="color:#ff7b72">int</span> b) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> a <span style="color:#ff7b72;font-weight:bold">&gt;</span> b;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">int</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> nums <span style="color:#ff7b72;font-weight:bold">=</span> {<span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">5</span>, <span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">8</span>, <span style="color:#a5d6ff">1</span>};
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end(), cmp2());
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> <span style="color:#79c0ff;font-weight:bold">n</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> n <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34; : sort with objects containing functors &#34;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff;font-weight:bold">Output</span>:
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">8</span> <span style="color:#a5d6ff">5</span> <span style="color:#a5d6ff">4</span> <span style="color:#a5d6ff">3</span> <span style="color:#a5d6ff">1</span> <span style="color:#a5d6ff">1</span>  <span style="color:#ff7b72;font-weight:bold">:</span> sort with objects containing functors
+</span></span></code></pre></div><h3 id="重载--运算符">
+  重载 &lt; 运算符
+  <a class="heading-link" href="#%e9%87%8d%e8%bd%bd--%e8%bf%90%e7%ae%97%e7%ac%a6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;algorithm&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;iostream&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;vector&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// 1. 定义一个自定义结构体来包装你的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">struct</span> <span style="color:#f0883e;font-weight:bold">Pair</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> x, y;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 2. 在结构体内部重载 &lt; 运算符
+</span></span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// const 修饰符表示这个函数不会修改自身
+</span></span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">bool</span> <span style="color:#ff7b72">operator</span><span style="color:#ff7b72;font-weight:bold">&lt;</span>(<span style="color:#ff7b72">const</span> Pair<span style="color:#ff7b72;font-weight:bold">&amp;</span> other) <span style="color:#ff7b72">const</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> (x <span style="color:#ff7b72;font-weight:bold">+</span> y) <span style="color:#ff7b72;font-weight:bold">&lt;</span> (other.x <span style="color:#ff7b72;font-weight:bold">+</span> other.y);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">int</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 3. 将数据存储为 vector&lt;Pair&gt; 而不是 vector&lt;vector&lt;int&gt;&gt;
+</span></span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>Pair<span style="color:#ff7b72;font-weight:bold">&gt;</span> nums <span style="color:#ff7b72;font-weight:bold">=</span> {{<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">3</span>}, {<span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">2</span>}, {<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">1</span>}, {<span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">5</span>}};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 4. 直接调用 sort，无需第三个参数
+</span></span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// 因为 Pair 类型已经自带了 &lt; 的逻辑
+</span></span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">const</span> <span style="color:#ff7b72">auto</span><span style="color:#ff7b72;font-weight:bold">&amp;</span> <span style="color:#79c0ff;font-weight:bold">v</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39;{&#39;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> v.x <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39;,&#39;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> v.y <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34;} &#34;</span>; 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff;font-weight:bold">Output</span>:
+</span></span><span style="display:flex;"><span>{<span style="color:#a5d6ff">1</span>,<span style="color:#a5d6ff">1</span>} {<span style="color:#a5d6ff">1</span>,<span style="color:#a5d6ff">3</span>} {<span style="color:#a5d6ff">2</span>,<span style="color:#a5d6ff">2</span>} {<span style="color:#a5d6ff">3</span>,<span style="color:#a5d6ff">5</span>}
+</span></span></code></pre></div><h3 id="使用lambda匿名函数">
+  使用lambda匿名函数
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8lambda%e5%8c%bf%e5%90%8d%e5%87%bd%e6%95%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;algorithm&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;iostream&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#include</span> <span style="color:#8b949e;font-weight:bold;font-style:italic">&lt;vector&gt;</span><span style="color:#8b949e;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">int</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> nums <span style="color:#ff7b72;font-weight:bold">=</span> {{<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">3</span>}, {<span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">2</span>}, {<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">1</span>}, {<span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">5</span>}};
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    sort(nums.begin(), nums.end(), [](<span style="color:#ff7b72">const</span> vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span>a, <span style="color:#ff7b72">const</span> vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span>b) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> a[<span style="color:#a5d6ff">0</span>] <span style="color:#ff7b72;font-weight:bold">+</span> a[<span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">&lt;</span> b[<span style="color:#a5d6ff">0</span>] <span style="color:#ff7b72;font-weight:bold">+</span> b[<span style="color:#a5d6ff">1</span>];
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">const</span> vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> <span style="color:#79c0ff;font-weight:bold">v</span> : nums) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39;{&#39;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> v[<span style="color:#a5d6ff">0</span>] <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#39;,&#39;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> v[<span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34;} &#34;</span>; 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> <span style="color:#a5d6ff">&#34;sort with lambda function&#34;</span> <span style="color:#ff7b72;font-weight:bold">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff;font-weight:bold">Output</span>:
+</span></span><span style="display:flex;"><span>{<span style="color:#a5d6ff">1</span>,<span style="color:#a5d6ff">1</span>} {<span style="color:#a5d6ff">1</span>,<span style="color:#a5d6ff">3</span>} {<span style="color:#a5d6ff">2</span>,<span style="color:#a5d6ff">2</span>} {<span style="color:#a5d6ff">3</span>,<span style="color:#a5d6ff">5</span>} sort with lambda function
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
