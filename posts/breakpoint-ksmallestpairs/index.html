@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [Breakpoint]查找和最小的K对数字 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  题目
+  
+    
+    链接到标题
+  
+
+查找和最小的K对数字
+
+  暴力解法
+  
+    
+    链接到标题
+  
+
+
+  思想
+  
+    
+    链接到标题
+  
+
+找到所有的 (u, v) ，按照 u &#43; v 从小到大排列，取出前 k 个即为答案
+
+  代码
+  
+    
+    链接到标题
+  
+
+class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; kSmallestPairs(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2, int k) {
+        vector&lt;vector&lt;int&gt;&gt; ans;
+        vector&lt;vector&lt;int&gt;&gt; record;
+        for(int i = 0; i &lt; nums1.size(); i &#43;&#43;) {
+            for(int j = 0; j &lt; nums2.size(); j &#43;&#43;) {
+                record.push_back({nums1[i], nums2[j]});
+            }
+        }
+        sort(record.begin(), record.end(), [](const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b) {
+            return (a[0] &#43; a[1]) &lt; (b[0] &#43; b[1]);
+        });
+        for(int i = 0; i &lt; k &amp;&amp; i &lt; record.size(); i&#43;&#43;) {
+            ans.push_back(record[i]);
+        }
+        return ans;
+    }
+};
+
+  复杂度
+  
+    
+    链接到标题
+  
+
+时间复杂度： O(nmlog(nm)) ，其中 n = nums1.size(), m = nums2.size()">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[Breakpoint]查找和最小的K对数字">
+  <meta name="twitter:description" content="题目 链接到标题 查找和最小的K对数字
+暴力解法 链接到标题 思想 链接到标题 找到所有的 (u, v) ，按照 u &#43; v 从小到大排列，取出前 k 个即为答案
+代码 链接到标题 class Solution { public: vector&lt;vector&lt;int&gt;&gt; kSmallestPairs(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2, int k) { vector&lt;vector&lt;int&gt;&gt; ans; vector&lt;vector&lt;int&gt;&gt; record; for(int i = 0; i &lt; nums1.size(); i &#43;&#43;) { for(int j = 0; j &lt; nums2.size(); j &#43;&#43;) { record.push_back({nums1[i], nums2[j]}); } } sort(record.begin(), record.end(), [](const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b) { return (a[0] &#43; a[1]) &lt; (b[0] &#43; b[1]); }); for(int i = 0; i &lt; k &amp;&amp; i &lt; record.size(); i&#43;&#43;) { ans.push_back(record[i]); } return ans; } }; 复杂度 链接到标题 时间复杂度： O(nmlog(nm)) ，其中 n = nums1.size(), m = nums2.size()">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/breakpoint-ksmallestpairs/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[Breakpoint]查找和最小的K对数字">
+  <meta property="og:description" content="题目 链接到标题 查找和最小的K对数字
+暴力解法 链接到标题 思想 链接到标题 找到所有的 (u, v) ，按照 u &#43; v 从小到大排列，取出前 k 个即为答案
+代码 链接到标题 class Solution { public: vector&lt;vector&lt;int&gt;&gt; kSmallestPairs(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2, int k) { vector&lt;vector&lt;int&gt;&gt; ans; vector&lt;vector&lt;int&gt;&gt; record; for(int i = 0; i &lt; nums1.size(); i &#43;&#43;) { for(int j = 0; j &lt; nums2.size(); j &#43;&#43;) { record.push_back({nums1[i], nums2[j]}); } } sort(record.begin(), record.end(), [](const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b) { return (a[0] &#43; a[1]) &lt; (b[0] &#43; b[1]); }); for(int i = 0; i &lt; k &amp;&amp; i &lt; record.size(); i&#43;&#43;) { ans.push_back(record[i]); } return ans; } }; 复杂度 链接到标题 时间复杂度： O(nmlog(nm)) ，其中 n = nums1.size(), m = nums2.size()">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-31T20:43:58+08:00">
+    <meta property="article:modified_time" content="2026-01-31T20:43:58+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/breakpoint-ksmallestpairs/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.9da4317e3e63154e3e551247eabf554761a5cf4d5c97d4cbcb3b3ce32eade41c.css" integrity="sha256-naQxfj5jFU4&#43;VRJH6r9VR2Glz01cl9TLyzs84y6t5Bw=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/breakpoint-ksmallestpairs/">
+              [Breakpoint]查找和最小的K对数字
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-01-31T20:43:58&#43;08:00">
+                一月 31, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：2 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="题目">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p><a href="https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/?envType=problem-list-v2&amp;envId=shujujiegouyusuanfa-xuliegudi-dui"  class="external-link" target="_blank" rel="noopener">查找和最小的K对数字</a></p>
+<h2 id="暴力解法">
+  暴力解法
+  <a class="heading-link" href="#%e6%9a%b4%e5%8a%9b%e8%a7%a3%e6%b3%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="思想">
+  思想
+  <a class="heading-link" href="#%e6%80%9d%e6%83%b3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>找到所有的 <code>(u, v)</code> ，按照 <code>u + v</code> 从小到大排列，取出前 <code>k</code> 个即为答案</p>
+<h3 id="代码">
+  代码
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> kSmallestPairs(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums1, vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums2, <span style="color:#ff7b72">int</span> k) {
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> ans;
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> record;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> nums1.size(); i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; j <span style="color:#ff7b72;font-weight:bold">&lt;</span> nums2.size(); j <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>                record.push_back({nums1[i], nums2[j]});
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        sort(record.begin(), record.end(), [](<span style="color:#ff7b72">const</span> vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> a, <span style="color:#ff7b72">const</span> vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> b) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> (a[<span style="color:#a5d6ff">0</span>] <span style="color:#ff7b72;font-weight:bold">+</span> a[<span style="color:#a5d6ff">1</span>]) <span style="color:#ff7b72;font-weight:bold">&lt;</span> (b[<span style="color:#a5d6ff">0</span>] <span style="color:#ff7b72;font-weight:bold">+</span> b[<span style="color:#a5d6ff">1</span>]);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> k <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> i <span style="color:#ff7b72;font-weight:bold">&lt;</span> record.size(); i<span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            ans.push_back(record[i]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="复杂度">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>时间复杂度： <code>O(nmlog(nm))</code> ，其中 <code>n = nums1.size(), m = nums2.size()</code></p>
+<p>空间复杂度： <code>O(nm)</code> ， <code>record</code> 中有 <code>nm</code> 个元素</p>
+<h2 id="使用堆">
+  使用堆
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8%e5%a0%86">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="思想-1">
+  思想
+  <a class="heading-link" href="#%e6%80%9d%e6%83%b3-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>想象面前有一排高低不等的凳子，编号为 <code>i</code> 的凳子高度为 <code>nums1[i]</code> ,每个凳子后面都有一队人，并且第 <code>j</code> 个人的身高为 <code>nums[j]</code> ，题目的意思就是找出使得人站上凳子之后总高度最低的 <code>k</code> 个人凳组合 <code>{nums1[i], nums2[j]}</code></p>
+<p>我们可以先让每支队伍的第一个人都站上凳子，从中选择最低的一个，记录下来，然后让下一个人（如果有）站上去，重复这个过程直至得到 <code>k</code> 组数据</p>
+<p>瓶颈在于每次如何快速选择出总高度最低的那个人凳组合，如果每次排序，时间复杂度将为 <code>O(k * nlogn)</code> ，其中 <code>n</code> 为 <code>nums1</code> 的大小</p>
+<p>如果维护一个大小为 <code>n</code> 的小顶堆，堆中的值为当前所有的总高度，就可以在 <code>O(1)</code> 的时间内找到最小值。将其弹出，表示当前站在凳子上的人下来，如何表示让队伍中的下一个人站上这个凳子呢？因此我们要知道发生人员变动的凳子位置 <code>i</code> 以及现在站在凳子上的人在其队伍中的序号 <code>j</code> ，堆中就不能只存储总高度 <code>height</code> ，而是应该同时存储位置信息 <code>{i, j}</code> ，结构应为 <code>{height, {i, j}}</code> 。构建小顶堆，每次选择堆顶，记录答案后将该结点弹出，并判断 <code>j + 1</code> 是否小于 <code>nums2.size()</code> ，如果小于，将 <code>{height, {i, j + 1}}</code> 入堆表示下一个人站上凳子，其中 <code>height = nums1[i] + nums2[j + 1]</code></p>
+<h3 id="代码-1">
+  代码
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> kSmallestPairs(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums1, vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums2, <span style="color:#ff7b72">int</span> k) {
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> ans;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> n <span style="color:#ff7b72;font-weight:bold">=</span> nums1.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> m <span style="color:#ff7b72;font-weight:bold">=</span> nums2.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span>(n <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">0</span> <span style="color:#ff7b72;font-weight:bold">||</span> m <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">0</span>)    <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">using</span> PII <span style="color:#ff7b72;font-weight:bold">=</span> pair<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span>, pair<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span>, <span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span>;
+</span></span><span style="display:flex;"><span>        priority_queue<span style="color:#ff7b72;font-weight:bold">&lt;</span>PII, vector<span style="color:#ff7b72;font-weight:bold">&lt;</span>PII<span style="color:#ff7b72;font-weight:bold">&gt;</span>, greater<span style="color:#ff7b72;font-weight:bold">&lt;</span>PII<span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> pq;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> n; i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            pq.push({nums1[i] <span style="color:#ff7b72;font-weight:bold">+</span> nums2[<span style="color:#a5d6ff">0</span>], {i, <span style="color:#a5d6ff">0</span>}});
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">while</span>(k <span style="color:#ff7b72;font-weight:bold">--</span>) {
+</span></span><span style="display:flex;"><span>            pair<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span>, pair<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span>, <span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&gt;</span> top <span style="color:#ff7b72;font-weight:bold">=</span> pq.top();
+</span></span><span style="display:flex;"><span>            pq.pop();
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">int</span> curSum <span style="color:#ff7b72;font-weight:bold">=</span> top.first;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> top.second.first;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> top.second.second;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            ans.push_back({nums1[i], nums2[j]});
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(j <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span> <span style="color:#ff7b72;font-weight:bold">&lt;</span>  m) {
+</span></span><span style="display:flex;"><span>                pq.push({nums1[i] <span style="color:#ff7b72;font-weight:bold">+</span> nums2[j <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>], {i, j <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>}});
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>注意：</p>
+<p><code>priority_queue</code> 的定义原型是 <code>priority_queue&lt;Type, Container, Comparator&gt;</code></p>
+<ul>
+<li>
+<p>默认是：<code>priority_queue&lt;Type, vector&lt;Type&gt;, less&lt;Type&gt;&gt;</code> (大顶堆)</p>
+</li>
+<li>
+<p><strong>规则</strong>：如果你想改 <code>Comparator</code>，你<strong>不能</strong>省略中间的 <code>Container</code>。</p>
+</li>
+</ul>
+<h3 id="复杂度-1">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>时间复杂度： <code>O(max(k, n) * logn)</code> ，<code>priority_queue</code> 的 <code>push</code> 和 <code>pop</code> 操作时间复杂度均为 <code>O(log(heap_size))</code> ，构建堆时间复杂度为 <code>O(nlogn)</code> ，更新和记录答案时间复杂度为 <code>O(klogn)</code></p>
+<p>空间复杂度： <code>O(n)</code> 堆中元素最多 <code>n</code> 个</p>
+<h2 id="剪枝">
+  剪枝
+  <a class="heading-link" href="#%e5%89%aa%e6%9e%9d">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="思想-2">
+  思想
+  <a class="heading-link" href="#%e6%80%9d%e6%83%b3-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>之前我们观察所有凳子，构建了一个大小为 <code>n = nums1.size()</code> 的堆，但是总高度最低的人凳组合根本不可能出现在第 <code>k</code> 个凳子之后，因为：</p>
+<ul>
+<li>因为 <code>nums[2].size() &gt;= 1</code> ，因此前 <code>k</code> 个凳子一定可以产生大于等于 <code>k</code> 中可能</li>
+<li>在这种情况下，如果编号为 <code>K(K &gt; k)</code> 的凳子可以产生一组答案 <code>{nums1[K], nums2[j]}</code> ，这个答案一定可以被 <code>nums1[k], nums2[j]</code> 替换</li>
+</ul>
+<p>因此，只需要构建一个大小为 <code>min(n, k)</code> 的堆</p>
+<h3 id="代码-2">
+  代码
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在构建堆时，如果堆大小等于 <code>k</code>， 停止构建</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> n <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> i <span style="color:#ff7b72;font-weight:bold">&lt;</span> k; i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            pq.push({nums1[i] <span style="color:#ff7b72;font-weight:bold">+</span> nums2[<span style="color:#a5d6ff">0</span>], {i, <span style="color:#a5d6ff">0</span>}});
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><h3 id="复杂度-2">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>时间复杂度： <code>O(k * log(min(n, k)))</code></p>
+<p>空间复杂度： <code>O(k)</code></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
