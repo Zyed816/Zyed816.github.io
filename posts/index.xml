@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Zyed</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Jan 2026 20:43:58 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Feb 2026 21:54:58 +0800</lastBuildDate>
     <atom:link href="https://Zyed816.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[毕业设计]Day1</title>
+      <link>https://Zyed816.github.io/posts/dissertation-day1/</link>
+      <pubDate>Sun, 01 Feb 2026 21:54:58 +0800</pubDate>
+      <guid>https://Zyed816.github.io/posts/dissertation-day1/</guid>
+      <description>&lt;h2 id=&#34;图对比学习的定义&#34;&gt;&#xA;  图对比学习的定义&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#%e5%9b%be%e5%af%b9%e6%af%94%e5%ad%a6%e4%b9%a0%e7%9a%84%e5%ae%9a%e4%b9%89&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;链接到标题&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;链接到标题&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Problem Formulation&lt;/strong&gt;. Let &lt;strong&gt;G&lt;/strong&gt; = (&lt;strong&gt;X&lt;/strong&gt;, &lt;strong&gt;A&lt;/strong&gt;) denote a graph, where &lt;strong&gt;X&lt;/strong&gt; ∈ R^𝑁×𝐹^ denotes the nodes’ feature map, and &lt;strong&gt;x&lt;del&gt;𝑖&lt;/del&gt;&lt;/strong&gt; is the feature of 𝑖-th node 𝑛&lt;del&gt;𝑖&lt;/del&gt; . &lt;strong&gt;A&lt;/strong&gt; ∈ R^𝑁×𝑁^ denotes the adjacency matrix, where &lt;strong&gt;A&lt;del&gt;𝑖𝑗&lt;/del&gt;&lt;/strong&gt; = 1 if and only if there is an edge from 𝑛&lt;del&gt;𝑖&lt;/del&gt; to 𝑛&lt;del&gt;𝑗&lt;/del&gt; . GCL aims at training a GNN encoder 𝑓&lt;del&gt;𝜃&lt;/del&gt; (&lt;strong&gt;G&lt;/strong&gt;) that maps graph &lt;strong&gt;G&lt;/strong&gt; into the node representations &lt;strong&gt;H&lt;/strong&gt; ∈ R^𝑁×𝑑^ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[Breakpoint]查找和最小的K对数字</title>
       <link>https://Zyed816.github.io/posts/breakpoint-ksmallestpairs/</link>
