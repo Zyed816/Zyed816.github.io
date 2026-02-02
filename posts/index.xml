@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Zyed</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Feb 2026 21:54:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 21:41:58 +0800</lastBuildDate>
     <atom:link href="https://Zyed816.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[毕业设计]Day2</title>
+      <link>https://Zyed816.github.io/posts/dissertation-day1/</link>
+      <pubDate>Mon, 02 Feb 2026 21:41:58 +0800</pubDate>
+      <guid>https://Zyed816.github.io/posts/dissertation-day1/</guid>
+      <description>&lt;h2 id=&#34;验证采样偏差&#34;&gt;&#xA;  验证采样偏差($\text{sampling bias}$)&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#%e9%aa%8c%e8%af%81%e9%87%87%e6%a0%b7%e5%81%8f%e5%b7%ae&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;链接到标题&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;链接到标题&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;术语规定&#34;&gt;&#xA;  术语规定&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#%e6%9c%af%e8%af%ad%e8%a7%84%e5%ae%9a&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;链接到标题&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;链接到标题&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;有 $N$ 个结点：$n_1,n_2,...n_N$ ，每个结点 $n_i$ 对应一个特征向量 $X_i$ 表示该结点自身特征，一个邻接向量 $A_i$ 表示该结点与其他结点的联系。所有的特征向量 $X_{1-N}$ 组成特征矩阵 $X$ ，所有的邻接向量 $A_{1-N}$ 组成邻接矩阵 $A$ ，图 $G = (X,A)$ 即&#xA;&lt;/p&gt;&#xA;$$&#xD;&#xA;X = \begin{pmatrix}&#xD;&#xA;X_1 \\&#xD;&#xA;X_2 \\&#xD;&#xA;... \\&#xD;&#xA;X_N&#xD;&#xA;\end{pmatrix}&#xD;&#xA;\qquad&#xD;&#xA;A = \begin{pmatrix}&#xD;&#xA;A_1 \\&#xD;&#xA;A_2 \\&#xD;&#xA;... \\&#xD;&#xA;A_N&#xD;&#xA;\end{pmatrix}&#xD;&#xA;\qquad&#xD;&#xA;G = (X,A)&#xD;&#xA;$$&lt;p&gt;&#xA;图对比学习($\text{graph contrastive learning}$)的目的是训练得到一个编码器 $f_\theta$ ，它能将原图 $G$ 映射成一个 $N \times d$ 的矩阵 $H$&#xA;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[毕业设计]Day1</title>
       <link>https://Zyed816.github.io/posts/dissertation-day1/</link>
