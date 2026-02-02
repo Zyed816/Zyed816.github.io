@@ -21,19 +21,19 @@
   
 
 
-Problem Formulation. Let G = (X, A) denote a graph, where X ∈ R^𝑁×𝐹^ denotes the nodes’ feature map, and x𝑖 is the feature of 𝑖-th node 𝑛𝑖 . A ∈ R^𝑁×𝑁^ denotes the adjacency matrix, where A𝑖𝑗 = 1 if and only if there is an edge from 𝑛𝑖 to 𝑛𝑗 . GCL aims at training a GNN encoder 𝑓𝜃 (G) that maps graph G into the node representations H ∈ R^𝑁×𝑑^ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
+Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
 <meta name="keywords" content="blog,developer,personal">
 
 
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="[毕业设计]Day1">
-  <meta name="twitter:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ R^𝑁×𝐹^ denotes the nodes’ feature map, and x𝑖 is the feature of 𝑖-th node 𝑛𝑖 . A ∈ R^𝑁×𝑁^ denotes the adjacency matrix, where A𝑖𝑗 = 1 if and only if there is an edge from 𝑛𝑖 to 𝑛𝑗 . GCL aims at training a GNN encoder 𝑓𝜃 (G) that maps graph G into the node representations H ∈ R^𝑁×𝑑^ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
+  <meta name="twitter:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
 
 <meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day1/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[毕业设计]Day1">
-  <meta property="og:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ R^𝑁×𝐹^ denotes the nodes’ feature map, and x𝑖 is the feature of 𝑖-th node 𝑛𝑖 . A ∈ R^𝑁×𝑁^ denotes the adjacency matrix, where A𝑖𝑗 = 1 if and only if there is an edge from 𝑛𝑖 to 𝑛𝑗 . GCL aims at training a GNN encoder 𝑓𝜃 (G) that maps graph G into the node representations H ∈ R^𝑁×𝑑^ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
+  <meta property="og:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -71,7 +71,7 @@ Problem Formulation. Let G = (X, A) denote a graph, where X ∈ R^𝑁×𝐹^ de
  
   
     
-    <link rel="stylesheet" href="/css/custom.min.9da4317e3e63154e3e551247eabf554761a5cf4d5c97d4cbcb3b3ce32eade41c.css" integrity="sha256-naQxfj5jFU4&#43;VRJH6r9VR2Glz01cl9TLyzs84y6t5Bw=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -203,46 +203,49 @@ Problem Formulation. Let G = (X, A) denote a graph, where X ∈ R^𝑁×𝐹^ de
   </a>
 </h2>
 <blockquote>
-<p><strong>Problem Formulation</strong>. Let <strong>G</strong> = (<strong>X</strong>, <strong>A</strong>) denote a graph, where <strong>X</strong> ∈ R^𝑁×𝐹^ denotes the nodes’ feature map, and <strong>x<del>𝑖</del></strong> is the feature of 𝑖-th node 𝑛<del>𝑖</del> . <strong>A</strong> ∈ R^𝑁×𝑁^ denotes the adjacency matrix, where <strong>A<del>𝑖𝑗</del></strong> = 1 if and only if there is an edge from 𝑛<del>𝑖</del> to 𝑛<del>𝑗</del> . GCL aims at training a GNN encoder 𝑓<del>𝜃</del> (<strong>G</strong>) that maps graph <strong>G</strong> into the node representations <strong>H</strong> ∈ R^𝑁×𝑑^ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.</p>
+<p><strong>Problem Formulation</strong>. Let <strong>G</strong> = (<strong>X</strong>, <strong>A</strong>) denote a graph, where <strong>X</strong> ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. <strong>A</strong> ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(<strong>G</strong>) that maps graph <strong>G</strong> into the node representations <strong>H</strong> ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.</p>
 </blockquote>
 <p>对于每篇论文有一个长度为 $3$ 的特征向量 $x_i$ ，每个位置上的数字代表与某领域的关联度，各领域顺序为 $\text{[图 医药 芯片]}$。例如，某论文特征向量为 $\text{[1.0 0 0]}$ ，说明这是一片图领域的论文，不涉及医药以及芯片领域的内容。</p>
 <p>现有五篇论文，它们的特征向量 $x_{1-5}$ 构成特征矩阵 $X$
+</p>
 $$
 X = \begin{pmatrix}
-1.0 &amp; 1.0 &amp; 0.0 \
-1.0 &amp; 0.9 &amp; 0.0 \
-0.9 &amp; 1.0 &amp; 0.1 \
-0.0 &amp; 0.1 &amp; 1.0 \
-0.1 &amp; 0.0 &amp; 0.9
+1.0 & 1.0 & 0.0 \\
+1.0 & 0.9 & 0.0 \\
+0.9 & 1.0 & 0.1 \\
+0.0 & 0.1 & 1.0 \\
+0.1 & 0.0 & 0.9
 \end{pmatrix}
 \begin{matrix}
-\leftarrow n_1(\text{图+医药}) \
-\leftarrow n_2(\text{图+医药}) \
-\leftarrow n_3(\text{图+医药}) \
-\leftarrow n_4(\text{芯片}) \
+\leftarrow n_1(\text{图+医药}) \\
+\leftarrow n_2(\text{图+医药}) \\
+\leftarrow n_3(\text{图+医药}) \\
+\leftarrow n_4(\text{芯片}) \\
 \leftarrow n_5(\text{芯片})
 \end{matrix}
-$$
+$$<p>
 邻接矩阵 $A$ 用来表示论文之间的引用关系，$A_{ij}$ = 1 表示论文 $n_i$ 引用了论文 $n_j$，这五篇论文的引用关系如下
+</p>
 $$
 A = \begin{pmatrix}
-0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \
-0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \
+0 & 1 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 \\
 \end{pmatrix}
-$$
+$$<p>
 图对比学习的目的就是得到一个编码器 $f_\theta$ ，它能将输入 $G = (X,A)$ 映射成一个 $N \times d$ 的矩阵 $H$，例如一个 $f_\theta$ 将  $G$ 映射成
+</p>
 $$
 H = \begin{pmatrix}
-0.97 &amp; 0.97 &amp; 0.03 \
-0.97 &amp; 0.97 &amp; 0.03 \
-0.97 &amp; 0.97 &amp; 0.03 \
-0.05 &amp; 0.05 &amp; 0.95 \
-0.05 &amp; 0.05 &amp; 0.95 \
+0.97 & 0.97 & 0.03 \\
+0.97 & 0.97 & 0.03 \\
+0.97 & 0.97 & 0.03 \\
+0.05 & 0.05 & 0.95 \\
+0.05 & 0.05 & 0.95 \\
 \end{pmatrix}
-$$
+$$<p>
 在这个矩阵中， $n_1$ , $n_2$ , $n_3$ 对应的向量 $h_1$ , $h_2$ , $h_3$ 非常接近，可以将他们归为同一类论文。 $n_4$ , $n_5$ 同理</p>
 <h2 id="通用范式">
   通用范式
@@ -251,9 +254,9 @@ $$
     <span class="sr-only">链接到标题</span>
   </a>
 </h2>
-<h3 id="得到增强视图的节点表示textnode-representation">
+<h3 id="得到增强视图的节点表示">
   得到增强视图的节点表示($\text{node representation}$)
-  <a class="heading-link" href="#%e5%be%97%e5%88%b0%e5%a2%9e%e5%bc%ba%e8%a7%86%e5%9b%be%e7%9a%84%e8%8a%82%e7%82%b9%e8%a1%a8%e7%a4%batextnode-representation">
+  <a class="heading-link" href="#%e5%be%97%e5%88%b0%e5%a2%9e%e5%bc%ba%e8%a7%86%e5%9b%be%e7%9a%84%e8%8a%82%e7%82%b9%e8%a1%a8%e7%a4%ba">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
     <span class="sr-only">链接到标题</span>
   </a>
@@ -262,109 +265,117 @@ $$
 <p>节点表示(node representaion)指的是经过编码器 $f_\theta$ 映射后的 $N * d$ 矩阵，也就是之前提到的 $H$ 。这里得到两个节点表示，分别记为 $U$ ，$V$</p>
 </blockquote>
 <p>利用特征掩蔽($\text{feature masking}$)和边丢弃($\text{edge dropping}$)技术生成原图 $G$ 的两个增强视图 $G^{aug1}$ 和 $G^{aug2}$ 。例如，论文 $n_1$ 的特征向量经过特征掩蔽后变为
+</p>
 $$
 n_1 = \begin{pmatrix}
-1.0 &amp; 0.0 &amp; 0.0
+1.0 & 0.0 & 0.0
 \end{pmatrix}
-$$
+$$<p>
 那么
+</p>
 $$
 X^{aug1} = \begin{pmatrix}
-1.0 &amp; 0.0 &amp; 0.0 \
-1.0 &amp; 0.9 &amp; 0.0 \
-0.9 &amp; 1.0 &amp; 0.1 \
-0.0 &amp; 0.1 &amp; 1.0 \
-0.1 &amp; 0.0 &amp; 0.9
+1.0 & 0.0 & 0.0 \\
+1.0 & 0.9 & 0.0 \\
+0.9 & 1.0 & 0.1 \\
+0.0 & 0.1 & 1.0 \\
+0.1 & 0.0 & 0.9
 \end{pmatrix}
 \qquad % 这里增加了1个大空格
 A^{aug1} = A = \begin{pmatrix}
-0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \
-0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \
+0 & 1 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 \\
 \end{pmatrix}
 \qquad % 这里增加了1个大空格
 G^{aug1} = (X^{aug1},A^{aug1})
-$$
+$$<p>
 论文 $n_1$ 的邻接矩阵向量经过边丢弃，失去 $n_1$ 对 $n_2$ 的引用
+</p>
 $$
 a_1 = \begin{pmatrix}
-0 &amp; 0 &amp; 1 &amp; 0 &amp; 0
+0 & 0 & 1 & 0 & 0
 \end{pmatrix}
-$$
+$$<p>
 那么
+</p>
 $$
 X^{aug2} = X =  \begin{pmatrix}
-1.0 &amp; 1.0 &amp; 0.0 \
-1.0 &amp; 0.9 &amp; 0.0 \
-0.9 &amp; 1.0 &amp; 0.1 \
-0.0 &amp; 0.1 &amp; 1.0 \
-0.1 &amp; 0.0 &amp; 0.9
+1.0 & 1.0 & 0.0 \\
+1.0 & 0.9 & 0.0 \\
+0.9 & 1.0 & 0.1 \\
+0.0 & 0.1 & 1.0 \\
+0.1 & 0.0 & 0.9
 \end{pmatrix}
 \qquad % 这里增加了1个大空格
 A^{aug2} = \begin{pmatrix}
-0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \
-0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \
+0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 \\
 \end{pmatrix}
 \qquad % 这里增加了1个大空格
 G^{aug2} = (X^{aug2},A^{aug2})
-$$
+$$<p>
 然后分别经过 $f_\theta$ 映射得到
+</p>
 $$
 U = f_\theta(\mathbf{G}^{aug1}) = \begin{pmatrix}
-U_1 \
-U_2 \
-U_3 \
-U_4 \
-U_5 \
+U_1 \\
+U_2 \\
+U_3 \\
+U_4 \\
+U_5 \\
 \end{pmatrix}
 \qquad
 V = f_\theta(\mathbf{G}^{aug2}) = \begin{pmatrix}
-V_1 \
-V_2 \
-V_3 \
-V_4 \
-V_5 \
+V_1 \\
+V_2 \\
+V_3 \\
+V_4 \\
+V_5 \\
 \end{pmatrix}
-$$</p>
-<h3 id="划分正负样本对集合">
+$$<h3 id="划分正负样本对集合">
   划分正负样本对集合
   <a class="heading-link" href="#%e5%88%92%e5%88%86%e6%ad%a3%e8%b4%9f%e6%a0%b7%e6%9c%ac%e5%af%b9%e9%9b%86%e5%90%88">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
     <span class="sr-only">链接到标题</span>
   </a>
 </h3>
-<p>由同一个结点编码得到的向量 $u_i$ $v_i$ 组成两个正样本对 ${(u_i,v_i),(v_i,u_i)}$ 。正样本对集合
+<p>由同一个结点编码得到的向量 $u_i$ $v_i$ 组成两个正样本对 $\{(u_i,v_i),(v_i,u_i)\}$ 。正样本对集合
+</p>
 $$
-D^{aug+} = {(u_i,v_i),(v_i,u_i)}^{N}<em>{i=1} = {(u_1,v_1),(v_1,u_1),&hellip;,(u_5,v_5),(v_5,u_5)}
-$$
+D^{aug+} = \{(u_i,v_i),(v_i,u_i)\}^{N}_{i=1} = \{(u_1,v_1),(v_1,u_1),\ldots,(u_5,v_5),(v_5,u_5)\}
+$$<p>
 其他结点对组成负样本对集合
+</p>
 $$
-D^{aug-} = {(u_i,v_i),(v_i,u_i)}^{N}</em>{i \neq j,i,j = 1}
-$$</p>
-<h3 id="计算损失函数并优化f_theta">
+D^{aug-} = \{(u_i,v_i),(v_i,u_i)\}^{N}_{i \ne j,\ i,j=1}
+$$<h3 id="计算损失函数并优化">
   计算损失函数并优化$f_\theta$
-  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0%e5%b9%b6%e4%bc%98%e5%8c%96f_theta">
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0%e5%b9%b6%e4%bc%98%e5%8c%96">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
     <span class="sr-only">链接到标题</span>
   </a>
 </h3>
 <p>$\text{InfoNCE}$ 损失函数计算方式
+</p>
 $$
 L = \frac{1}{2N} \sum_{i=1}^N (l_{u_i, v_i} + l_{v_i, u_i})
-$$
+$$<p>
 其中
+</p>
 $$
-l_{u_i, v_i} = -\log \frac{s_{\theta}(u_i, v_i)}{\sum_{j \neq i, j=1}^N s_{\theta}(u_i, u_j) + \sum_{j=1}^N s_{\theta}(u_i, v_j)}
-$$
+l_{u_i, v_i} = -\log \frac{s_{\theta}(u_i, v_i)}{\sum_{j \ne i,\ j=1}^N s_{\theta}(u_i, u_j) + \sum_{j=1}^N s_{\theta}(u_i, v_j)}
+$$<p>
 $s_\theta(u_i,v_i)$ 为 $u_i$ , $v_i$ 之间的余弦相似度，计算方法为
+</p>
 $$
 s_{\theta}(u_i, v_j) = \exp(\text{cos}(\mathbf{U}_i, \mathbf{V}_j) / \tau)
-$$
+$$<p>
 注意：$u_i,v_i$ 表示不同增强视图中的结点，$\mathbf{U_i,V_i}$ 表示该节点的编码向量</p>
 <p>得到总损失 $L$ 后反向传播优化 $f_\theta$</p>
 
@@ -385,7 +396,24 @@ $$
       </footer>
     </article>
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
   </section>
 
     </div>
