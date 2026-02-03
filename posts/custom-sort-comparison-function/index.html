@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>
   [算法随笔]C&#43;&#43;自定义sort比较函数 · Zyed
 </title>
@@ -67,7 +67,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
   <meta name="twitter:title" content="[算法随笔]C&#43;&#43;自定义sort比较函数">
   <meta name="twitter:description" content="基础用法 链接到标题 #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; int main() { vector&lt;int&gt; nums = {4, 3, 5, 1, 8, 1}; // 1. default: less&lt;&gt;() sort(nums.begin(), nums.end()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with the default third parameter&#34; &lt;&lt; endl; // 2. sort the elements in non-descending order -- same as default sort(nums.begin(), nums.end(), less&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: less&lt;&gt;()&#34; &lt;&lt; endl; // 3. sort the elements in non-growing order sort(nums.begin(), nums.end(), greater&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: greater&lt;&gt;()&#34; &lt;&lt; endl; } Output: 1 1 3 4 5 8 : sort with the default third parameter 1 1 3 4 5 8 : sort with parameter: less&lt;&gt;() 8 5 4 3 1 1 : sort with parameter: greater&lt;&gt;() STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序 首先调用快排，对于数据进行依据pivot的分割，递归调用， 对于较大的数据，建立heap堆排序， 对于较小的数据：插入排序">
 
-<meta property="og:url" content="https://Zyed816.github.io/posts/custom-sort-comparison-function/">
+<meta property="og:url" content="http://localhost:1313/posts/custom-sort-comparison-function/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[算法随笔]C&#43;&#43;自定义sort比较函数">
   <meta property="og:description" content="基础用法 链接到标题 #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; int main() { vector&lt;int&gt; nums = {4, 3, 5, 1, 8, 1}; // 1. default: less&lt;&gt;() sort(nums.begin(), nums.end()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with the default third parameter&#34; &lt;&lt; endl; // 2. sort the elements in non-descending order -- same as default sort(nums.begin(), nums.end(), less&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: less&lt;&gt;()&#34; &lt;&lt; endl; // 3. sort the elements in non-growing order sort(nums.begin(), nums.end(), greater&lt;&gt;()); for(int n : nums) { cout &lt;&lt; n &lt;&lt; &#39; &#39;; } cout &lt;&lt; &#34; : sort with parameter: greater&lt;&gt;()&#34; &lt;&lt; endl; } Output: 1 1 3 4 5 8 : sort with the default third parameter 1 1 3 4 5 8 : sort with parameter: less&lt;&gt;() 8 5 4 3 1 1 : sort with parameter: greater&lt;&gt;() STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序 首先调用快排，对于数据进行依据pivot的分割，递归调用， 对于较大的数据，建立heap堆排序， 对于较小的数据：插入排序">
@@ -80,7 +80,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
 
 
 
-<link rel="canonical" href="https://Zyed816.github.io/posts/custom-sort-comparison-function/">
+<link rel="canonical" href="http://localhost:1313/posts/custom-sort-comparison-function/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -90,7 +90,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
 
 
 
@@ -100,7 +100,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
   
     
     
-    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
   
 
 
@@ -108,7 +108,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
  
   
     
-    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/custom.css" media="screen">
   
 
 
@@ -153,7 +153,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://Zyed816.github.io/">
+    <a class="navigation-title" href="http://localhost:1313/">
       Zyed
     </a>
     
@@ -206,7 +206,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://Zyed816.github.io/posts/custom-sort-comparison-function/">
+            <a class="title-link" href="http://localhost:1313/posts/custom-sort-comparison-function/">
               [算法随笔]C&#43;&#43;自定义sort比较函数
             </a>
           </h1>
@@ -490,7 +490,7 @@ STL库函数的实现是：快速排序 &#43; 堆排序 &#43; 插入排序
 
   
   
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  <script src="/js/coder.js"></script>
   
 
   
