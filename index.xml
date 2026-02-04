@@ -6,8 +6,15 @@
     <description>Recent content on Zyed</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 03 Feb 2026 21:21:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Feb 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://Zyed816.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[毕业设计]Day4</title>
+      <link>https://Zyed816.github.io/posts/dissertation-day4/</link>
+      <pubDate>Wed, 04 Feb 2026 00:00:00 +0800</pubDate>
+      <guid>https://Zyed816.github.io/posts/dissertation-day4/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;未完待续。。。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;更新训练目标&#34;&gt;&#xA;  更新训练目标&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#%e6%9b%b4%e6%96%b0%e8%ae%ad%e7%bb%83%e7%9b%ae%e6%a0%87&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;链接到标题&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;链接到标题&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;我们已经证明， $s_\theta(n,n&#39;)$ 可以搭配上一个超参数 $t_s$ 便捷的实现一个分类器，用于从未标记样本中发现潜在的&lt;strong&gt;可能的&lt;/strong&gt;正样本，然后进行重采样 ($\text{resampling}$) 将这些可能的正样本 $D_U^+$ 从未标记样本集 $D_U$ 中取出，加入正样本集 $D^+$ ，进而消除采样偏差&#xA;&lt;/p&gt;&#xA;$$&#xD;&#xA;y(x) = h(x=(n,n&#39;); \theta) := \text{sign}(s_\theta(n,n&#39;) - t_s)&#xD;&#xA;$$&lt;p&gt;&#xA;一个随之而来的问题是，在计算损失函数 $L$ 时，新加入的潜在正样本 $D_U^+$ 与原本的正样本 $D_L^+$ 是否应该具有相同的权重呢？直觉上来看是否定的，因为 $D_L^+$ 是我们自己增强生成的， $\text{100\%}$ 是正样本，而新加入的知识&lt;strong&gt;潜在&lt;/strong&gt;正样本，因此我们应对训练目标进行更新 ($\text{updating training objective}$) ，具体来说就是修改损失函数 $L$&lt;/p&gt;&#xA;&lt;p&gt;$\text{Info-NCE}$ 中损失函数：&#xA;&lt;/p&gt;&#xA;$$&#xD;&#xA;\begin{aligned}&#xD;&#xA;L &amp;= \frac{1}{2N} \sum_{i=1}^N (l_{u_i, v_i} + l_{v_i, u_i}) \\&#xD;&#xA;\text{其中}，l_{u_i, v_i} &amp;= -\log \frac{s_{\theta}(u_i, v_i)}{\sum_{j \neq i, j=1}^N s_{\theta}(u_i, u_j) + \sum_{j=1}^N s_{\theta}(u_i, v_j)} \\ \\&#xD;&#xA;s_{\theta}(u_i, v_j) &amp;= \exp(\text{cos}(\mathbf{U}_i, \mathbf{V}_j) / \tau) &#xD;&#xA;\end{aligned}&#xD;&#xA;$$&lt;p&gt;&#xA;其中 $l_{u_i,v_i}$ 可以被理解为以下的负对数似然概率的形式：&#xA;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[毕业设计]Day3</title>
       <link>https://Zyed816.github.io/posts/dissertation-day3/</link>
