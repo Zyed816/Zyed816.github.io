@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [毕业设计]Day6 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  实验设置
+  
+    
+    链接到标题
+  
+
+
+  数据集
+  
+    
+    链接到标题
+  
+
+使用 $9$ 个数据集，分独立同分布 $\text{(independent and identically distributed,IID)}$ 和分布外 $\text{(out-of-distribution,OOD)}$ 两种情景
+
+$\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点：训练集和测试集分布相同
+$\text{OOD}$： $\text{GOODTwitch,GOODCora,GOODCBAS}$ ，特点：测试集的数据分布和训练集不一样（比如图的结构变了，或者特征分布变了）
+
+在 $\text{OOD}$ 情境下测试的原因是：传统方法 $\text{(GRACE/GCA)}$ 太依赖数据增强 $\text{(Augmentation)}$ ，很容易过拟合到某种特定的增强模式上。我们希望证明，语义引导 $\text{(Semantic Guidance)}$ 能让模型学到更本质的知识，从而在环境变化时也能表现良好
+
+  基线模型
+  
+    
+    链接到标题
+  
+
+共与 $7$ 种基线方法进行对比，最主要的两个基线方法是： $\text{GRACE}$ 和 $\text{GCA}$ ，因为它们都使用了 $InfoNCE$ 损失函数。我们对这两种方法进行优化。具体来说，使用它们进行 $\text{warm-up}$ 阶段，然后按照 $\text{IFL-GCL}$ 理论进行重采样 $\text{(resampling)}$ ，使用新的损失函数进一步训练编码器。按照这种思路得到的训练方法分别称为 $\text{IFL-GR}$ 以及 $\text{IFL-GC}$
+
+  评价指标和流程
+  
+    
+    链接到标题
+  
+
+所有图对比学习 $\text{(GCL)}$ 方法最终都得到一个编码器 $f_\theta$，它能把语义相近的结点映射到相近的向量，如何衡量一个编码器的优劣呢？我们使用有标签的数据集，将原图 $G$ 中每个结点 $n_i$ 经过编码器 $f_\theta$ 编码后得到的编码向量 $H_i$ 作为输入，将原图 $G$ 按 $\text{1:1:8}$ 划分为训练集，验证集和测试集，训练一个分类器 $\text{classifier}$ ，以分类器在测试集上的准确率作为衡量编码器 $f_\theta$ 的指标">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[毕业设计]Day6">
+  <meta name="twitter:description" content="实验设置 链接到标题 数据集 链接到标题 使用 $9$ 个数据集，分独立同分布 $\text{(independent and identically distributed,IID)}$ 和分布外 $\text{(out-of-distribution,OOD)}$ 两种情景
+$\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点：训练集和测试集分布相同 $\text{OOD}$： $\text{GOODTwitch,GOODCora,GOODCBAS}$ ，特点：测试集的数据分布和训练集不一样（比如图的结构变了，或者特征分布变了） 在 $\text{OOD}$ 情境下测试的原因是：传统方法 $\text{(GRACE/GCA)}$ 太依赖数据增强 $\text{(Augmentation)}$ ，很容易过拟合到某种特定的增强模式上。我们希望证明，语义引导 $\text{(Semantic Guidance)}$ 能让模型学到更本质的知识，从而在环境变化时也能表现良好
+基线模型 链接到标题 共与 $7$ 种基线方法进行对比，最主要的两个基线方法是： $\text{GRACE}$ 和 $\text{GCA}$ ，因为它们都使用了 $InfoNCE$ 损失函数。我们对这两种方法进行优化。具体来说，使用它们进行 $\text{warm-up}$ 阶段，然后按照 $\text{IFL-GCL}$ 理论进行重采样 $\text{(resampling)}$ ，使用新的损失函数进一步训练编码器。按照这种思路得到的训练方法分别称为 $\text{IFL-GR}$ 以及 $\text{IFL-GC}$
+评价指标和流程 链接到标题 所有图对比学习 $\text{(GCL)}$ 方法最终都得到一个编码器 $f_\theta$，它能把语义相近的结点映射到相近的向量，如何衡量一个编码器的优劣呢？我们使用有标签的数据集，将原图 $G$ 中每个结点 $n_i$ 经过编码器 $f_\theta$ 编码后得到的编码向量 $H_i$ 作为输入，将原图 $G$ 按 $\text{1:1:8}$ 划分为训练集，验证集和测试集，训练一个分类器 $\text{classifier}$ ，以分类器在测试集上的准确率作为衡量编码器 $f_\theta$ 的指标">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day6/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[毕业设计]Day6">
+  <meta property="og:description" content="实验设置 链接到标题 数据集 链接到标题 使用 $9$ 个数据集，分独立同分布 $\text{(independent and identically distributed,IID)}$ 和分布外 $\text{(out-of-distribution,OOD)}$ 两种情景
+$\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点：训练集和测试集分布相同 $\text{OOD}$： $\text{GOODTwitch,GOODCora,GOODCBAS}$ ，特点：测试集的数据分布和训练集不一样（比如图的结构变了，或者特征分布变了） 在 $\text{OOD}$ 情境下测试的原因是：传统方法 $\text{(GRACE/GCA)}$ 太依赖数据增强 $\text{(Augmentation)}$ ，很容易过拟合到某种特定的增强模式上。我们希望证明，语义引导 $\text{(Semantic Guidance)}$ 能让模型学到更本质的知识，从而在环境变化时也能表现良好
+基线模型 链接到标题 共与 $7$ 种基线方法进行对比，最主要的两个基线方法是： $\text{GRACE}$ 和 $\text{GCA}$ ，因为它们都使用了 $InfoNCE$ 损失函数。我们对这两种方法进行优化。具体来说，使用它们进行 $\text{warm-up}$ 阶段，然后按照 $\text{IFL-GCL}$ 理论进行重采样 $\text{(resampling)}$ ，使用新的损失函数进一步训练编码器。按照这种思路得到的训练方法分别称为 $\text{IFL-GR}$ 以及 $\text{IFL-GC}$
+评价指标和流程 链接到标题 所有图对比学习 $\text{(GCL)}$ 方法最终都得到一个编码器 $f_\theta$，它能把语义相近的结点映射到相近的向量，如何衡量一个编码器的优劣呢？我们使用有标签的数据集，将原图 $G$ 中每个结点 $n_i$ 经过编码器 $f_\theta$ 编码后得到的编码向量 $H_i$ 作为输入，将原图 $G$ 按 $\text{1:1:8}$ 划分为训练集，验证集和测试集，训练一个分类器 $\text{classifier}$ ，以分类器在测试集上的准确率作为衡量编码器 $f_\theta$ 的指标">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-05T21:28:00+08:00">
+    <meta property="article:modified_time" content="2026-02-05T21:28:00+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day6/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day6/">
+              [毕业设计]Day6
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-02-05T21:28:00&#43;08:00">
+                二月 5, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="实验设置">
+  实验设置
+  <a class="heading-link" href="#%e5%ae%9e%e9%aa%8c%e8%ae%be%e7%bd%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="数据集">
+  数据集
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>使用 $9$ 个数据集，分<strong>独立同分布</strong> $\text{(independent and identically distributed,IID)}$ 和<strong>分布外</strong> $\text{(out-of-distribution,OOD)}$ 两种情景</p>
+<ul>
+<li>$\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，<strong>特点</strong>：训练集和测试集分布相同</li>
+<li>$\text{OOD}$： $\text{GOODTwitch,GOODCora,GOODCBAS}$ ，<strong>特点</strong>：测试集的数据分布和训练集不一样（比如图的结构变了，或者特征分布变了）</li>
+</ul>
+<p>在 $\text{OOD}$ 情境下测试的原因是：传统方法 $\text{(GRACE/GCA)}$ 太依赖数据增强 $\text{(Augmentation)}$ ，很容易过拟合到某种特定的增强模式上。我们希望证明，<strong>语义引导</strong> $\text{(Semantic Guidance)}$ 能让模型学到更本质的知识，从而在环境变化时也能表现良好</p>
+<h3 id="基线模型">
+  基线模型
+  <a class="heading-link" href="#%e5%9f%ba%e7%ba%bf%e6%a8%a1%e5%9e%8b">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>共与 $7$ 种基线方法进行对比，最主要的两个基线方法是： $\text{GRACE}$ 和 $\text{GCA}$ ，因为它们都使用了 $InfoNCE$ 损失函数。我们对这两种方法进行优化。具体来说，使用它们进行 $\text{warm-up}$ 阶段，然后按照 $\text{IFL-GCL}$ 理论进行重采样 $\text{(resampling)}$ ，使用新的损失函数进一步训练编码器。按照这种思路得到的训练方法分别称为 $\text{IFL-GR}$ 以及 $\text{IFL-GC}$</p>
+<h3 id="评价指标和流程">
+  评价指标和流程
+  <a class="heading-link" href="#%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87%e5%92%8c%e6%b5%81%e7%a8%8b">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>所有图对比学习 $\text{(GCL)}$ 方法最终都得到一个编码器 $f_\theta$，它能把语义相近的结点映射到相近的向量，如何衡量一个编码器的优劣呢？我们使用有标签的数据集，将原图 $G$ 中每个结点 $n_i$ 经过编码器 $f_\theta$ 编码后得到的编码向量 $H_i$ 作为输入，将原图 $G$ 按 $\text{1:1:8}$ 划分为训练集，验证集和测试集，训练一个分类器 $\text{classifier}$ ，以分类器在测试集上的准确率作为衡量编码器 $f_\theta$ 的指标</p>
+<p>如果编码器 $f_\theta$ 能很好地捕捉原图中各个结点的语义，它会将语义相近（实际标签相同）的结点编码为距离接近 的向量，此时训练一个简单分类器实现结点群向实际标签的映射就比较简单，意味着在测试集上的准确率高</p>
+<p>如果编码器 $f_\theta$ 无法准确捕捉语义，它会将不同语义的结点拉近，相同语义结点可能被推远，这就导致无法得到一个良好的分类器实现结点向实际标签的准确映射</p>
+<p>注意，分类器 $\text{classifier}$ 必须是简单的<strong>线性分类器</strong>，避免复杂分类器对标签的拟合掩盖了对编码器编码效果的区分</p>
+<p>因此该对比方案是合理的</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
