@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [毕业设计]Day7 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  数据加载模块 $\text{dataset.py}$
+  
+    
+    链接到标题
+  
+
+import torch
+from torch_geometric.datasets import Planetoid
+import torch_geometric.transforms as T
+
+def get_dataset(root, name):
+    &#34;&#34;&#34;
+    对应开源代码 main.py 中的 get_dataset 函数
+    功能：加载标准图数据集
+    &#34;&#34;&#34;
+    dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures())
+    data = dataset[0]
+    return data, dataset.num_features, dataset.num_classes
+
+# 测试一下
+# data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;)
+# print(f&#34;Loaded {data}&#34;)
+
+  图增强模块 $\text{augmentation.py}$
+  
+    
+    链接到标题
+  
+
+import torch
+from torch_geometric.utils import dropout_adj
+
+def drop_feature(x, drop_prob):
+    &#34;&#34;&#34;
+    对应开源代码 gca_functional.py 中的 drop_feature 函数
+    功能：随机掩盖节点特征
+    &#34;&#34;&#34;
+    if drop_prob &lt;= 0.:
+        return x
+    
+    # 生成一个跟特征维度一样的 mask (shape: [F])
+    drop_mask = torch.empty(
+        (x.size(1),),
+        dtype=torch.float32,
+        device=x.device
+    ).uniform_(0, 1) &lt; drop_prob
+
+    x = x.clone()
+    x[:, drop_mask] = 0 # 将被 mask 的特征置为 0
+    return x
+
+def drop_edge(edge_index, drop_prob):
+    &#34;&#34;&#34;
+    对应开源代码 gca_functional.py 中的 drop_edge 函数
+    功能：随机删除边
+    &#34;&#34;&#34;
+    if drop_prob &lt;= 0.:
+        return edge_index
+    
+    # 使用 PyG 的工具函数随机 drop 边
+    edge_index, _ = dropout_adj(
+        edge_index,
+        p=drop_prob,
+        force_undirected=True, # 保持无向图性质
+        num_nodes=None,
+        training=True
+    )
+    return edge_index
+
+# GCA 特有的自适应增强 (复现 IFL-GC 时需要)
+# 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑
+# 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展
+
+  编码器结构定义
+  
+    
+    链接到标题
+  
+
+确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[毕业设计]Day7">
+  <meta name="twitter:description" content="数据加载模块 $\text{dataset.py}$ 链接到标题 import torch from torch_geometric.datasets import Planetoid import torch_geometric.transforms as T def get_dataset(root, name): &#34;&#34;&#34; 对应开源代码 main.py 中的 get_dataset 函数 功能：加载标准图数据集 &#34;&#34;&#34; dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures()) data = dataset[0] return data, dataset.num_features, dataset.num_classes # 测试一下 # data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;) # print(f&#34;Loaded {data}&#34;) 图增强模块 $\text{augmentation.py}$ 链接到标题 import torch from torch_geometric.utils import dropout_adj def drop_feature(x, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_feature 函数 功能：随机掩盖节点特征 &#34;&#34;&#34; if drop_prob &lt;= 0.: return x # 生成一个跟特征维度一样的 mask (shape: [F]) drop_mask = torch.empty( (x.size(1),), dtype=torch.float32, device=x.device ).uniform_(0, 1) &lt; drop_prob x = x.clone() x[:, drop_mask] = 0 # 将被 mask 的特征置为 0 return x def drop_edge(edge_index, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_edge 函数 功能：随机删除边 &#34;&#34;&#34; if drop_prob &lt;= 0.: return edge_index # 使用 PyG 的工具函数随机 drop 边 edge_index, _ = dropout_adj( edge_index, p=drop_prob, force_undirected=True, # 保持无向图性质 num_nodes=None, training=True ) return edge_index # GCA 特有的自适应增强 (复现 IFL-GC 时需要) # 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑 # 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展 编码器结构定义 链接到标题 确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day7/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[毕业设计]Day7">
+  <meta property="og:description" content="数据加载模块 $\text{dataset.py}$ 链接到标题 import torch from torch_geometric.datasets import Planetoid import torch_geometric.transforms as T def get_dataset(root, name): &#34;&#34;&#34; 对应开源代码 main.py 中的 get_dataset 函数 功能：加载标准图数据集 &#34;&#34;&#34; dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures()) data = dataset[0] return data, dataset.num_features, dataset.num_classes # 测试一下 # data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;) # print(f&#34;Loaded {data}&#34;) 图增强模块 $\text{augmentation.py}$ 链接到标题 import torch from torch_geometric.utils import dropout_adj def drop_feature(x, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_feature 函数 功能：随机掩盖节点特征 &#34;&#34;&#34; if drop_prob &lt;= 0.: return x # 生成一个跟特征维度一样的 mask (shape: [F]) drop_mask = torch.empty( (x.size(1),), dtype=torch.float32, device=x.device ).uniform_(0, 1) &lt; drop_prob x = x.clone() x[:, drop_mask] = 0 # 将被 mask 的特征置为 0 return x def drop_edge(edge_index, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_edge 函数 功能：随机删除边 &#34;&#34;&#34; if drop_prob &lt;= 0.: return edge_index # 使用 PyG 的工具函数随机 drop 边 edge_index, _ = dropout_adj( edge_index, p=drop_prob, force_undirected=True, # 保持无向图性质 num_nodes=None, training=True ) return edge_index # GCA 特有的自适应增强 (复现 IFL-GC 时需要) # 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑 # 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展 编码器结构定义 链接到标题 确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-07T22:25:00+08:00">
+    <meta property="article:modified_time" content="2026-02-07T22:25:00+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day7/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day7/">
+              [毕业设计]Day7
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-02-07T22:25:00&#43;08:00">
+                二月 7, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：10 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="数据加载模块">
+  数据加载模块 $\text{dataset.py}$
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e5%8a%a0%e8%bd%bd%e6%a8%a1%e5%9d%97">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">torch_geometric.datasets</span> <span style="color:#ff7b72">import</span> Planetoid
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">torch_geometric.transforms</span> <span style="color:#ff7b72">as</span> <span style="color:#ff7b72">T</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">get_dataset</span>(root, name):
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    对应开源代码 main.py 中的 get_dataset 函数
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    功能：加载标准图数据集
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    dataset <span style="color:#ff7b72;font-weight:bold">=</span> Planetoid(root<span style="color:#ff7b72;font-weight:bold">=</span>root, name<span style="color:#ff7b72;font-weight:bold">=</span>name, transform<span style="color:#ff7b72;font-weight:bold">=</span>T<span style="color:#ff7b72;font-weight:bold">.</span>NormalizeFeatures())
+</span></span><span style="display:flex;"><span>    data <span style="color:#ff7b72;font-weight:bold">=</span> dataset[<span style="color:#a5d6ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> data, dataset<span style="color:#ff7b72;font-weight:bold">.</span>num_features, dataset<span style="color:#ff7b72;font-weight:bold">.</span>num_classes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 测试一下</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># print(f&#34;Loaded {data}&#34;)</span>
+</span></span></code></pre></div><h2 id="图增强模块">
+  图增强模块 $\text{augmentation.py}$
+  <a class="heading-link" href="#%e5%9b%be%e5%a2%9e%e5%bc%ba%e6%a8%a1%e5%9d%97">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">torch_geometric.utils</span> <span style="color:#ff7b72">import</span> dropout_adj
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">drop_feature</span>(x, drop_prob):
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    对应开源代码 gca_functional.py 中的 drop_feature 函数
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    功能：随机掩盖节点特征
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> drop_prob <span style="color:#ff7b72;font-weight:bold">&lt;=</span> <span style="color:#a5d6ff">0.</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> x
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># 生成一个跟特征维度一样的 mask (shape: [F])</span>
+</span></span><span style="display:flex;"><span>    drop_mask <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>empty(
+</span></span><span style="display:flex;"><span>        (x<span style="color:#ff7b72;font-weight:bold">.</span>size(<span style="color:#a5d6ff">1</span>),),
+</span></span><span style="display:flex;"><span>        dtype<span style="color:#ff7b72;font-weight:bold">=</span>torch<span style="color:#ff7b72;font-weight:bold">.</span>float32,
+</span></span><span style="display:flex;"><span>        device<span style="color:#ff7b72;font-weight:bold">=</span>x<span style="color:#ff7b72;font-weight:bold">.</span>device
+</span></span><span style="display:flex;"><span>    )<span style="color:#ff7b72;font-weight:bold">.</span>uniform_(<span style="color:#a5d6ff">0</span>, <span style="color:#a5d6ff">1</span>) <span style="color:#ff7b72;font-weight:bold">&lt;</span> drop_prob
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    x <span style="color:#ff7b72;font-weight:bold">=</span> x<span style="color:#ff7b72;font-weight:bold">.</span>clone()
+</span></span><span style="display:flex;"><span>    x[:, drop_mask] <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span> <span style="color:#8b949e;font-style:italic"># 将被 mask 的特征置为 0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">drop_edge</span>(edge_index, drop_prob):
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    对应开源代码 gca_functional.py 中的 drop_edge 函数
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    功能：随机删除边
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> drop_prob <span style="color:#ff7b72;font-weight:bold">&lt;=</span> <span style="color:#a5d6ff">0.</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> edge_index
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># 使用 PyG 的工具函数随机 drop 边</span>
+</span></span><span style="display:flex;"><span>    edge_index, _ <span style="color:#ff7b72;font-weight:bold">=</span> dropout_adj(
+</span></span><span style="display:flex;"><span>        edge_index,
+</span></span><span style="display:flex;"><span>        p<span style="color:#ff7b72;font-weight:bold">=</span>drop_prob,
+</span></span><span style="display:flex;"><span>        force_undirected<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">True</span>, <span style="color:#8b949e;font-style:italic"># 保持无向图性质</span>
+</span></span><span style="display:flex;"><span>        num_nodes<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">None</span>,
+</span></span><span style="display:flex;"><span>        training<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">True</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> edge_index
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># GCA 特有的自适应增强 (复现 IFL-GC 时需要)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展</span>
+</span></span></code></pre></div><h2 id="编码器结构定义">
+  编码器结构定义
+  <a class="heading-link" href="#%e7%bc%96%e7%a0%81%e5%99%a8%e7%bb%93%e6%9e%84%e5%ae%9a%e4%b9%89">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>import torch
+</span></span><span style="display:flex;"><span>import torch.nn as nn
+</span></span><span style="display:flex;"><span>import torch.nn.functional as F
+</span></span><span style="display:flex;"><span>from torch_geometric.nn import GCNConv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>def get_activation_func(activation_str)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f85149">对应</span> model.py L32<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">33</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f85149">简单的激活函数工厂</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> activation_str <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#f85149">&#39;</span>relu<span style="color:#f85149">&#39;</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> F.relu
+</span></span><span style="display:flex;"><span>    elif activation_str <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#f85149">&#39;</span>prelu<span style="color:#f85149">&#39;</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> nn.PReLU()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">else</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        raise ValueError(f<span style="color:#a5d6ff">&#34;Activation {activation_str} not supported&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Encoder</span>(torch.nn.Module)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f85149">对应</span> model.py L58 <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Encoder</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    def __init__(self, in_channels, out_channels, activation<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#f85149">&#39;</span>relu<span style="color:#f85149">&#39;</span>, base_model<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#f85149">&#39;</span>GCNConv<span style="color:#f85149">&#39;</span>, k<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">2</span>)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        super(Encoder, self).__init__()
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 在开源代码中，我是通过 args 传参的 (L60-63)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 这里为了让你看清楚结构，我把参数展开了
+</span></span></span><span style="display:flex;"><span>        self.base_model <span style="color:#ff7b72;font-weight:bold">=</span> GCNConv <span style="color:#f85149">#</span> <span style="color:#f85149">默认使用</span> GCNConv
+</span></span><span style="display:flex;"><span>        self.in_channels <span style="color:#ff7b72;font-weight:bold">=</span> in_channels
+</span></span><span style="display:flex;"><span>        self.out_channels <span style="color:#ff7b72;font-weight:bold">=</span> out_channels
+</span></span><span style="display:flex;"><span>        self.k <span style="color:#ff7b72;font-weight:bold">=</span> k <span style="color:#f85149">#</span> <span style="color:#f85149">层数，默认为</span> <span style="color:#a5d6ff">2</span> (L64)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 构建 GCN 层 (L66-70)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 第一层：输入 -&gt; 2 * hidden
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 中间层：2 * hidden -&gt; 2 * hidden
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 最后一层：2 * hidden -&gt; output
+</span></span></span><span style="display:flex;"><span>        self.conv <span style="color:#ff7b72;font-weight:bold">=</span> [self.base_model(self.in_channels, <span style="color:#a5d6ff">2</span> <span style="color:#ff7b72;font-weight:bold">*</span> self.out_channels)]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span> _ in range(<span style="color:#a5d6ff">1</span>, self.k<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>            self.conv.append(self.base_model(<span style="color:#a5d6ff">2</span> <span style="color:#ff7b72;font-weight:bold">*</span> self.out_channels, <span style="color:#a5d6ff">2</span> <span style="color:#ff7b72;font-weight:bold">*</span> self.out_channels))
+</span></span><span style="display:flex;"><span>        self.conv.append(self.base_model(<span style="color:#a5d6ff">2</span> <span style="color:#ff7b72;font-weight:bold">*</span> self.out_channels, self.out_channels))
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 注册为 ModuleList，否则 PyTorch 无法识别这些层
+</span></span></span><span style="display:flex;"><span>        self.conv <span style="color:#ff7b72;font-weight:bold">=</span> nn.ModuleList(self.conv)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self.activation <span style="color:#ff7b72;font-weight:bold">=</span> get_activation_func(activation)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    def forward(self, <span style="color:#79c0ff;font-weight:bold">x</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">edge_index</span>: torch.Tensor)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">对应</span> model.py L74<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">77</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span> i in range(self.k)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 每一层都是：卷积 -&gt; 激活
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 注意：最后一层通常也加激活，这在 GCL 中很常见
+</span></span></span><span style="display:flex;"><span>            x <span style="color:#ff7b72;font-weight:bold">=</span> self.activation(self.conv[i](x, edge_index))
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> x
+</span></span></code></pre></div><h2 id="定义">
+  定义 $\text{class GRACE()}$
+  <a class="heading-link" href="#%e5%ae%9a%e4%b9%89">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>$\text{GRACE}$ 类用于实现：</p>
+<ul>
+<li>图对比学习方法 $\text{GRACE}$</li>
+<li>将其用于 $\text{warm-up}$ 阶段，在其基础上实现 $\text{IFL-GR}$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">GRACE</span>(torch.nn.Module)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f85149">对应</span> model.py L79 <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">GRACE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f85149">这是</span> IFL<span style="color:#ff7b72;font-weight:bold">-</span>GR <span style="color:#f85149">的基础骨架。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    def __init__(self, <span style="color:#79c0ff;font-weight:bold">encoder</span>: Encoder, num_hidden, num_proj_hidden, tau<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">0.5</span>)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        super(GRACE, self).__init__()
+</span></span><span style="display:flex;"><span>        self.<span style="color:#79c0ff;font-weight:bold">encoder</span>: Encoder <span style="color:#ff7b72;font-weight:bold">=</span> encoder
+</span></span><span style="display:flex;"><span>        self.<span style="color:#79c0ff;font-weight:bold">tau</span>: <span style="color:#ff7b72">float</span> <span style="color:#ff7b72;font-weight:bold">=</span> tau
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 投影头 (Projection Head)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 对应 model.py L85-86
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 结构：Linear -&gt; ELU -&gt; Linear
+</span></span></span><span style="display:flex;"><span>        self.fc1 <span style="color:#ff7b72;font-weight:bold">=</span> torch.nn.Linear(num_hidden, num_proj_hidden)
+</span></span><span style="display:flex;"><span>        self.fc2 <span style="color:#ff7b72;font-weight:bold">=</span> torch.nn.Linear(num_proj_hidden, num_hidden)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    def forward(self, <span style="color:#79c0ff;font-weight:bold">x</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">edge_index</span>: torch.Tensor) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> torch.<span style="color:#79c0ff;font-weight:bold">Tensor</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">对应</span> model.py L90<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">92</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">注意：</span>forward <span style="color:#f85149">只负责输出</span> Encoder <span style="color:#f85149">的表示</span> (Representation)
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">这主要用于</span> Evaluation <span style="color:#f85149">阶段提取特征。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> self.encoder(x, edge_index)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    def projection(self, <span style="color:#79c0ff;font-weight:bold">z</span>: torch.Tensor) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> torch.<span style="color:#79c0ff;font-weight:bold">Tensor</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">对应</span> model.py L94<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">96</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">把</span> Encoder <span style="color:#f85149">的输出</span> z <span style="color:#f85149">映射为</span> h<span style="color:#f85149">，用于计算对比</span> Loss
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        z <span style="color:#ff7b72;font-weight:bold">=</span> F.elu(self.fc1(z))
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> self.fc2(z)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    def sim(self, <span style="color:#79c0ff;font-weight:bold">z1</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">z2</span>: torch.Tensor)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">对应</span> model.py L98<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">101</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">计算余弦相似度</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        z1 <span style="color:#ff7b72;font-weight:bold">=</span> F.normalize(z1)
+</span></span><span style="display:flex;"><span>        z2 <span style="color:#ff7b72;font-weight:bold">=</span> F.normalize(z2)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> torch.mm(z1, z2.t())
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    def loss(self, <span style="color:#79c0ff;font-weight:bold">z1</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">z2</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">cur_epoch</span>: <span style="color:#ff7b72">int</span>, args)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">计算总</span> Loss<span style="color:#f85149">：</span>
+</span></span><span style="display:flex;"><span>        L <span style="color:#ff7b72;font-weight:bold">=</span> (L(view1, view2) <span style="color:#ff7b72;font-weight:bold">+</span> L(view2, view1)) <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">对应</span> model.py L354<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">365</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 1. 经过 Projection Head 映射
+</span></span></span><span style="display:flex;"><span>        h1 <span style="color:#ff7b72;font-weight:bold">=</span> self.projection(z1)
+</span></span><span style="display:flex;"><span>        h2 <span style="color:#ff7b72;font-weight:bold">=</span> self.projection(z2)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 2. 计算两个方向的 Loss
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 必须传入 cur_epoch，因为 IFL 需要判断是否预热结束
+</span></span></span><span style="display:flex;"><span>        l1 <span style="color:#ff7b72;font-weight:bold">=</span> self.semi_loss(h1, h2, cur_epoch, args)
+</span></span><span style="display:flex;"><span>        l2 <span style="color:#ff7b72;font-weight:bold">=</span> self.semi_loss(h2, h1, cur_epoch, args)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 3. 取平均
+</span></span></span><span style="display:flex;"><span>        ret <span style="color:#ff7b72;font-weight:bold">=</span> (l1 <span style="color:#ff7b72;font-weight:bold">+</span> l2) <span style="color:#ff7b72;font-weight:bold">*</span> <span style="color:#a5d6ff">0.5</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ret.mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    def semi_loss(self, <span style="color:#79c0ff;font-weight:bold">z1</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">z2</span>: torch.Tensor, <span style="color:#79c0ff;font-weight:bold">cur_epoch</span>: <span style="color:#ff7b72">int</span>, args)<span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">核心函数：计算单个方向的对比损失</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f85149">对应</span> model.py L103<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">157</span> (<span style="color:#f85149">简化版，去除了保存权重的</span> IO <span style="color:#f85149">操作</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        f <span style="color:#ff7b72;font-weight:bold">=</span> lambda <span style="color:#79c0ff;font-weight:bold">x</span>: torch.exp(x <span style="color:#ff7b72;font-weight:bold">/</span> self.tau)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 1. 计算相似度矩阵 (全部样本 vs 全部样本)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># refl_sim: 视图 1 内部的相似度 (Intra-view)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># between_sim: 视图 1 和 视图 2 之间的相似度 (Inter-view)
+</span></span></span><span style="display:flex;"><span>        refl_sim <span style="color:#ff7b72;font-weight:bold">=</span> f(self.sim(z1, z1))
+</span></span><span style="display:flex;"><span>        between_sim <span style="color:#ff7b72;font-weight:bold">=</span> f(self.sim(z1, z2))
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 2. 计算分母 (Denominator)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 对应 InfoNCE 分母：所有负样本 + 正样本
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 注意：refl_sim 对角线是自己对自己，通常不包含在负样本里，要减掉
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># A = sum(exp(sim(u, v_pos))) + sum(exp(sim(u, v_neg)))
+</span></span></span><span style="display:flex;"><span>        A <span style="color:#ff7b72;font-weight:bold">=</span> between_sim.sum(<span style="color:#a5d6ff">1</span>) <span style="color:#ff7b72;font-weight:bold">+</span> refl_sim.sum(<span style="color:#a5d6ff">1</span>) <span style="color:#ff7b72;font-weight:bold">-</span> refl_sim.diag()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 3. 计算原始的 Log Probability 矩阵
+</span></span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># B_loss_matrix[i, j] = -log( exp(sim(i, j)) / A[i] )
+</span></span></span><span style="display:flex;"><span>        B_loss_matrix <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">-</span>torch.log(between_sim <span style="color:#ff7b72;font-weight:bold">/</span> A.unsqueeze(<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>))
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 同理计算 R_loss_matrix (视图内部)
+</span></span></span><span style="display:flex;"><span>        R_loss_matrix <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">-</span>torch.log(refl_sim <span style="color:#ff7b72;font-weight:bold">/</span> A.unsqueeze(<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 排除对角线 (自己不能做自己的负样本)
+</span></span></span><span style="display:flex;"><span>        R_loss_matrix.fill_diagonal_(<span style="color:#a5d6ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># --- 核心逻辑分支 ---
+</span></span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 分支 A: IFL-GR (开启 Theory View 且 预热结束)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> args.theroy_view and cur_epoch <span style="color:#ff7b72;font-weight:bold">&gt;=</span> args.<span style="color:#79c0ff;font-weight:bold">start_debias_epoch</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 这里的逻辑对应论文公式 (20) 和 (26)
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 我们需要找到 D_U+ (潜在正样本) 并给它们加权
+</span></span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># --- 4.1 计算权重 (Weights) ---
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 简化逻辑：直接用当前的相似度作为权重的依据
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 归一化相似度到 [0, 1]
+</span></span></span><span style="display:flex;"><span>            R_sim_raw <span style="color:#ff7b72;font-weight:bold">=</span> f(self.sim(z1, z1)).detach()
+</span></span><span style="display:flex;"><span>            R_W <span style="color:#ff7b72;font-weight:bold">=</span> (R_sim_raw <span style="color:#ff7b72;font-weight:bold">-</span> R_sim_raw.min()) <span style="color:#ff7b72;font-weight:bold">/</span> (R_sim_raw.max() <span style="color:#ff7b72;font-weight:bold">-</span> R_sim_raw.min() <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1e-8</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            B_sim_raw <span style="color:#ff7b72;font-weight:bold">=</span> f(self.sim(z1, z2)).detach()
+</span></span><span style="display:flex;"><span>            B_W <span style="color:#ff7b72;font-weight:bold">=</span> (B_sim_raw <span style="color:#ff7b72;font-weight:bold">-</span> B_sim_raw.min()) <span style="color:#ff7b72;font-weight:bold">/</span> (B_sim_raw.max() <span style="color:#ff7b72;font-weight:bold">-</span> B_sim_raw.min() <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1e-8</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># --- 4.2 筛选 D_U+ (Masking) ---
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 只有相似度超过阈值 (t_s) 的才算
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 对应 args.R_W_threshold 和 args.B_W_threshold
+</span></span></span><span style="display:flex;"><span>            R_W[R_W <span style="color:#ff7b72;font-weight:bold">&lt;</span> args.R_W_threshold] <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            B_W[B_W <span style="color:#ff7b72;font-weight:bold">&lt;</span> args.B_W_threshold] <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 还要把 R_W 的对角线清零
+</span></span></span><span style="display:flex;"><span>            R_W.fill_diagonal_(<span style="color:#a5d6ff">0</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># --- 4.3 修正原有正样本 ---
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 原来的正样本 (对角线) 权重必须是 1
+</span></span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> args.<span style="color:#79c0ff;font-weight:bold">stay_diag_eye</span>:
+</span></span><span style="display:flex;"><span>                B_W.fill_diagonal_(<span style="color:#a5d6ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># --- 4.4 计算加权 Loss ---
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 对应公式 (27): sum( -log(P) * Weight )
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 只计算权重 &gt; 0 的部分
+</span></span></span><span style="display:flex;"><span>            R_info_nce <span style="color:#ff7b72;font-weight:bold">=</span> torch.masked_select(R_loss_matrix <span style="color:#ff7b72;font-weight:bold">*</span> R_W, R_W <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span>)
+</span></span><span style="display:flex;"><span>            B_info_nce <span style="color:#ff7b72;font-weight:bold">=</span> torch.masked_select(B_loss_matrix <span style="color:#ff7b72;font-weight:bold">*</span> B_W, B_W <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 合并两个视图的 Loss
+</span></span></span><span style="display:flex;"><span>            info_nce <span style="color:#ff7b72;font-weight:bold">=</span> torch.cat((R_info_nce, B_info_nce)).mean()
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-weight:bold;font-style:italic"># 分支 B: Baseline (GRACE) 或 预热阶段
+</span></span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">else</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 传统的 InfoNCE 只看对角线 (Augmentation Pairs)
+</span></span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-weight:bold;font-style:italic"># 也就是只选 B_loss_matrix 的对角线元素
+</span></span></span><span style="display:flex;"><span>            pos_mask <span style="color:#ff7b72;font-weight:bold">=</span> torch.eye(z1.shape[<span style="color:#a5d6ff">0</span>], device<span style="color:#ff7b72;font-weight:bold">=</span>z1.device).<span style="color:#ff7b72">bool</span>()
+</span></span><span style="display:flex;"><span>            info_nce <span style="color:#ff7b72;font-weight:bold">=</span> torch.masked_select(B_loss_matrix, pos_mask).mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> info_nce
+</span></span></code></pre></div><p><code>if args.theroy_view and cur_epoch &gt;= args.start_debias_epoch: ... else ...</code> 实现了普通 $\text{GRACE}$ 与 $\text{INF-GR}$ 的切换</p>
+<h2 id="运行开源代码进行实验">
+  运行开源代码进行实验
+  <a class="heading-link" href="#%e8%bf%90%e8%a1%8c%e5%bc%80%e6%ba%90%e4%bb%a3%e7%a0%81%e8%bf%9b%e8%a1%8c%e5%ae%9e%e9%aa%8c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>由于上面的代码运行结果不佳，故而先运行论文开源代码进行实验</p>
+<h3 id="数据集">
+  $\text{Cora}$ 数据集
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="">
+  $\text{GRACE}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>命令：</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Cora --senario ID --gpu_id 0 --seed 39788
+</code></pre><p>结果：</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+best val acc: 85.0861% ± 0.980159%
+correspoding test acc: 83.8257% ± 0.964841%
+
+Seed: 666
+Dataset: Cora
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+best val acc: 85.5474% ± 1.167702%
+correspoding test acc: 83.8503% ± 0.693698%
+</code></pre><h4 id="">
+  $\text{IFL-GR}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>先创建 <code>./Theroy_View_Weights/</code> 和 <code>./Upos/</code> 文件夹</p>
+<p>命令：</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Cora --senario ID --gpu_id 0 --seed 39788 --theroy_view --start_debias_epoch 200 --update_interval 1 --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye 1
+</code></pre><p>结果：</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+start_debias_epoch: 200
+update_interval: 1
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best val acc: 85.3321% ± 0.855500%
+correspoding test acc: 83.8503% ± 0.736909%
+
+Seed: 666
+Dataset: Cora
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+start_debias_epoch: 200
+update_interval: 1
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best val acc: 85.2399% ± 0.225968%
+correspoding test acc: 84.3181% ± 0.271919%
+</code></pre><h4 id="">
+  $\text{GCA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>在 <code>gca_functional.py</code> 末尾追加了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">typing</span> <span style="color:#ff7b72">import</span> Optional
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">torch_geometric.utils</span> <span style="color:#ff7b72">import</span> to_undirected, degree
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>_EPS <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1e-12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">_minmax_norm</span>(x: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor:
+</span></span><span style="display:flex;"><span>    x <span style="color:#ff7b72;font-weight:bold">=</span> x<span style="color:#ff7b72;font-weight:bold">.</span>float()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> (x <span style="color:#ff7b72;font-weight:bold">-</span> x<span style="color:#ff7b72;font-weight:bold">.</span>min()) <span style="color:#ff7b72;font-weight:bold">/</span> (x<span style="color:#ff7b72;font-weight:bold">.</span>max() <span style="color:#ff7b72;font-weight:bold">-</span> x<span style="color:#ff7b72;font-weight:bold">.</span>min() <span style="color:#ff7b72;font-weight:bold">+</span> _EPS)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">compute_pr</span>(edge_index: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, <span style="color:#ff7b72;font-weight:bold">*</span>, num_nodes: Optional[int] <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">None</span>, damp: float <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0.85</span>, k: int <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">200</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> num_nodes <span style="color:#ff7b72;font-weight:bold">is</span> <span style="color:#79c0ff">None</span>:
+</span></span><span style="display:flex;"><span>        num_nodes <span style="color:#ff7b72;font-weight:bold">=</span> int(edge_index<span style="color:#ff7b72;font-weight:bold">.</span>max()) <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span>    edge_index <span style="color:#ff7b72;font-weight:bold">=</span> to_undirected(edge_index, num_nodes<span style="color:#ff7b72;font-weight:bold">=</span>num_nodes)
+</span></span><span style="display:flex;"><span>    src, dst <span style="color:#ff7b72;font-weight:bold">=</span> edge_index[<span style="color:#a5d6ff">0</span>], edge_index[<span style="color:#a5d6ff">1</span>]
+</span></span><span style="display:flex;"><span>    deg_src <span style="color:#ff7b72;font-weight:bold">=</span> degree(src, num_nodes<span style="color:#ff7b72;font-weight:bold">=</span>num_nodes)<span style="color:#ff7b72;font-weight:bold">.</span>clamp(min<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    pr <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>full((num_nodes,), <span style="color:#a5d6ff">1.0</span> <span style="color:#ff7b72;font-weight:bold">/</span> num_nodes, device<span style="color:#ff7b72;font-weight:bold">=</span>edge_index<span style="color:#ff7b72;font-weight:bold">.</span>device, dtype<span style="color:#ff7b72;font-weight:bold">=</span>torch<span style="color:#ff7b72;font-weight:bold">.</span>float32)
+</span></span><span style="display:flex;"><span>    base <span style="color:#ff7b72;font-weight:bold">=</span> (<span style="color:#a5d6ff">1.0</span> <span style="color:#ff7b72;font-weight:bold">-</span> damp) <span style="color:#ff7b72;font-weight:bold">/</span> num_nodes
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> _ <span style="color:#ff7b72;font-weight:bold">in</span> range(k):
+</span></span><span style="display:flex;"><span>        msg <span style="color:#ff7b72;font-weight:bold">=</span> pr[src] <span style="color:#ff7b72;font-weight:bold">/</span> deg_src[src]
+</span></span><span style="display:flex;"><span>        pr_new <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>zeros_like(pr)<span style="color:#ff7b72;font-weight:bold">.</span>index_add_(<span style="color:#a5d6ff">0</span>, dst, msg)
+</span></span><span style="display:flex;"><span>        pr <span style="color:#ff7b72;font-weight:bold">=</span> base <span style="color:#ff7b72;font-weight:bold">+</span> damp <span style="color:#ff7b72;font-weight:bold">*</span> pr_new
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> pr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">eigenvector_centrality</span>(data, <span style="color:#ff7b72;font-weight:bold">*</span>, max_iter: int <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">100</span>, tol: float <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1e-6</span>):
+</span></span><span style="display:flex;"><span>    edge_index <span style="color:#ff7b72;font-weight:bold">=</span> to_undirected(data<span style="color:#ff7b72;font-weight:bold">.</span>edge_index)
+</span></span><span style="display:flex;"><span>    num_nodes <span style="color:#ff7b72;font-weight:bold">=</span> int(edge_index<span style="color:#ff7b72;font-weight:bold">.</span>max()) <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span>    src, dst <span style="color:#ff7b72;font-weight:bold">=</span> edge_index[<span style="color:#a5d6ff">0</span>], edge_index[<span style="color:#a5d6ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    v <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>ones((num_nodes,), device<span style="color:#ff7b72;font-weight:bold">=</span>edge_index<span style="color:#ff7b72;font-weight:bold">.</span>device, dtype<span style="color:#ff7b72;font-weight:bold">=</span>torch<span style="color:#ff7b72;font-weight:bold">.</span>float32)
+</span></span><span style="display:flex;"><span>    v <span style="color:#ff7b72;font-weight:bold">=</span> v <span style="color:#ff7b72;font-weight:bold">/</span> (v<span style="color:#ff7b72;font-weight:bold">.</span>norm(p<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">2</span>) <span style="color:#ff7b72;font-weight:bold">+</span> _EPS)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> _ <span style="color:#ff7b72;font-weight:bold">in</span> range(max_iter):
+</span></span><span style="display:flex;"><span>        v_new <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>zeros_like(v)<span style="color:#ff7b72;font-weight:bold">.</span>index_add_(<span style="color:#a5d6ff">0</span>, dst, v[src])
+</span></span><span style="display:flex;"><span>        v_new <span style="color:#ff7b72;font-weight:bold">=</span> v_new <span style="color:#ff7b72;font-weight:bold">/</span> (v_new<span style="color:#ff7b72;font-weight:bold">.</span>norm(p<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">2</span>) <span style="color:#ff7b72;font-weight:bold">+</span> _EPS)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (v_new <span style="color:#ff7b72;font-weight:bold">-</span> v)<span style="color:#ff7b72;font-weight:bold">.</span>abs()<span style="color:#ff7b72;font-weight:bold">.</span>max()<span style="color:#ff7b72;font-weight:bold">.</span>item() <span style="color:#ff7b72;font-weight:bold">&lt;</span> tol:
+</span></span><span style="display:flex;"><span>            v <span style="color:#ff7b72;font-weight:bold">=</span> v_new
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">break</span>
+</span></span><span style="display:flex;"><span>        v <span style="color:#ff7b72;font-weight:bold">=</span> v_new
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">feature_drop_weights</span>(x: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, <span style="color:#ff7b72;font-weight:bold">*</span>, node_c: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor):
+</span></span><span style="display:flex;"><span>    x <span style="color:#ff7b72;font-weight:bold">=</span> x<span style="color:#ff7b72;font-weight:bold">.</span>float()
+</span></span><span style="display:flex;"><span>    node_c <span style="color:#ff7b72;font-weight:bold">=</span> node_c<span style="color:#ff7b72;font-weight:bold">.</span>float()
+</span></span><span style="display:flex;"><span>    node_c <span style="color:#ff7b72;font-weight:bold">=</span> node_c <span style="color:#ff7b72;font-weight:bold">/</span> (node_c<span style="color:#ff7b72;font-weight:bold">.</span>mean() <span style="color:#ff7b72;font-weight:bold">+</span> _EPS)
+</span></span><span style="display:flex;"><span>    w <span style="color:#ff7b72;font-weight:bold">=</span> (x<span style="color:#ff7b72;font-weight:bold">.</span>abs()<span style="color:#ff7b72;font-weight:bold">.</span>t() <span style="color:#ff7b72;font-weight:bold">@</span> node_c) <span style="color:#ff7b72;font-weight:bold">/</span> (node_c<span style="color:#ff7b72;font-weight:bold">.</span>sum() <span style="color:#ff7b72;font-weight:bold">+</span> _EPS)  <span style="color:#8b949e;font-style:italic"># [F]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> _minmax_norm(w) <span style="color:#ff7b72;font-weight:bold">+</span> _EPS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">degree_drop_weights</span>(edge_index: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor):
+</span></span><span style="display:flex;"><span>    num_nodes <span style="color:#ff7b72;font-weight:bold">=</span> int(edge_index<span style="color:#ff7b72;font-weight:bold">.</span>max()) <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span>    edge_index <span style="color:#ff7b72;font-weight:bold">=</span> to_undirected(edge_index, num_nodes<span style="color:#ff7b72;font-weight:bold">=</span>num_nodes)
+</span></span><span style="display:flex;"><span>    src, dst <span style="color:#ff7b72;font-weight:bold">=</span> edge_index[<span style="color:#a5d6ff">0</span>], edge_index[<span style="color:#a5d6ff">1</span>]
+</span></span><span style="display:flex;"><span>    deg <span style="color:#ff7b72;font-weight:bold">=</span> degree(src, num_nodes<span style="color:#ff7b72;font-weight:bold">=</span>num_nodes)<span style="color:#ff7b72;font-weight:bold">.</span>clamp(min<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">0</span>)
+</span></span><span style="display:flex;"><span>    w <span style="color:#ff7b72;font-weight:bold">=</span> deg[src] <span style="color:#ff7b72;font-weight:bold">+</span> deg[dst]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> _minmax_norm(w) <span style="color:#ff7b72;font-weight:bold">+</span> _EPS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">pr_drop_weights</span>(edge_index: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, <span style="color:#ff7b72;font-weight:bold">*</span>, aggr: str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;sink&#34;</span>, k: int <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">200</span>):
+</span></span><span style="display:flex;"><span>    num_nodes <span style="color:#ff7b72;font-weight:bold">=</span> int(edge_index<span style="color:#ff7b72;font-weight:bold">.</span>max()) <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span>    pr <span style="color:#ff7b72;font-weight:bold">=</span> compute_pr(edge_index, num_nodes<span style="color:#ff7b72;font-weight:bold">=</span>num_nodes, k<span style="color:#ff7b72;font-weight:bold">=</span>k)
+</span></span><span style="display:flex;"><span>    edge_index <span style="color:#ff7b72;font-weight:bold">=</span> to_undirected(edge_index, num_nodes<span style="color:#ff7b72;font-weight:bold">=</span>num_nodes)
+</span></span><span style="display:flex;"><span>    src, dst <span style="color:#ff7b72;font-weight:bold">=</span> edge_index[<span style="color:#a5d6ff">0</span>], edge_index[<span style="color:#a5d6ff">1</span>]
+</span></span><span style="display:flex;"><span>    w <span style="color:#ff7b72;font-weight:bold">=</span> pr[dst] <span style="color:#ff7b72">if</span> aggr <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#34;sink&#34;</span> <span style="color:#ff7b72">else</span> pr[src]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> _minmax_norm(w) <span style="color:#ff7b72;font-weight:bold">+</span> _EPS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">evc_drop_weights</span>(data):
+</span></span><span style="display:flex;"><span>    evc <span style="color:#ff7b72;font-weight:bold">=</span> eigenvector_centrality(data)
+</span></span><span style="display:flex;"><span>    edge_index <span style="color:#ff7b72;font-weight:bold">=</span> to_undirected(data<span style="color:#ff7b72;font-weight:bold">.</span>edge_index)
+</span></span><span style="display:flex;"><span>    src, dst <span style="color:#ff7b72;font-weight:bold">=</span> edge_index[<span style="color:#a5d6ff">0</span>], edge_index[<span style="color:#a5d6ff">1</span>]
+</span></span><span style="display:flex;"><span>    w <span style="color:#ff7b72;font-weight:bold">=</span> evc[src] <span style="color:#ff7b72;font-weight:bold">+</span> evc[dst]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> _minmax_norm(w) <span style="color:#ff7b72;font-weight:bold">+</span> _EPS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">drop_edge_weighted</span>(edge_index: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, edge_weight: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, <span style="color:#ff7b72;font-weight:bold">*</span>, p: float, threshold: float <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0.7</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> p <span style="color:#ff7b72;font-weight:bold">&lt;=</span> <span style="color:#a5d6ff">0</span> <span style="color:#ff7b72;font-weight:bold">or</span> edge_weight <span style="color:#ff7b72;font-weight:bold">is</span> <span style="color:#79c0ff">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> edge_index
+</span></span><span style="display:flex;"><span>    edge_weight <span style="color:#ff7b72;font-weight:bold">=</span> edge_weight<span style="color:#ff7b72;font-weight:bold">.</span>float()
+</span></span><span style="display:flex;"><span>    prob <span style="color:#ff7b72;font-weight:bold">=</span> p <span style="color:#ff7b72;font-weight:bold">*</span> (edge_weight <span style="color:#ff7b72;font-weight:bold">/</span> (edge_weight<span style="color:#ff7b72;font-weight:bold">.</span>mean() <span style="color:#ff7b72;font-weight:bold">+</span> _EPS))
+</span></span><span style="display:flex;"><span>    prob <span style="color:#ff7b72;font-weight:bold">=</span> prob<span style="color:#ff7b72;font-weight:bold">.</span>clamp(min<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">0.0</span>, max<span style="color:#ff7b72;font-weight:bold">=</span>float(threshold))
+</span></span><span style="display:flex;"><span>    keep <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>rand(prob<span style="color:#ff7b72;font-weight:bold">.</span>size(<span style="color:#a5d6ff">0</span>), device<span style="color:#ff7b72;font-weight:bold">=</span>prob<span style="color:#ff7b72;font-weight:bold">.</span>device) <span style="color:#ff7b72;font-weight:bold">&gt;=</span> prob
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> edge_index[:, keep]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">drop_feature_weighted_2</span>(x: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, feature_weight: torch<span style="color:#ff7b72;font-weight:bold">.</span>Tensor, p: float):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> p <span style="color:#ff7b72;font-weight:bold">&lt;=</span> <span style="color:#a5d6ff">0</span> <span style="color:#ff7b72;font-weight:bold">or</span> feature_weight <span style="color:#ff7b72;font-weight:bold">is</span> <span style="color:#79c0ff">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> x
+</span></span><span style="display:flex;"><span>    feature_weight <span style="color:#ff7b72;font-weight:bold">=</span> feature_weight<span style="color:#ff7b72;font-weight:bold">.</span>float()
+</span></span><span style="display:flex;"><span>    prob <span style="color:#ff7b72;font-weight:bold">=</span> p <span style="color:#ff7b72;font-weight:bold">*</span> (feature_weight <span style="color:#ff7b72;font-weight:bold">/</span> (feature_weight<span style="color:#ff7b72;font-weight:bold">.</span>mean() <span style="color:#ff7b72;font-weight:bold">+</span> _EPS))
+</span></span><span style="display:flex;"><span>    prob <span style="color:#ff7b72;font-weight:bold">=</span> prob<span style="color:#ff7b72;font-weight:bold">.</span>clamp(min<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">0.0</span>, max<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">1.0</span>)
+</span></span><span style="display:flex;"><span>    drop_mask <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>rand(prob<span style="color:#ff7b72;font-weight:bold">.</span>size(<span style="color:#a5d6ff">0</span>), device<span style="color:#ff7b72;font-weight:bold">=</span>prob<span style="color:#ff7b72;font-weight:bold">.</span>device) <span style="color:#ff7b72;font-weight:bold">&lt;</span> prob
+</span></span><span style="display:flex;"><span>    x <span style="color:#ff7b72;font-weight:bold">=</span> x<span style="color:#ff7b72;font-weight:bold">.</span>clone()
+</span></span><span style="display:flex;"><span>    x[:, drop_mask] <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> x
+</span></span></code></pre></div><p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Cora --senario ID --gpu_id 0 --seed 39788
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: GCA
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+drop_scheme: degree
+best val acc: 77.7368% ± 0.761963%
+correspoding test acc: 75.7755% ± 1.210565%
+
+Seed: 666
+Dataset: Cora
+Model: GCA
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+drop_scheme: degree
+best val acc: 78.6593% ± 1.322621%
+correspoding test acc: 75.7755% ± 1.330761%
+</code></pre><h4 id="">
+  $\text{IFL-GC}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset Cora --senario ID --gpu_id 0 --seed 39788 --drop_scheme degree --theroy_view --start_debias_epoch 100 --update_interval 20 --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye 1
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: GCA
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+drop_scheme: degree
+start_debias_epoch: 100
+update_interval: 20
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best val acc: 78.4748% ± 0.285167%
+correspoding test acc: 79.3205% ± 0.844236%
+
+Seed: 666
+Dataset: Cora
+Model: GCA
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+drop_scheme: degree
+start_debias_epoch: 100
+update_interval: 20
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best val acc: 79.4280% ± 2.026723%
+correspoding test acc: 79.3698% ± 1.072527%
+</code></pre><h4 id="">
+  $\text{DGI}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>在 <code>main.py</code> 开头添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">typing</span> <span style="color:#ff7b72">import</span> Optional
+</span></span></code></pre></div><p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model DGI --dataset Cora --senario ID --gpu_id 0 --seed 39788 --gradient_drop_threshold 1e-4
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: DGI
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 85.0554% ± 0.328323%
+correspoding test acc: 82.4225% ± 0.941956%
+
+Seed: 666
+Dataset: Cora
+Model: DGI
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 85.0246% ± 1.348113%
+correspoding test acc: 84.2688% ± 0.422118%
+</code></pre><h4 id="">
+  $\text{COSTA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model COSTA --dataset Cora --senario ID --gpu_id 0 --seed 39788
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: COSTA
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 85.1476% ± 0.260925%
+correspoding test acc: 83.9242% ± 0.278526%
+
+Seed: 666
+Dataset: Cora
+Model: COSTA
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 85.3014% ± 0.156796%
+correspoding test acc: 84.6135% ± 0.853517%
+</code></pre><h4 id="">
+  $\text{BGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model BGRL --dataset Cora --senario ID --gpu_id 0 --seed 39788 --gradient_drop_threshold 1e-4
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: BGRL
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 79.1205% ± 0.189558%
+correspoding test acc: 77.1787% ± 2.206612%
+
+Seed: 666
+Dataset: Cora
+Model: BGRL
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 80.8733% ± 0.285167%
+correspoding test acc: 78.9513% ± 0.783933%
+</code></pre><h4 id="">
+  $\text{MVGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>修改 <code>pre_train.py</code> $\text{line 219}$</p>
+<p><img src="#ZgotmplZ" alt="image-20260207220903408"></p>
+<p>修改 <code>pre_train.py</code> $\text{line 239-245}$</p>
+<p><img src="#ZgotmplZ" alt="image-20260207221043129"></p>
+<p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model MVGRL --dataset Cora --senario ID --gpu_id 0 --seed 39788 --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num 20 --mvgrl_alpha 0.2
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: MVGRL
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 84.4711% ± 0.711921%
+correspoding test acc: 82.2501% ± 0.775382%
+
+Seed: 666
+Dataset: Cora
+Model: MVGRL
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 84.6556% ± 0.980159%
+correspoding test acc: 82.6686% ± 0.560306%
+</code></pre><h4 id="">
+  $\text{GBT}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>命令</p>
+<pre tabindex="0"><code>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GBT --dataset Cora --senario ID --gpu_id 0 --seed 39788 --weight_decay 0 --num_hidden 512 --batch_size 4 --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: Cora
+Model: GBT
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 84.7171% ± 1.318324%
+correspoding test acc: 84.4165% ± 0.928346%
+
+Seed: 666
+Dataset: Cora
+Model: GBT
+Num_epochs: 500
+Repeat_times: 3
+best val acc: 85.7626% ± 0.627186%
+correspoding test acc: 84.1211% ± 0.159546%
+</code></pre>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
