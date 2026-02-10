@@ -198,7 +198,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
             </span>
             <span class="reading-time">
               <i class="fa-solid fa-clock" aria-hidden="true"></i>
-              阅读时间：13 分钟
+              阅读时间：14 分钟
             </span>
           </div>
           
@@ -265,9 +265,25 @@ correspoding test acc: 84.0619% ± 0.299100%
   </a>
 </h3>
 <p>命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
-</span></span></code></pre></div><p>结果：再次爆显存</p>
-<pre tabindex="0"><code></code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span> --batch_size <span style="color:#a5d6ff">4096</span>
+</span></span></code></pre></div><p>结果：</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: PubMed
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+start_debias_epoch: 200
+update_interval: 1
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best val acc: 84.7471% ± 0.519791%
+correspoding test acc: 84.1329% ± 0.285970%
+</code></pre><h3 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -298,9 +314,26 @@ correspoding test acc: 83.5649% ± 0.154123%
   </a>
 </h3>
 <p>命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
-</span></span></code></pre></div><p>结果：爆显存</p>
-<pre tabindex="0"><code></code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span> --batch_size <span style="color:#a5d6ff">4096</span>
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: PubMed
+Model: GCA
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+drop_scheme: degree
+start_debias_epoch: 100
+update_interval: 20
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best val acc: 83.7834% ± 0.601778%
+correspoding test acc: 83.3485% ± 0.167351%
+</code></pre><h3 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>

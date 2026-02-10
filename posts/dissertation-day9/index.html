@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [毕业设计]Day9 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  $\text{GOODTwitch}$ 数据集
+  
+    
+    链接到标题
+  
+
+
+  $\text{GRACE}$
+  
+    
+    链接到标题
+  
+
+尝试运行：
+&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODTwitch --senario ID --gpu_id 0 --seed 39788
+遇到报错：
+Traceback (most recent call last):
+  File &#34;main.py&#34;, line 879, in &lt;module&gt;
+    _dataset = get_dataset(args)
+  File &#34;main.py&#34;, line 821, in get_dataset
+    from datasets.GOOD_twitch import GOODTwitch
+ModuleNotFoundError: No module named &#39;datasets.GOOD_twitch&#39;
+解决：
+1.在 $\text{GCL}$ 环境下运行命令 pip install git&#43;https://github.com/divelab/GOOD.git
+![屏幕截图 2026-02-10 125419](屏幕截图 2026-02-10 125419.png)
+报错：">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[毕业设计]Day9">
+  <meta name="twitter:description" content="$\text{GOODTwitch}$ 数据集 链接到标题 $\text{GRACE}$ 链接到标题 尝试运行：
+&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODTwitch --senario ID --gpu_id 0 --seed 39788 遇到报错：
+Traceback (most recent call last): File &#34;main.py&#34;, line 879, in &lt;module&gt; _dataset = get_dataset(args) File &#34;main.py&#34;, line 821, in get_dataset from datasets.GOOD_twitch import GOODTwitch ModuleNotFoundError: No module named &#39;datasets.GOOD_twitch&#39; 解决：
+1.在 $\text{GCL}$ 环境下运行命令 pip install git&#43;https://github.com/divelab/GOOD.git
+![屏幕截图 2026-02-10 125419](屏幕截图 2026-02-10 125419.png)
+报错：">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day9/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[毕业设计]Day9">
+  <meta property="og:description" content="$\text{GOODTwitch}$ 数据集 链接到标题 $\text{GRACE}$ 链接到标题 尝试运行：
+&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODTwitch --senario ID --gpu_id 0 --seed 39788 遇到报错：
+Traceback (most recent call last): File &#34;main.py&#34;, line 879, in &lt;module&gt; _dataset = get_dataset(args) File &#34;main.py&#34;, line 821, in get_dataset from datasets.GOOD_twitch import GOODTwitch ModuleNotFoundError: No module named &#39;datasets.GOOD_twitch&#39; 解决：
+1.在 $\text{GCL}$ 环境下运行命令 pip install git&#43;https://github.com/divelab/GOOD.git
+![屏幕截图 2026-02-10 125419](屏幕截图 2026-02-10 125419.png)
+报错：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-09T22:25:00+08:00">
+    <meta property="article:modified_time" content="2026-02-09T22:25:00+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day9/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day9/">
+              [毕业设计]Day9
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-02-09T22:25:00&#43;08:00">
+                二月 9, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：12 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="数据集">
+  $\text{GOODTwitch}$ 数据集
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="">
+  $\text{GRACE}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>尝试运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODTwitch --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><p>遇到报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File &#34;main.py&#34;, line 879, in &lt;<span style="color:#7ee787">module</span>&gt;
+</span></span><span style="display:flex;"><span>    _dataset = get_dataset(args)
+</span></span><span style="display:flex;"><span>  File &#34;main.py&#34;, line 821, in get_dataset
+</span></span><span style="display:flex;"><span>    from datasets.GOOD_twitch import GOODTwitch
+</span></span><span style="display:flex;"><span>ModuleNotFoundError: No module named &#39;datasets.GOOD_twitch&#39;
+</span></span></code></pre></div><p>解决：</p>
+<p>1.在 $\text{GCL}$ 环境下运行命令 <code>pip install git+https://github.com/divelab/GOOD.git</code></p>
+<p>![屏幕截图 2026-02-10 125419](屏幕截图 2026-02-10 125419.png)</p>
+<p>报错：</p>
+<p>![屏幕截图 2026-02-10 125447](屏幕截图 2026-02-10 125447.png)</p>
+<p>运行 <code>pip install --no-deps git+https://github.com/divelab/GOOD.git</code> ，<strong>跳过依赖安装，只装官方 GOOD 源码本体</strong></p>
+<p>![屏幕截图 2026-02-10 125708](屏幕截图 2026-02-10 125708.png)</p>
+<p>2.在 $\text{datasets/}$ 下新建 <code>init.py</code> ，保持内容为空</p>
+<p>3.在 $\text{datasets/}$ 下新建 <code>GOOD_twitch.py</code> ，内容为</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">//</span> 这版 GOOD_twitch<span style="color:#ff7b72;font-weight:bold">.</span>py 存在缺陷<span style="color:#f85149">，</span>因篇幅原因省略
+</span></span></code></pre></div><p>尝试运行命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span>
+</span></span></code></pre></div><p>报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Traceback (most recent call last):               
+</span></span><span style="display:flex;"><span>  File &#34;main.py&#34;, line 879, in &lt;<span style="color:#7ee787">module</span>&gt;
+</span></span><span style="display:flex;"><span>    _dataset = get_dataset(args)
+</span></span><span style="display:flex;"><span>  File &#34;main.py&#34;, line 822, in get_dataset
+</span></span><span style="display:flex;"><span>    _dataset = GOODTwitch(root=&#39;datasets&#39;, domain=&#39;language&#39;, generate=True, shift=&#39;covariate&#39;)
+</span></span><span style="display:flex;"><span>  File &#34;D:\dissertation\openSourceCode\IFL-GCL-main\datasets\GOOD_twitch.py&#34;, line 162, in __init__
+</span></span><span style="display:flex;"><span>    loaded = _load_official_good_dataset(&#34;GOODTwitch&#34;, kwargs)
+</span></span><span style="display:flex;"><span>  File &#34;D:\dissertation\openSourceCode\IFL-GCL-main\datasets\GOOD_twitch.py&#34;, line 83, in _load_official_good_dataset
+</span></span><span style="display:flex;"><span>    raise ImportError(msg)
+</span></span><span style="display:flex;"><span>ImportError: Cannot import/use official GOOD library to load dataset.
+</span></span><span style="display:flex;"><span>Tried dataset name: GOODTwitch
+</span></span><span style="display:flex;"><span>Tried entrypoints:
+</span></span><span style="display:flex;"><span>  - good.data.load_dataset: ModuleNotFoundError(&#34;No module named &#39;good&#39;&#34;)
+</span></span><span style="display:flex;"><span>  - good.data.dataset_manager.load_dataset: ModuleNotFoundError(&#34;No module named &#39;good&#39;&#34;)
+</span></span><span style="display:flex;"><span>  - good.data.good_datasets.GOODTwitch: ModuleNotFoundError(&#34;No module named &#39;good&#39;&#34;)
+</span></span><span style="display:flex;"><span>  - good.data.GOODTwitch: ModuleNotFoundError(&#34;No module named &#39;good&#39;&#34;)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Fix:
+</span></span><span style="display:flex;"><span>  1) Install GOOD: pip install git+https://github.com/divelab/GOOD.git
+</span></span><span style="display:flex;"><span>  2) Verify you can `import good` in the same env.
+</span></span></code></pre></div><p>发现环境里其实已经安装了官方 $\text{GOOD}$ 库，只是顶层包名不是 $\text{good}$ ，而是 $\text{GOOD}$</p>
+<p>在 $\text{GCL}$ 环境下运行 <code>import GOOD</code></p>
+<p>![屏幕截图 2026-02-10 133829](屏幕截图 2026-02-10 133829.png)</p>
+<p>发现缺少 <code>munch</code> 包，安装完成后又提示还有很多包没有安装</p>
+<p>![屏幕截图 2026-02-10 134250](屏幕截图 2026-02-10 134250.png)</p>
+<p>在终端运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> D:/SoftWare/anaconda/envs/GCL/python.exe -m pip install -U --force-reinstall <span style="color:#a5d6ff">&#34;munch==2.5.0&#34;</span>
+</span></span></code></pre></div><p>接着运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:/SoftWare/anaconda/envs/GCL/python.exe -m pip install -U <span style="color:#a5d6ff">&#34;ruamel.yaml==0.17.21&#34;</span> <span style="color:#a5d6ff">&#34;typed-argument-parser==1.7.2&#34;</span> <span style="color:#a5d6ff">&#34;cilog&gt;=1.2.3&#34;</span> <span style="color:#a5d6ff">&#34;gdown&gt;=4.4.0&#34;</span> <span style="color:#a5d6ff">&#34;tensorboard==2.8.0&#34;</span> <span style="color:#a5d6ff">&#34;protobuf==3.20.1&#34;</span>
+</span></span></code></pre></div><p>验证发现还有问题</p>
+<p>运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:/SoftWare/anaconda/envs/GCL/python.exe -m pip install -U gdown <span style="color:#a5d6ff">&#34;munch==2.5.0&#34;</span> tqdm
+</span></span></code></pre></div><p>替换 <code>GOOD_twitch.py</code>中内容为</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">__future__</span> <span style="color:#ff7b72">import</span> annotations
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">importlib.util</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">sys</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">types</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">pathlib</span> <span style="color:#ff7b72">import</span> Path
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">shutil</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">time</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">warnings</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">_find_official_good_twitch_py</span>() <span style="color:#ff7b72;font-weight:bold">-&gt;</span> Path:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> p <span style="color:#ff7b72;font-weight:bold">in</span> sys<span style="color:#ff7b72;font-weight:bold">.</span>path:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">not</span> p:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">continue</span>
+</span></span><span style="display:flex;"><span>        base <span style="color:#ff7b72;font-weight:bold">=</span> Path(p)
+</span></span><span style="display:flex;"><span>        candidate <span style="color:#ff7b72;font-weight:bold">=</span> base <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;GOOD&#34;</span> <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;data&#34;</span> <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;good_datasets&#34;</span> <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;good_twitch.py&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> candidate<span style="color:#ff7b72;font-weight:bold">.</span>is_file():
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> candidate
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">raise</span> <span style="color:#f0883e;font-weight:bold">FileNotFoundError</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;Cannot find official GOODTwitch implementation file: &#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#34;GOOD/data/good_datasets/good_twitch.py in current python env.&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">_load_official_goodtwitch_class</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># If user has fully working GOOD import (with rdkit etc), use it directly.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">from</span> <span style="color:#ff7b72">GOOD.data.good_datasets.good_twitch</span> <span style="color:#ff7b72">import</span> GOODTwitch <span style="color:#ff7b72">as</span> OfficialGOODTwitch  <span style="color:#8b949e;font-style:italic"># type: ignore</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> OfficialGOODTwitch
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">except</span> <span style="color:#f0883e;font-weight:bold">Exception</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># Fallback: load ONLY the official good_twitch.py without importing GOOD package.</span>
+</span></span><span style="display:flex;"><span>    official_path <span style="color:#ff7b72;font-weight:bold">=</span> _find_official_good_twitch_py()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># Remove any half-imported GOOD module to avoid weird states.</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#ff7b72;font-weight:bold">.</span>modules<span style="color:#ff7b72;font-weight:bold">.</span>pop(<span style="color:#a5d6ff">&#34;GOOD&#34;</span>, <span style="color:#79c0ff">None</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># Provide a minimal fake GOOD.register for the decorator used in good_twitch.py</span>
+</span></span><span style="display:flex;"><span>    fake_good <span style="color:#ff7b72;font-weight:bold">=</span> types<span style="color:#ff7b72;font-weight:bold">.</span>ModuleType(<span style="color:#a5d6ff">&#34;GOOD&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">_FakeRegister</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">dataset_register</span>(self, dataset_class):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> dataset_class
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fake_good<span style="color:#ff7b72;font-weight:bold">.</span>register <span style="color:#ff7b72;font-weight:bold">=</span> _FakeRegister()
+</span></span><span style="display:flex;"><span>    sys<span style="color:#ff7b72;font-weight:bold">.</span>modules[<span style="color:#a5d6ff">&#34;GOOD&#34;</span>] <span style="color:#ff7b72;font-weight:bold">=</span> fake_good
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    spec <span style="color:#ff7b72;font-weight:bold">=</span> importlib<span style="color:#ff7b72;font-weight:bold">.</span>util<span style="color:#ff7b72;font-weight:bold">.</span>spec_from_file_location(<span style="color:#a5d6ff">&#34;_official_good_twitch&#34;</span>, str(official_path))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> spec <span style="color:#ff7b72;font-weight:bold">is</span> <span style="color:#79c0ff">None</span> <span style="color:#ff7b72;font-weight:bold">or</span> spec<span style="color:#ff7b72;font-weight:bold">.</span>loader <span style="color:#ff7b72;font-weight:bold">is</span> <span style="color:#79c0ff">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">raise</span> <span style="color:#f0883e;font-weight:bold">ImportError</span>(<span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;Failed to create import spec for </span><span style="color:#a5d6ff">{</span>official_path<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    module <span style="color:#ff7b72;font-weight:bold">=</span> importlib<span style="color:#ff7b72;font-weight:bold">.</span>util<span style="color:#ff7b72;font-weight:bold">.</span>module_from_spec(spec)
+</span></span><span style="display:flex;"><span>    sys<span style="color:#ff7b72;font-weight:bold">.</span>modules[spec<span style="color:#ff7b72;font-weight:bold">.</span>name] <span style="color:#ff7b72;font-weight:bold">=</span> module
+</span></span><span style="display:flex;"><span>    spec<span style="color:#ff7b72;font-weight:bold">.</span>loader<span style="color:#ff7b72;font-weight:bold">.</span>exec_module(module)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">not</span> hasattr(module, <span style="color:#a5d6ff">&#34;GOODTwitch&#34;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">raise</span> <span style="color:#f0883e;font-weight:bold">ImportError</span>(<span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;</span><span style="color:#a5d6ff">{</span>official_path<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff"> does not define GOODTwitch&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> module<span style="color:#ff7b72;font-weight:bold">.</span>GOODTwitch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>_OfficialGOODTwitch <span style="color:#ff7b72;font-weight:bold">=</span> _load_official_goodtwitch_class()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">_goodtwitch_expected_processed_files</span>(root: Path, domain: str):
+</span></span><span style="display:flex;"><span>    processed_dir <span style="color:#ff7b72;font-weight:bold">=</span> root <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;GOODTwitch&#34;</span> <span style="color:#ff7b72;font-weight:bold">/</span> domain <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;processed&#34;</span>
+</span></span><span style="display:flex;"><span>    names <span style="color:#ff7b72;font-weight:bold">=</span> [<span style="color:#a5d6ff">&#34;no_shift.pt&#34;</span>, <span style="color:#a5d6ff">&#34;covariate.pt&#34;</span>, <span style="color:#a5d6ff">&#34;concept.pt&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> [processed_dir <span style="color:#ff7b72;font-weight:bold">/</span> n <span style="color:#ff7b72">for</span> n <span style="color:#ff7b72;font-weight:bold">in</span> names]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">_goodtwitch_processed_ready</span>(root: Path, domain: str) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> bool:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> all(p<span style="color:#ff7b72;font-weight:bold">.</span>is_file() <span style="color:#ff7b72">for</span> p <span style="color:#ff7b72;font-weight:bold">in</span> _goodtwitch_expected_processed_files(root, domain))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">GOODTwitch</span>(_OfficialGOODTwitch):
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    Official GOODTwitch + mask adapter for this repo.
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    Official GOODTwitch provides:
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">      - train_mask (ID train)
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">      - id_val_mask / id_test_mask (ID val/test)
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">      - val_mask / test_mask (OOD val/test)
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    This repo expects OOD fields:
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">      - PT_mask / SFT_mask / SFT_test_mask / Valid_mask / Test_mask
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">__init__</span>(self, root<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;datasets&#34;</span>, domain<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;language&#34;</span>, generate<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">False</span>, shift<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;covariate&#34;</span>, <span style="color:#ff7b72;font-weight:bold">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> generate:
+</span></span><span style="display:flex;"><span>            warnings<span style="color:#ff7b72;font-weight:bold">.</span>warn(
+</span></span><span style="display:flex;"><span>                <span style="color:#a5d6ff">&#34;GOODTwitch(generate=True) 会触发 PyG Twitch 从 graphmining.ai 下载原始数据（当前常见 404）。&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a5d6ff">&#34;已自动回退到 generate=False，改用官方 GOOD 预处理 zip（gdown）下载路径。&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f0883e;font-weight:bold">RuntimeWarning</span>,
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        root_path <span style="color:#ff7b72;font-weight:bold">=</span> Path(root)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># 如果预处理文件不存在，但 datasets/GOODTwitch 目录已经存在（通常是上次失败留下的残缺目录），</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># 官方 GOODTwitch._download() 会因为“目录存在”而直接跳过 gdown 下载，导致又去 process() -&gt; PyG Twitch 404。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">not</span> _goodtwitch_processed_ready(root_path, domain):
+</span></span><span style="display:flex;"><span>            incomplete_dir <span style="color:#ff7b72;font-weight:bold">=</span> root_path <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">&#34;GOODTwitch&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> incomplete_dir<span style="color:#ff7b72;font-weight:bold">.</span>exists():
+</span></span><span style="display:flex;"><span>                backup_dir <span style="color:#ff7b72;font-weight:bold">=</span> root_path <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;GOODTwitch_incomplete_</span><span style="color:#a5d6ff">{</span>int(time<span style="color:#ff7b72;font-weight:bold">.</span>time())<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span>                warnings<span style="color:#ff7b72;font-weight:bold">.</span>warn(
+</span></span><span style="display:flex;"><span>                    <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;检测到 </span><span style="color:#a5d6ff">{</span>incomplete_dir<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff"> 已存在但预处理文件不齐全，将其重命名为 </span><span style="color:#a5d6ff">{</span>backup_dir<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff"> &#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;以强制官方 GOODTwitch 走 gdown 下载预处理数据。&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f0883e;font-weight:bold">RuntimeWarning</span>,
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">try</span>:
+</span></span><span style="display:flex;"><span>                    incomplete_dir<span style="color:#ff7b72;font-weight:bold">.</span>rename(backup_dir)
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">except</span> <span style="color:#f0883e;font-weight:bold">Exception</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">try</span>:
+</span></span><span style="display:flex;"><span>                        shutil<span style="color:#ff7b72;font-weight:bold">.</span>rmtree(incomplete_dir)
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">except</span> <span style="color:#f0883e;font-weight:bold">Exception</span> <span style="color:#ff7b72">as</span> e:
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">raise</span> <span style="color:#f0883e;font-weight:bold">RuntimeError</span>(
+</span></span><span style="display:flex;"><span>                            <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;无法移动/删除残缺目录 </span><span style="color:#a5d6ff">{</span>incomplete_dir<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">，请手动删除该目录后重试。原始异常: </span><span style="color:#a5d6ff">{</span>e<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span>                        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        super()<span style="color:#ff7b72;font-weight:bold">.</span><span style="color:#d2a8ff;font-weight:bold">__init__</span>(root<span style="color:#ff7b72;font-weight:bold">=</span>root, domain<span style="color:#ff7b72;font-weight:bold">=</span>domain, shift<span style="color:#ff7b72;font-weight:bold">=</span>shift, generate<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">False</span>, <span style="color:#ff7b72;font-weight:bold">**</span>kwargs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        data <span style="color:#ff7b72;font-weight:bold">=</span> self<span style="color:#ff7b72;font-weight:bold">.</span>_data
+</span></span><span style="display:flex;"><span>        data<span style="color:#ff7b72;font-weight:bold">.</span>PT_mask <span style="color:#ff7b72;font-weight:bold">=</span> data<span style="color:#ff7b72;font-weight:bold">.</span>train_mask
+</span></span><span style="display:flex;"><span>        data<span style="color:#ff7b72;font-weight:bold">.</span>SFT_mask <span style="color:#ff7b72;font-weight:bold">=</span> data<span style="color:#ff7b72;font-weight:bold">.</span>id_val_mask
+</span></span><span style="display:flex;"><span>        data<span style="color:#ff7b72;font-weight:bold">.</span>SFT_test_mask <span style="color:#ff7b72;font-weight:bold">=</span> data<span style="color:#ff7b72;font-weight:bold">.</span>id_test_mask
+</span></span><span style="display:flex;"><span>        data<span style="color:#ff7b72;font-weight:bold">.</span>Valid_mask <span style="color:#ff7b72;font-weight:bold">=</span> data<span style="color:#ff7b72;font-weight:bold">.</span>val_mask
+</span></span><span style="display:flex;"><span>        data<span style="color:#ff7b72;font-weight:bold">.</span>Test_mask <span style="color:#ff7b72;font-weight:bold">=</span> data<span style="color:#ff7b72;font-weight:bold">.</span>test_mask
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">not</span> hasattr(data, <span style="color:#a5d6ff">&#34;domain_id&#34;</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> hasattr(data, <span style="color:#a5d6ff">&#34;env_id&#34;</span>):
+</span></span><span style="display:flex;"><span>                data<span style="color:#ff7b72;font-weight:bold">.</span>domain_id <span style="color:#ff7b72;font-weight:bold">=</span> data<span style="color:#ff7b72;font-weight:bold">.</span>env_id
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">else</span>:
+</span></span><span style="display:flex;"><span>                data<span style="color:#ff7b72;font-weight:bold">.</span>domain_id <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>zeros(data<span style="color:#ff7b72;font-weight:bold">.</span>num_nodes, dtype<span style="color:#ff7b72;font-weight:bold">=</span>torch<span style="color:#ff7b72;font-weight:bold">.</span>long)
+</span></span></code></pre></div><p>接着运行命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><h4 id="在--上运行">
+  在 $\text{AutoDL}$ 上运行
+  <a class="heading-link" href="#%e5%9c%a8--%e4%b8%8a%e8%bf%90%e8%a1%8c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>1.执行命令</p>
+<pre tabindex="0"><code>source /etc/network_turbo
+
+pip install --no-deps git+https://github.com/divelab/GOOD.git
+python -m pip install -U --force-reinstall &#34;munch==2.5.0&#34;
+python -m pip install -U &#34;ruamel.yaml==0.17.21&#34; &#34;typed-argument-parser==1.7.2&#34; &#34;cilog&gt;=1.2.3&#34; &#34;gdown&gt;=4.4.0&#34; &#34;tensorboard==2.8.0&#34; &#34;protobuf==3.20.1&#34;
+
+python -m pip install -U gdown &#34;munch==2.5.0&#34; tqdm
+</code></pre><p>2.新建 <code>datasets/__init__.py</code></p>
+<p>3.新建 <code>datasets/GOOD_twitch.py</code> ，内容与本地 <code>GOOD_twitch.py</code> 相同</p>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: GOODTwitch
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+best OOD-val acc: 53.2540% ± 5.353651%
+corresponding OOD-test acc: 59.0069% ± 6.180440%
+corresponding val acc: 65.2092% ± 1.076897%
+corresponding test acc: 65.1017% ± 0.710453%
+</code></pre><h2 id="">
+  $\text{IFL-GR}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: GOODTwitch
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+start_debias_epoch: 200
+update_interval: 1
+R_W_threshold: 0.6
+B_W_threshold: 0.6
+best OOD-val acc: 53.9002% ± 5.120682%
+corresponding OOD-test acc: 62.4001% ± 4.116907%
+corresponding val acc: 64.4256% ± 0.624112%
+corresponding test acc: 64.6551% ± 0.359390%
+</code></pre><h3 id="">
+  $\text{GCA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODTwitch
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best OOD-val acc: 53.5033% ± 3.159712%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 61.3731% ± 3.033851%
+</span></span><span style="display:flex;"><span>corresponding val acc: 63.9555% ± 0.720549%
+</span></span><span style="display:flex;"><span>corresponding test acc: 64.5434% ± 0.219288%
+</span></span></code></pre></div><h3 id="">
+  $\text{IFL-GC}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span> 
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODTwitch
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best OOD-val acc: 53.5084% ± 3.159794%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 61.3678% ± 3.034544%
+</span></span><span style="display:flex;"><span>corresponding val acc: 63.9398% ± 0.698395%
+</span></span><span style="display:flex;"><span>corresponding test acc: 64.5493% ± 0.220231%
+</span></span></code></pre></div><h3 id="">
+  $\text{DGI}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model DGI --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODTwitch
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 61.0746% ± 1.277574%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 56.0002% ± 4.513072%
+</span></span><span style="display:flex;"><span>corresponding val acc: 64.0339% ± 1.296671%
+</span></span><span style="display:flex;"><span>corresponding test acc: 64.2320% ± 0.025388%
+</span></span></code></pre></div><h3 id="">
+  $\text{COSTA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model COSTA --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODTwitch
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.2028% ± 2.928977%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 59.6475% ± 3.052626%
+</span></span><span style="display:flex;"><span>corresponding val acc: 64.4413% ± 0.356678%
+</span></span><span style="display:flex;"><span>corresponding test acc: 64.9293% ± 0.472346%
+</span></span></code></pre></div><h3 id="">
+  $\text{BGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model BGRL --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODTwitch
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 58.2506% ± 1.870426%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 61.1296% ± 3.090921%
+</span></span><span style="display:flex;"><span>corresponding val acc: 63.9868% ± 0.499034%
+</span></span><span style="display:flex;"><span>corresponding test acc: 64.8842% ± 0.148965%
+</span></span></code></pre></div><h3 id="">
+  $\text{MVGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model MVGRL --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
+</span></span></code></pre></div><p>结果：卡在预处理阶段</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"></code></pre></div><h3 id="">
+  $\text{GBT}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GBT --dataset GOODTwitch --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODTwitch
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 59.4566% ± 2.212121%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 58.5623% ± 0.883274%
+</span></span><span style="display:flex;"><span>corresponding val acc: 62.6704% ± 0.580904%
+</span></span><span style="display:flex;"><span>corresponding test acc: 63.3192% ± 0.206772%
+</span></span></code></pre></div><h2 id="数据集-1">
+  $\text{GOODCora}$ 数据集
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>在 <code>datasets/</code> 下新建 <code>GOOD_cora.py</code> ，内容参考本地</p>
+<h3 id="">
+  $\text{GRACE}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best OOD-val acc: 56.9875% ± 0.847826%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 49.6526% ± 1.098903%
+</span></span><span style="display:flex;"><span>corresponding val acc: 64.2179% ± 0.936948%
+</span></span><span style="display:flex;"><span>corresponding test acc: 64.4828% ± 0.934301%
+</span></span></code></pre></div><h3 id="">
+  $\text{IFL-GR}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model GRACE --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best OOD-val acc: 54.5677% ± 0.934908%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 46.8056% ± 0.990121%
+</span></span><span style="display:flex;"><span>corresponding val acc: 63.7681% ± 1.122493%
+</span></span><span style="display:flex;"><span>corresponding test acc: 63.6986% ± 0.424240%
+</span></span></code></pre></div><h3 id="">
+  $\text{GCA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model GCA --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best OOD-val acc: 53.7463% ± 0.585045%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 45.2519% ± 0.000000%
+</span></span><span style="display:flex;"><span>corresponding val acc: 61.8941% ± 0.154033%
+</span></span><span style="display:flex;"><span>corresponding test acc: 63.4330% ± 0.099880%
+</span></span></code></pre></div><h3 id="">
+  $\text{IFL-GC}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model GCA --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best OOD-val acc: 52.8916% ± 0.408142%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 43.3893% ± 1.055147%
+</span></span><span style="display:flex;"><span>corresponding val acc: 63.0185% ± 1.139058%
+</span></span><span style="display:flex;"><span>corresponding test acc: 62.3520% ± 0.380526%
+</span></span></code></pre></div><h3 id="">
+  $\text{DGI}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model DGI --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 54.4678% ± 0.534417%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 44.7983% ± 0.708123%
+</span></span><span style="display:flex;"><span>corresponding val acc: 63.8681% ± 1.749482%
+</span></span><span style="display:flex;"><span>corresponding test acc: 63.6486% ± 0.303268%
+</span></span></code></pre></div><h3 id="">
+  $\text{COSTA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model COSTA --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 54.4789% ± 0.881456%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 46.8732% ± 0.851010%
+</span></span><span style="display:flex;"><span>corresponding val acc: 62.6187% ± 1.026619%
+</span></span><span style="display:flex;"><span>corresponding test acc: 63.1706% ± 0.210747%
+</span></span></code></pre></div><h3 id="">
+  $\text{BGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model BGRL --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 45.1992% ± 0.816738%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 32.8894% ± 0.860154%
+</span></span><span style="display:flex;"><span>corresponding val acc: 58.0960% ± 0.942264%
+</span></span><span style="display:flex;"><span>corresponding test acc: 58.6684% ± 0.237407%
+</span></span></code></pre></div><h3 id="">
+  $\text{MVGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model MVGRL --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 42.4242% ± 1.263940%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 29.3476% ± 1.116893%
+</span></span><span style="display:flex;"><span>corresponding val acc: 55.7471% ± 0.231725%
+</span></span><span style="display:flex;"><span>corresponding test acc: 56.8376% ± 0.199419%
+</span></span></code></pre></div><h3 id="">
+  $\text{GBT}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -W ignore main.py --model GBT --dataset GOODCora --domain_flag degree --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCora
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.6333% ± 0.258418%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 47.9251% ± 0.817632%
+</span></span><span style="display:flex;"><span>corresponding val acc: 62.7186% ± 0.821933%
+</span></span><span style="display:flex;"><span>corresponding test acc: 63.9048% ± 0.371229%
+</span></span></code></pre></div><h2 id="数据集-2">
+  $\text{GOODCBAS}$ 数据集
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>在 <code>datasets/</code> 下新建 <code>GOOD_cbas.py</code> ，内容参考本地</p>
+<h3 id="">
+  $\text{GRACE}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span> --seed <span style="color:#a5d6ff">39788</span>           
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>Seed: 39788
+Dataset: GOODCBAS
+Model: GRACE
+Num_epochs: 500
+Repeat_times: 3
+tau: 0.4
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.4
+drop_feature_rate_1: 0.3
+drop_feature_rate_2: 0.4
+best OOD-val acc: 55.2381% ± 7.939682%
+corresponding OOD-test acc: 49.0476% ± 5.259696%
+corresponding val acc: 55.3571% ± 11.007882%
+corresponding test acc: 55.5060% ± 3.763145%
+</code></pre><h3 id="">
+  $\text{IFL-GR}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.2381% ± 7.939682%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 49.0476% ± 5.259696%
+</span></span><span style="display:flex;"><span>corresponding val acc: 55.3571% ± 11.007882%
+</span></span><span style="display:flex;"><span>corresponding test acc: 55.5060% ± 3.763145%
+</span></span></code></pre></div><h3 id="">
+  $\text{GCA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --batch_size <span style="color:#a5d6ff">4096</span> --num_epochs <span style="color:#a5d6ff">500</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.2381% ± 3.749528%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 56.1905% ± 4.714045%
+</span></span><span style="display:flex;"><span>corresponding val acc: 56.5476% ± 3.035131%
+</span></span><span style="display:flex;"><span>corresponding test acc: 55.8036% ± 2.933096%
+</span></span></code></pre></div><h3 id="">
+  $\text{IFL-GC}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.2381% ± 3.749528%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 56.1905% ± 4.714045%
+</span></span><span style="display:flex;"><span>corresponding val acc: 56.5476% ± 3.035131%
+</span></span><span style="display:flex;"><span>corresponding test acc: 55.8036% ± 2.933096%
+</span></span></code></pre></div><h3 id="">
+  $\text{DGI}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model DGI --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.7143% ± 1.166424%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 59.0476% ± 2.693740%
+</span></span><span style="display:flex;"><span>corresponding val acc: 50.5952% ± 3.035131%
+</span></span><span style="display:flex;"><span>corresponding test acc: 57.0685% ± 2.007550%
+</span></span></code></pre></div><h3 id="">
+  $\text{COSTA}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model COSTA --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 56.6667% ± 7.766432%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 39.0476% ± 4.416009%
+</span></span><span style="display:flex;"><span>corresponding val acc: 58.3333% ± 5.520011%
+</span></span><span style="display:flex;"><span>corresponding test acc: 56.3988% ± 3.210632%
+</span></span></code></pre></div><h3 id="">
+  $\text{BGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model BGRL --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 52.8571% ± 2.332847%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 56.1905% ± 4.856209%
+</span></span><span style="display:flex;"><span>corresponding val acc: 52.3810% ± 2.227177%
+</span></span><span style="display:flex;"><span>corresponding test acc: 54.0923% ± 2.837154%
+</span></span></code></pre></div><h3 id="">
+  $\text{MVGRL}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model MVGRL --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 55.7143% ± 3.499271%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 51.4286% ± 5.084323%
+</span></span><span style="display:flex;"><span>corresponding val acc: 50.5952% ± 3.669294%
+</span></span><span style="display:flex;"><span>corresponding test acc: 57.8869% ± 4.236500%
+</span></span></code></pre></div><h3 id="">
+  $\text{GBT}$
+  <a class="heading-link" href="#">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GBT --dataset GOODCBAS --senario OOD --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
+</span></span></code></pre></div><p>结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: GOODCBAS
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best OOD-val acc: 54.2857% ± 1.166424%
+</span></span><span style="display:flex;"><span>corresponding OOD-test acc: 52.8571% ± 3.499271%
+</span></span><span style="display:flex;"><span>corresponding val acc: 50.0000% ± 3.857584%
+</span></span><span style="display:flex;"><span>corresponding test acc: 56.1012% ± 1.213505%
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
