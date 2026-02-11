@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>
   [毕业设计]Day7 · Zyed
 </title>
@@ -102,7 +102,7 @@ def drop_edge(edge_index, drop_prob):
   <meta name="twitter:title" content="[毕业设计]Day7">
   <meta name="twitter:description" content="数据加载模块 $\text{dataset.py}$ 链接到标题 import torch from torch_geometric.datasets import Planetoid import torch_geometric.transforms as T def get_dataset(root, name): &#34;&#34;&#34; 对应开源代码 main.py 中的 get_dataset 函数 功能：加载标准图数据集 &#34;&#34;&#34; dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures()) data = dataset[0] return data, dataset.num_features, dataset.num_classes # 测试一下 # data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;) # print(f&#34;Loaded {data}&#34;) 图增强模块 $\text{augmentation.py}$ 链接到标题 import torch from torch_geometric.utils import dropout_adj def drop_feature(x, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_feature 函数 功能：随机掩盖节点特征 &#34;&#34;&#34; if drop_prob &lt;= 0.: return x # 生成一个跟特征维度一样的 mask (shape: [F]) drop_mask = torch.empty( (x.size(1),), dtype=torch.float32, device=x.device ).uniform_(0, 1) &lt; drop_prob x = x.clone() x[:, drop_mask] = 0 # 将被 mask 的特征置为 0 return x def drop_edge(edge_index, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_edge 函数 功能：随机删除边 &#34;&#34;&#34; if drop_prob &lt;= 0.: return edge_index # 使用 PyG 的工具函数随机 drop 边 edge_index, _ = dropout_adj( edge_index, p=drop_prob, force_undirected=True, # 保持无向图性质 num_nodes=None, training=True ) return edge_index # GCA 特有的自适应增强 (复现 IFL-GC 时需要) # 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑 # 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展 编码器结构定义 链接到标题 确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
 
-<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day7/">
+<meta property="og:url" content="http://localhost:1313/posts/dissertation-day7/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[毕业设计]Day7">
   <meta property="og:description" content="数据加载模块 $\text{dataset.py}$ 链接到标题 import torch from torch_geometric.datasets import Planetoid import torch_geometric.transforms as T def get_dataset(root, name): &#34;&#34;&#34; 对应开源代码 main.py 中的 get_dataset 函数 功能：加载标准图数据集 &#34;&#34;&#34; dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures()) data = dataset[0] return data, dataset.num_features, dataset.num_classes # 测试一下 # data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;) # print(f&#34;Loaded {data}&#34;) 图增强模块 $\text{augmentation.py}$ 链接到标题 import torch from torch_geometric.utils import dropout_adj def drop_feature(x, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_feature 函数 功能：随机掩盖节点特征 &#34;&#34;&#34; if drop_prob &lt;= 0.: return x # 生成一个跟特征维度一样的 mask (shape: [F]) drop_mask = torch.empty( (x.size(1),), dtype=torch.float32, device=x.device ).uniform_(0, 1) &lt; drop_prob x = x.clone() x[:, drop_mask] = 0 # 将被 mask 的特征置为 0 return x def drop_edge(edge_index, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_edge 函数 功能：随机删除边 &#34;&#34;&#34; if drop_prob &lt;= 0.: return edge_index # 使用 PyG 的工具函数随机 drop 边 edge_index, _ = dropout_adj( edge_index, p=drop_prob, force_undirected=True, # 保持无向图性质 num_nodes=None, training=True ) return edge_index # GCA 特有的自适应增强 (复现 IFL-GC 时需要) # 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑 # 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展 编码器结构定义 链接到标题 确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
@@ -115,7 +115,7 @@ def drop_edge(edge_index, drop_prob):
 
 
 
-<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day7/">
+<link rel="canonical" href="http://localhost:1313/posts/dissertation-day7/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -125,7 +125,7 @@ def drop_edge(edge_index, drop_prob):
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
 
 
 
@@ -135,7 +135,7 @@ def drop_edge(edge_index, drop_prob):
   
     
     
-    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
   
 
 
@@ -143,7 +143,7 @@ def drop_edge(edge_index, drop_prob):
  
   
     
-    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/custom.css" media="screen">
   
 
 
@@ -188,7 +188,7 @@ def drop_edge(edge_index, drop_prob):
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://Zyed816.github.io/">
+    <a class="navigation-title" href="http://localhost:1313/">
       Zyed
     </a>
     
@@ -241,7 +241,7 @@ def drop_edge(edge_index, drop_prob):
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day7/">
+            <a class="title-link" href="http://localhost:1313/posts/dissertation-day7/">
               [毕业设计]Day7
             </a>
           </h1>
@@ -574,32 +574,32 @@ def drop_edge(edge_index, drop_prob):
 <p>命令：</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 85.0861% ± 0.980159%
-correspoding test acc: 83.8257% ± 0.964841%
-
-Seed: 666
-Dataset: Cora
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 85.5474% ± 1.167702%
-correspoding test acc: 83.8503% ± 0.693698%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 85.0861% ± 0.980159%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.8257% ± 0.964841%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 85.5474% ± 1.167702%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.8503% ± 0.693698%
+</span></span></code></pre></div><h4 id="">
   $\text{IFL-GR}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -610,40 +610,40 @@ correspoding test acc: 83.8503% ± 0.693698%
 <p>命令：</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 85.3321% ± 0.855500%
-correspoding test acc: 83.8503% ± 0.736909%
-
-Seed: 666
-Dataset: Cora
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 85.2399% ± 0.225968%
-correspoding test acc: 84.3181% ± 0.271919%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 85.3321% ± 0.855500%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.8503% ± 0.736909%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 85.2399% ± 0.225968%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.3181% ± 0.271919%
+</span></span></code></pre></div><h4 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -751,34 +751,34 @@ correspoding test acc: 84.3181% ± 0.271919%
 </span></span></code></pre></div><p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 77.7368% ± 0.761963%
-correspoding test acc: 75.7509% ± 1.239263%
-
-Seed: 666
-Dataset: Cora
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 78.9053% ± 1.055412%
-correspoding test acc: 76.0217% ± 1.002426%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 77.7368% ± 0.761963%
+</span></span><span style="display:flex;"><span>correspoding test acc: 75.7509% ± 1.239263%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 78.9053% ± 1.055412%
+</span></span><span style="display:flex;"><span>correspoding test acc: 76.0217% ± 1.002426%
+</span></span></code></pre></div><h4 id="">
   $\text{IFL-GC}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -788,42 +788,42 @@ correspoding test acc: 76.0217% ± 1.002426%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 78.4748% ± 0.285167%
-correspoding test acc: 79.3205% ± 0.844236%
-
-Seed: 666
-Dataset: Cora
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 79.4280% ± 2.026723%
-correspoding test acc: 79.3698% ± 1.072527%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 78.4748% ± 0.285167%
+</span></span><span style="display:flex;"><span>correspoding test acc: 79.3205% ± 0.844236%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 79.4280% ± 2.026723%
+</span></span><span style="display:flex;"><span>correspoding test acc: 79.3698% ± 1.072527%
+</span></span></code></pre></div><h4 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -835,22 +835,22 @@ correspoding test acc: 79.3698% ± 1.072527%
 </span></span></code></pre></div><p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model DGI --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.0554% ± 0.328323%
-correspoding test acc: 82.4225% ± 0.941956%
-
-Seed: 666
-Dataset: Cora
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.0246% ± 1.348113%
-correspoding test acc: 84.2688% ± 0.422118%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.0554% ± 0.328323%
+</span></span><span style="display:flex;"><span>correspoding test acc: 82.4225% ± 0.941956%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.0246% ± 1.348113%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.2688% ± 0.422118%
+</span></span></code></pre></div><h4 id="">
   $\text{COSTA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -860,22 +860,22 @@ correspoding test acc: 84.2688% ± 0.422118%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model COSTA --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.1476% ± 0.260925%
-correspoding test acc: 83.9242% ± 0.278526%
-
-Seed: 666
-Dataset: Cora
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.3014% ± 0.156796%
-correspoding test acc: 84.6135% ± 0.853517%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.1476% ± 0.260925%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.9242% ± 0.278526%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.3014% ± 0.156796%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.6135% ± 0.853517%
+</span></span></code></pre></div><h4 id="">
   $\text{BGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -885,22 +885,22 @@ correspoding test acc: 84.6135% ± 0.853517%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model BGRL --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 79.1205% ± 0.189558%
-correspoding test acc: 77.1787% ± 2.206612%
-
-Seed: 666
-Dataset: Cora
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 80.8733% ± 0.285167%
-correspoding test acc: 78.9513% ± 0.783933%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 79.1205% ± 0.189558%
+</span></span><span style="display:flex;"><span>correspoding test acc: 77.1787% ± 2.206612%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 80.8733% ± 0.285167%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.9513% ± 0.783933%
+</span></span></code></pre></div><h4 id="">
   $\text{MVGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -908,28 +908,28 @@ correspoding test acc: 78.9513% ± 0.783933%
   </a>
 </h4>
 <p>修改 <code>pre_train.py</code> $\text{line 219}$</p>
-<p>![屏幕截图 2026-02-07 220830](D:\dissertation\dailyRecord\figures\屏幕截图 2026-02-07 220830.png)</p>
+<p><img src="/posts/dissertation-day7/pic2.png" alt="pic2"></p>
 <p>修改 <code>pre_train.py</code> $\text{line 239-245}$</p>
-<p>![屏幕截图 2026-02-07 221024](D:\dissertation\dailyRecord\figures\屏幕截图 2026-02-07 221024.png)</p>
+<p><img src="/posts/dissertation-day7/pic1.png" alt="pic1"></p>
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model MVGRL --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 84.4711% ± 0.711921%
-correspoding test acc: 82.2501% ± 0.775382%
-
-Seed: 666
-Dataset: Cora
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 84.6556% ± 0.980159%
-correspoding test acc: 82.6686% ± 0.560306%
-</code></pre><h4 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 84.4711% ± 0.711921%
+</span></span><span style="display:flex;"><span>correspoding test acc: 82.2501% ± 0.775382%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 84.6556% ± 0.980159%
+</span></span><span style="display:flex;"><span>correspoding test acc: 82.6686% ± 0.560306%
+</span></span></code></pre></div><h4 id="">
   $\text{GBT}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -939,22 +939,22 @@ correspoding test acc: 82.6686% ± 0.560306%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GBT --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Cora
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 84.7171% ± 1.318324%
-correspoding test acc: 84.4165% ± 0.928346%
-
-Seed: 666
-Dataset: Cora
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.7626% ± 0.627186%
-correspoding test acc: 84.1211% ± 0.159546%
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 84.7171% ± 1.318324%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.4165% ± 0.928346%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Cora
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.7626% ± 0.627186%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.1211% ± 0.159546%
+</span></span></code></pre></div>
       </div>
 
 
@@ -1015,7 +1015,7 @@ correspoding test acc: 84.1211% ± 0.159546%
 
   
   
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  <script src="/js/coder.js"></script>
   
 
   

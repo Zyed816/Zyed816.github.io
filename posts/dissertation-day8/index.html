@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>
   [毕业设计]Day8 · Zyed
 </title>
@@ -42,7 +42,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
 &amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset PubMed --senario ID --gpu_id 0 --seed 39788 结果：
 torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU 0; 4.00 GiB total capacity; 10.42 GiB already allocated; 0 bytes free; 10.48 GiB reserved in total by PyTorch) If reserved memory is &gt;&gt; allocated memory try setting max_split_size_mb to avoid fragmentation. See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF 由于 $\text{PubMed}$ 数据集结点数太大导致显存爆炸">
 
-<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day8/">
+<meta property="og:url" content="http://localhost:1313/posts/dissertation-day8/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[毕业设计]Day8">
   <meta property="og:description" content="$\text{PubMed}$ 数据集 链接到标题 $\text{GRACE}$ 链接到标题 命令
@@ -57,7 +57,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
 
 
 
-<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day8/">
+<link rel="canonical" href="http://localhost:1313/posts/dissertation-day8/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -67,7 +67,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
 
 
 
@@ -77,7 +77,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
   
     
     
-    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
   
 
 
@@ -85,7 +85,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
  
   
     
-    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/custom.css" media="screen">
   
 
 
@@ -130,7 +130,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://Zyed816.github.io/">
+    <a class="navigation-title" href="http://localhost:1313/">
       Zyed
     </a>
     
@@ -183,7 +183,7 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day8/">
+            <a class="title-link" href="http://localhost:1313/posts/dissertation-day8/">
               [毕业设计]Day8
             </a>
           </h1>
@@ -232,32 +232,32 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB (GPU
 <p>命令：</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 84.8231% ± 0.409805%
-correspoding test acc: 84.3121% ± 0.329644%
-
-Seed: 666
-Dataset: PubMed
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 84.7006% ± 0.378443%
-correspoding test acc: 84.0619% ± 0.299100%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 84.8231% ± 0.409805%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.3121% ± 0.329644%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 84.7006% ± 0.378443%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.0619% ± 0.299100%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GR}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -267,23 +267,23 @@ correspoding test acc: 84.0619% ± 0.299100%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span> --batch_size <span style="color:#a5d6ff">4096</span>
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 84.7471% ± 0.519791%
-correspoding test acc: 84.1329% ± 0.285970%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 84.7471% ± 0.519791%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.1329% ± 0.285970%
+</span></span></code></pre></div><h3 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -293,20 +293,20 @@ correspoding test acc: 84.1329% ± 0.285970%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 84.0286% ± 0.135112%
-correspoding test acc: 83.5649% ± 0.154123%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 84.0286% ± 0.135112%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.5649% ± 0.154123%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GC}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -316,24 +316,24 @@ correspoding test acc: 83.5649% ± 0.154123%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span> --batch_size <span style="color:#a5d6ff">4096</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 83.7834% ± 0.601778%
-correspoding test acc: 83.3485% ± 0.167351%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 83.7834% ± 0.601778%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.3485% ± 0.167351%
+</span></span></code></pre></div><h3 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -343,14 +343,14 @@ correspoding test acc: 83.3485% ± 0.167351%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model DGI --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.3345% ± 0.041839%
-correspoding test acc: 84.6671% ± 0.103549%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.3345% ± 0.041839%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.6671% ± 0.103549%
+</span></span></code></pre></div><h3 id="">
   $\text{COSTA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -360,14 +360,14 @@ correspoding test acc: 84.6671% ± 0.103549%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model COSTA --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 84.4935% ± 0.315877%
-correspoding test acc: 84.1093% ± 0.178073%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 84.4935% ± 0.315877%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.1093% ± 0.178073%
+</span></span></code></pre></div><h3 id="">
   $\text{BGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -377,14 +377,14 @@ correspoding test acc: 84.1093% ± 0.178073%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model BGRL --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 83.7200% ± 0.305002%
-correspoding test acc: 83.5920% ± 0.270945%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 83.7200% ± 0.305002%
+</span></span><span style="display:flex;"><span>correspoding test acc: 83.5920% ± 0.270945%
+</span></span></code></pre></div><h3 id="">
   $\text{MVGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -394,14 +394,14 @@ correspoding test acc: 83.5920% ± 0.270945%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model MVGRL --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 84.8612% ± 0.228927%
-correspoding test acc: 84.5961% ± 0.189276%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 84.8612% ± 0.228927%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.5961% ± 0.189276%
+</span></span></code></pre></div><h3 id="">
   $\text{GBT}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -411,14 +411,14 @@ correspoding test acc: 84.5961% ± 0.189276%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GBT --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
 </span></span></code></pre></div><p>结果：</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: PubMed
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 86.2728% ± 0.177003%
-correspoding test acc: 86.0364% ± 0.210547%
-</code></pre><h2 id="数据集-1">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: PubMed
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 86.2728% ± 0.177003%
+</span></span><span style="display:flex;"><span>correspoding test acc: 86.0364% ± 0.210547%
+</span></span></code></pre></div><h2 id="数据集-1">
   $\text{CiteSeer}$ 数据集
   <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86-1">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -435,32 +435,32 @@ correspoding test acc: 86.0364% ± 0.210547%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model CiteSeer --dataset PubMed --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 67.5432% ± 0.811513%
-correspoding test acc: 66.5064% ± 1.090965%
-
-Seed: 666
-Dataset: CiteSeer
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 68.0691% ± 0.829854%
-correspoding test acc: 65.1442% ± 2.487042%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 67.5432% ± 0.811513%
+</span></span><span style="display:flex;"><span>correspoding test acc: 66.5064% ± 1.090965%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 68.0691% ± 0.829854%
+</span></span><span style="display:flex;"><span>correspoding test acc: 65.1442% ± 2.487042%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GR}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -470,39 +470,39 @@ correspoding test acc: 65.1442% ± 2.487042%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Dataset: CiteSeer
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 67.5432% ± 0.811513%
-correspoding test acc: 66.5264% ± 1.104854%
-
-Seed: 666
-Dataset: CiteSeer
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 67.7686% ± 0.479117%
-correspoding test acc: 67.2075% ± 0.455922%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 67.5432% ± 0.811513%
+</span></span><span style="display:flex;"><span>correspoding test acc: 66.5264% ± 1.104854%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 67.7686% ± 0.479117%
+</span></span><span style="display:flex;"><span>correspoding test acc: 67.2075% ± 0.455922%
+</span></span></code></pre></div><h3 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -512,20 +512,20 @@ correspoding test acc: 67.2075% ± 0.455922%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 56.2735% ± 1.042858%
-correspoding test acc: 54.7276% ± 1.204258%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 56.2735% ± 1.042858%
+</span></span><span style="display:flex;"><span>correspoding test acc: 54.7276% ± 1.204258%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GC}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -535,42 +535,42 @@ correspoding test acc: 54.7276% ± 1.204258%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 57.8012% ± 0.937054%
-correspoding test acc: 57.9928% ± 1.628151%
-
-Seed: 666
-Dataset: CiteSeer
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 58.7779% ± 0.276618%
-correspoding test acc: 56.9912% ± 0.381136%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 57.8012% ± 0.937054%
+</span></span><span style="display:flex;"><span>correspoding test acc: 57.9928% ± 1.628151%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 58.7779% ± 0.276618%
+</span></span><span style="display:flex;"><span>correspoding test acc: 56.9912% ± 0.381136%
+</span></span></code></pre></div><h3 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -580,21 +580,21 @@ correspoding test acc: 56.9912% ± 0.381136%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model DGI --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Dataset: CiteSeer
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 69.3714% ± 2.260890%
-correspoding test acc: 67.6482% ± 2.238576%
-
-Seed: 666
-Dataset: CiteSeer
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 67.9189% ± 0.973815%
-correspoding test acc: 66.1458% ± 0.242048%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 69.3714% ± 2.260890%
+</span></span><span style="display:flex;"><span>correspoding test acc: 67.6482% ± 2.238576%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 67.9189% ± 0.973815%
+</span></span><span style="display:flex;"><span>correspoding test acc: 66.1458% ± 0.242048%
+</span></span></code></pre></div><h3 id="">
   $\text{COSTA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -604,22 +604,22 @@ correspoding test acc: 66.1458% ± 0.242048%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model COSTA --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 69.3464% ± 1.476099%
-correspoding test acc: 67.9487% ± 0.942997%
-
-Seed: 666
-Dataset: CiteSeer
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 68.3196% ± 0.876892%
-correspoding test acc: 67.1875% ± 0.868107%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 69.3464% ± 1.476099%
+</span></span><span style="display:flex;"><span>correspoding test acc: 67.9487% ± 0.942997%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 68.3196% ± 0.876892%
+</span></span><span style="display:flex;"><span>correspoding test acc: 67.1875% ± 0.868107%
+</span></span></code></pre></div><h3 id="">
   $\text{BGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -629,22 +629,22 @@ correspoding test acc: 67.1875% ± 0.868107%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model BGRL --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 61.4826% ± 0.697640%
-correspoding test acc: 62.4199% ± 0.185770%
-
-Seed: 666
-Dataset: CiteSeer
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 60.5810% ± 1.278462%
-correspoding test acc: 59.8758% ± 1.743364%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 61.4826% ± 0.697640%
+</span></span><span style="display:flex;"><span>correspoding test acc: 62.4199% ± 0.185770%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 60.5810% ± 1.278462%
+</span></span><span style="display:flex;"><span>correspoding test acc: 59.8758% ± 1.743364%
+</span></span></code></pre></div><h3 id="">
   $\text{MVGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -654,22 +654,22 @@ correspoding test acc: 59.8758% ± 1.743364%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model MVGRL --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 70.5735% ± 0.492033%
-correspoding test acc: 69.7516% ± 0.844678%
-
-Seed: 666
-Dataset: CiteSeer
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 69.6218% ± 0.828341%
-correspoding test acc: 69.4511% ± 0.723376%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 70.5735% ± 0.492033%
+</span></span><span style="display:flex;"><span>correspoding test acc: 69.7516% ± 0.844678%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 69.6218% ± 0.828341%
+</span></span><span style="display:flex;"><span>correspoding test acc: 69.4511% ± 0.723376%
+</span></span></code></pre></div><h3 id="">
   $\text{GBT}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -679,22 +679,22 @@ correspoding test acc: 69.4511% ± 0.723376%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GBT --dataset CiteSeer --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: CiteSeer
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 67.1926% ± 2.209541%
-correspoding test acc: 66.9071% ± 1.198245%
-
-Seed: 666
-Dataset: CiteSeer
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 66.3161% ± 0.872590%
-correspoding test acc: 65.9255% ± 2.047389%
-</code></pre><h2 id="数据集-2">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 67.1926% ± 2.209541%
+</span></span><span style="display:flex;"><span>correspoding test acc: 66.9071% ± 1.198245%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: CiteSeer
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 66.3161% ± 0.872590%
+</span></span><span style="display:flex;"><span>correspoding test acc: 65.9255% ± 2.047389%
+</span></span></code></pre></div><h2 id="数据集-2">
   $\text{WiKiCS}$ 数据集
   <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86-2">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -711,32 +711,32 @@ correspoding test acc: 65.9255% ± 2.047389%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 79.7497% ± 0.468557%
-correspoding test acc: 78.2225% ± 0.598408%
-
-Seed: 666
-Dataset: WikiCS
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 79.0734% ± 0.332162%
-correspoding test acc: 77.6125% ± 0.526773%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 79.7497% ± 0.468557%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.2225% ± 0.598408%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 79.0734% ± 0.332162%
+</span></span><span style="display:flex;"><span>correspoding test acc: 77.6125% ± 0.526773%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GR}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -746,40 +746,40 @@ correspoding test acc: 77.6125% ± 0.526773%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 79.7560% ± 0.588367%
-correspoding test acc: 78.2624% ± 0.813896%
-
-Seed: 666
-Dataset: WikiCS
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 79.0734% ± 0.331078%
-correspoding test acc: 77.6067% ± 0.521066%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 79.7560% ± 0.588367%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.2624% ± 0.813896%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 79.0734% ± 0.331078%
+</span></span><span style="display:flex;"><span>correspoding test acc: 77.6067% ± 0.521066%
+</span></span></code></pre></div><h3 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -789,20 +789,20 @@ correspoding test acc: 77.6067% ± 0.521066%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 80.5208% ± 0.336464%
-correspoding test acc: 78.9522% ± 0.530707%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 80.5208% ± 0.336464%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.9522% ± 0.530707%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GC}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -812,24 +812,24 @@ correspoding test acc: 78.9522% ± 0.530707%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 80.4070% ± 0.380586%
-correspoding test acc: 78.6614% ± 0.525538%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 80.4070% ± 0.380586%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.6614% ± 0.525538%
+</span></span></code></pre></div><h3 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -839,22 +839,22 @@ correspoding test acc: 78.6614% ± 0.525538%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model DGI --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 79.8319% ± 0.742523%
-correspoding test acc: 78.5987% ± 0.954731%
-
-Seed: 666
-Dataset: WikiCS
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 79.5285% ± 0.568898%
-correspoding test acc: 78.0799% ± 0.696867%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 79.8319% ± 0.742523%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.5987% ± 0.954731%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 79.5285% ± 0.568898%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.0799% ± 0.696867%
+</span></span></code></pre></div><h3 id="">
   $\text{COSTA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -864,22 +864,22 @@ correspoding test acc: 78.0799% ± 0.696867%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model COSTA --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 79.9899% ± 0.266954%
-correspoding test acc: 78.4106% ± 0.858137%
-
-Seed: 666
-Dataset: WikiCS
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 79.7434% ± 0.266504%
-correspoding test acc: 78.0685% ± 0.666399%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 79.9899% ± 0.266954%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.4106% ± 0.858137%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 79.7434% ± 0.266504%
+</span></span><span style="display:flex;"><span>correspoding test acc: 78.0685% ± 0.666399%
+</span></span></code></pre></div><h3 id="">
   $\text{BGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -889,22 +889,22 @@ correspoding test acc: 78.0685% ± 0.666399%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model BGRL --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 79.1556% ± 0.340711%
-correspoding test acc: 77.6923% ± 0.612260%
-
-Seed: 666
-Dataset: WikiCS
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 78.5678% ± 0.131669%
-correspoding test acc: 77.1507% ± 0.073892%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 79.1556% ± 0.340711%
+</span></span><span style="display:flex;"><span>correspoding test acc: 77.6923% ± 0.612260%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 78.5678% ± 0.131669%
+</span></span><span style="display:flex;"><span>correspoding test acc: 77.1507% ± 0.073892%
+</span></span></code></pre></div><h3 id="">
   $\text{MVGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -914,14 +914,14 @@ correspoding test acc: 77.1507% ± 0.073892%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model MVGRL --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 77.9927% ± 0.910301%
-correspoding test acc: 76.3411% ± 0.890368%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 77.9927% ± 0.910301%
+</span></span><span style="display:flex;"><span>correspoding test acc: 76.3411% ± 0.890368%
+</span></span></code></pre></div><h3 id="">
   $\text{GBT}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -931,22 +931,22 @@ correspoding test acc: 76.3411% ± 0.890368%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GBT --dataset WikiCS --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: WikiCS
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 80.8178% ± 0.945051%
-correspoding test acc: 79.3569% ± 0.935821%
-
-Seed: 666
-Dataset: WikiCS
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 80.9948% ± 0.788546%
-correspoding test acc: 79.3569% ± 0.819150%
-</code></pre><h2 id="数据集-3">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 80.8178% ± 0.945051%
+</span></span><span style="display:flex;"><span>correspoding test acc: 79.3569% ± 0.935821%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: WikiCS
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 80.9948% ± 0.788546%
+</span></span><span style="display:flex;"><span>correspoding test acc: 79.3569% ± 0.819150%
+</span></span></code></pre></div><h2 id="数据集-3">
   $\text{Computers}$ 数据集
   <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86-3">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -963,32 +963,32 @@ correspoding test acc: 79.3569% ± 0.819150%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 85.5057% ± 0.240403%
-correspoding test acc: 85.7184% ± 1.009549%
-
-Seed: 666
-Dataset: Computers
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 86.5115% ± 0.821460%
-correspoding test acc: 85.7136% ± 0.489218%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 85.5057% ± 0.240403%
+</span></span><span style="display:flex;"><span>correspoding test acc: 85.7184% ± 1.009549%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 86.5115% ± 0.821460%
+</span></span><span style="display:flex;"><span>correspoding test acc: 85.7136% ± 0.489218%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GR}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -998,23 +998,23 @@ correspoding test acc: 85.7136% ± 0.489218%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GRACE --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 85.5178% ± 0.235776%
-correspoding test acc: 85.7233% ± 1.015422%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 85.5178% ± 0.235776%
+</span></span><span style="display:flex;"><span>correspoding test acc: 85.7233% ± 1.015422%
+</span></span></code></pre></div><h3 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1024,20 +1024,20 @@ correspoding test acc: 85.7233% ± 1.015422%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 86.6751% ± 0.681310%
-correspoding test acc: 86.9789% ± 0.158130%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 86.6751% ± 0.681310%
+</span></span><span style="display:flex;"><span>correspoding test acc: 86.9789% ± 0.158130%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GC}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1047,24 +1047,24 @@ correspoding test acc: 86.9789% ± 0.158130%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GCA --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 85.3602% ± 0.668800%
-correspoding test acc: 84.9137% ± 0.110334%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 85.3602% ± 0.668800%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.9137% ± 0.110334%
+</span></span></code></pre></div><h3 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1074,22 +1074,22 @@ correspoding test acc: 84.9137% ± 0.110334%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model DGI --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 87.2205% ± 0.420863%
-correspoding test acc: 86.8043% ± 0.557769%
-
-Seed: 666
-Dataset: Computers
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 87.9355% ± 0.341812%
-correspoding test acc: 87.6963% ± 0.408424%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 87.2205% ± 0.420863%
+</span></span><span style="display:flex;"><span>correspoding test acc: 86.8043% ± 0.557769%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Seed: 666
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 87.9355% ± 0.341812%
+</span></span><span style="display:flex;"><span>correspoding test acc: 87.6963% ± 0.408424%
+</span></span></code></pre></div><h3 id="">
   $\text{COSTA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1099,14 +1099,14 @@ correspoding test acc: 87.6963% ± 0.408424%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model COSTA --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 87.4205% ± 0.168581%
-correspoding test acc: 86.8916% ± 0.406925%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 87.4205% ± 0.168581%
+</span></span><span style="display:flex;"><span>correspoding test acc: 86.8916% ± 0.406925%
+</span></span></code></pre></div><h3 id="">
   $\text{BGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1116,14 +1116,14 @@ correspoding test acc: 86.8916% ± 0.406925%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model BGRL --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.7299% ± 0.383907%
-correspoding test acc: 85.8057% ± 0.611166%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.7299% ± 0.383907%
+</span></span><span style="display:flex;"><span>correspoding test acc: 85.8057% ± 0.611166%
+</span></span></code></pre></div><h3 id="">
   $\text{MVGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1133,14 +1133,14 @@ correspoding test acc: 85.8057% ± 0.611166%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model MVGRL --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 85.0997% ± 0.252907%
-correspoding test acc: 84.1768% ± 0.257709%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 85.0997% ± 0.252907%
+</span></span><span style="display:flex;"><span>correspoding test acc: 84.1768% ± 0.257709%
+</span></span></code></pre></div><h3 id="">
   $\text{GBT}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1150,14 +1150,14 @@ correspoding test acc: 84.1768% ± 0.257709%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model GBT --dataset Computers --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Computers
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 88.9838% ± 0.196350%
-correspoding test acc: 89.1507% ± 0.542735%
-</code></pre><h2 id="数据集-4">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Computers
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 88.9838% ± 0.196350%
+</span></span><span style="display:flex;"><span>correspoding test acc: 89.1507% ± 0.542735%
+</span></span></code></pre></div><h2 id="数据集-4">
   $\text{Photo}$ 数据集
   <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86-4">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1174,19 +1174,19 @@ correspoding test acc: 89.1507% ± 0.542735%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-best val acc: 92.1133% ± 0.388814%
-correspoding test acc: 91.5294% ± 0.246178%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>best val acc: 92.1133% ± 0.388814%
+</span></span><span style="display:flex;"><span>correspoding test acc: 91.5294% ± 0.246178%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GR}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1196,23 +1196,23 @@ correspoding test acc: 91.5294% ± 0.246178%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --theroy_view --start_debias_epoch <span style="color:#a5d6ff">200</span> --update_interval <span style="color:#a5d6ff">1</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: GRACE
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-start_debias_epoch: 200
-update_interval: 1
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 92.0915% ± 0.282385%
-correspoding test acc: 91.3028% ± 0.177744%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: GRACE
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>start_debias_epoch: 200
+</span></span><span style="display:flex;"><span>update_interval: 1
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 92.0915% ± 0.282385%
+</span></span><span style="display:flex;"><span>correspoding test acc: 91.3028% ± 0.177744%
+</span></span></code></pre></div><h3 id="">
   $\text{GCA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1222,20 +1222,20 @@ correspoding test acc: 91.3028% ± 0.177744%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-best val acc: 92.3965% ± 0.217320%
-correspoding test acc: 91.7298% ± 0.312513%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>best val acc: 92.3965% ± 0.217320%
+</span></span><span style="display:flex;"><span>correspoding test acc: 91.7298% ± 0.312513%
+</span></span></code></pre></div><h3 id="">
   $\text{IFL-GC}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1245,24 +1245,24 @@ correspoding test acc: 91.7298% ± 0.312513%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GCA --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --drop_scheme degree --theroy_view --start_debias_epoch <span style="color:#a5d6ff">100</span> --update_interval <span style="color:#a5d6ff">20</span> --B_W_threshold 0.6 --R_W_threshold 0.6 --norm_sim_matrix global --stay_diag_eye <span style="color:#a5d6ff">1</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: GCA
-Num_epochs: 500
-Repeat_times: 3
-tau: 0.4
-drop_edge_rate_1: 0.2
-drop_edge_rate_2: 0.4
-drop_feature_rate_1: 0.3
-drop_feature_rate_2: 0.4
-drop_scheme: degree
-start_debias_epoch: 100
-update_interval: 20
-R_W_threshold: 0.6
-B_W_threshold: 0.6
-best val acc: 91.7102% ± 0.239156%
-correspoding test acc: 91.0850% ± 0.335484%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: GCA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>tau: 0.4
+</span></span><span style="display:flex;"><span>drop_edge_rate_1: 0.2
+</span></span><span style="display:flex;"><span>drop_edge_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_feature_rate_1: 0.3
+</span></span><span style="display:flex;"><span>drop_feature_rate_2: 0.4
+</span></span><span style="display:flex;"><span>drop_scheme: degree
+</span></span><span style="display:flex;"><span>start_debias_epoch: 100
+</span></span><span style="display:flex;"><span>update_interval: 20
+</span></span><span style="display:flex;"><span>R_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>B_W_threshold: 0.6
+</span></span><span style="display:flex;"><span>best val acc: 91.7102% ± 0.239156%
+</span></span><span style="display:flex;"><span>correspoding test acc: 91.0850% ± 0.335484%
+</span></span></code></pre></div><h3 id="">
   $\text{DGI}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1272,14 +1272,14 @@ correspoding test acc: 91.0850% ± 0.335484%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model DGI --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: DGI
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 92.1351% ± 0.242114%
-correspoding test acc: 91.6078% ± 0.314451%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: DGI
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 92.1351% ± 0.242114%
+</span></span><span style="display:flex;"><span>correspoding test acc: 91.6078% ± 0.314451%
+</span></span></code></pre></div><h3 id="">
   $\text{COSTA}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1289,14 +1289,14 @@ correspoding test acc: 91.6078% ± 0.314451%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model COSTA --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span>
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: COSTA
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 92.4510% ± 0.240146%
-correspoding test acc: 91.7908% ± 0.133308%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: COSTA
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 92.4510% ± 0.240146%
+</span></span><span style="display:flex;"><span>correspoding test acc: 91.7908% ± 0.133308%
+</span></span></code></pre></div><h3 id="">
   $\text{BGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1306,14 +1306,14 @@ correspoding test acc: 91.7908% ± 0.133308%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model BGRL --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --gradient_drop_threshold 1e-4
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: BGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 90.7190% ± 0.166635%
-correspoding test acc: 90.2484% ± 0.246178%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: BGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 90.7190% ± 0.166635%
+</span></span><span style="display:flex;"><span>correspoding test acc: 90.2484% ± 0.246178%
+</span></span></code></pre></div><h3 id="">
   $\text{MVGRL}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1323,14 +1323,14 @@ correspoding test acc: 90.2484% ± 0.246178%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py --model MVGRL --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --learning_rate 0.001 --gradient_drop_threshold 1e-5 --tolerance_epoch_num <span style="color:#a5d6ff">20</span> --mvgrl_alpha 0.2
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: MVGRL
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 90.3050% ± 0.240640%
-correspoding test acc: 89.6819% ± 0.121380%
-</code></pre><h3 id="">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: MVGRL
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 90.3050% ± 0.240640%
+</span></span><span style="display:flex;"><span>correspoding test acc: 89.6819% ± 0.121380%
+</span></span></code></pre></div><h3 id="">
   $\text{GBT}$
   <a class="heading-link" href="#">
     <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
@@ -1340,14 +1340,14 @@ correspoding test acc: 89.6819% ± 0.121380%
 <p>命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GBT --dataset Photo --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --weight_decay <span style="color:#a5d6ff">0</span> --num_hidden <span style="color:#a5d6ff">512</span> --batch_size <span style="color:#a5d6ff">4</span> --p_x 0.1 --p_e 0.4 --gradient_drop_threshold 1e-3
 </span></span></code></pre></div><p>结果</p>
-<pre tabindex="0"><code>Seed: 39788
-Dataset: Photo
-Model: GBT
-Num_epochs: 500
-Repeat_times: 3
-best val acc: 93.0610% ± 0.299911%
-correspoding test acc: 92.7843% ± 0.548812%
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Seed: 39788
+</span></span><span style="display:flex;"><span>Dataset: Photo
+</span></span><span style="display:flex;"><span>Model: GBT
+</span></span><span style="display:flex;"><span>Num_epochs: 500
+</span></span><span style="display:flex;"><span>Repeat_times: 3
+</span></span><span style="display:flex;"><span>best val acc: 93.0610% ± 0.299911%
+</span></span><span style="display:flex;"><span>correspoding test acc: 92.7843% ± 0.548812%
+</span></span></code></pre></div>
       </div>
 
 
@@ -1408,7 +1408,7 @@ correspoding test acc: 92.7843% ± 0.548812%
 
   
   
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  <script src="/js/coder.js"></script>
   
 
   
