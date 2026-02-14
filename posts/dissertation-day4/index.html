@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <title>
   [毕业设计]Day4 · Zyed
 </title>
@@ -46,7 +46,7 @@ $$
   <meta name="twitter:description" content="更新训练目标 链接到标题 我们已经证明， $s_\theta(n,n&#39;)$ 可以搭配上一个超参数 $t_s$ 便捷的实现一个分类器，用于从未标记样本中发现潜在的可能的正样本，然后进行重采样 ($\text{resampling}$) 将这些可能的正样本 $D_U^&#43;$ 从未标记样本集 $D_U$ 中取出，加入正样本集 $D^&#43;$ ，进而消除采样偏差 $$y(x) = h(x=(n,n&#39;); \theta) := \text{sign}(s_\theta(n,n&#39;) - t_s)$$ 一个随之而来的问题是，在计算损失函数 $L$ 时，新加入的潜在正样本 $D_U^&#43;$ 与原本的正样本 $D_L^&#43;$ 是否应该具有相同的权重呢？直觉上来看是否定的，因为 $D_L^&#43;$ 是我们自己增强生成的， $\text{100\%}$ 是正样本，而新加入的知识潜在正样本，因此我们应对训练目标进行更新 ($\text{updating training objective}$) ，具体来说就是修改损失函数 $L$
 $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \sum_{i=1}^N (l_{u_i, v_i} &#43; l_{v_i, u_i}) \\\text{其中}，l_{u_i, v_i} &amp;= -\log \frac{s_{\theta}(u_i, v_i)}{\sum_{j \neq i, j=1}^N s_{\theta}(u_i, u_j) &#43; \sum_{j=1}^N s_{\theta}(u_i, v_j)} \\ \\s_{\theta}(u_i, v_j) &amp;= \exp(\text{cos}(\mathbf{U}_i, \mathbf{V}_j) / \tau) \end{aligned}$$ 其中 $l_{u_i,v_i}$ 可以被理解为以下的负对数似然概率的形式：">
 
-<meta property="og:url" content="http://localhost:1313/posts/dissertation-day4/">
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day4/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[毕业设计]Day4">
   <meta property="og:description" content="更新训练目标 链接到标题 我们已经证明， $s_\theta(n,n&#39;)$ 可以搭配上一个超参数 $t_s$ 便捷的实现一个分类器，用于从未标记样本中发现潜在的可能的正样本，然后进行重采样 ($\text{resampling}$) 将这些可能的正样本 $D_U^&#43;$ 从未标记样本集 $D_U$ 中取出，加入正样本集 $D^&#43;$ ，进而消除采样偏差 $$y(x) = h(x=(n,n&#39;); \theta) := \text{sign}(s_\theta(n,n&#39;) - t_s)$$ 一个随之而来的问题是，在计算损失函数 $L$ 时，新加入的潜在正样本 $D_U^&#43;$ 与原本的正样本 $D_L^&#43;$ 是否应该具有相同的权重呢？直觉上来看是否定的，因为 $D_L^&#43;$ 是我们自己增强生成的， $\text{100\%}$ 是正样本，而新加入的知识潜在正样本，因此我们应对训练目标进行更新 ($\text{updating training objective}$) ，具体来说就是修改损失函数 $L$
@@ -60,7 +60,7 @@ $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \s
 
 
 
-<link rel="canonical" href="http://localhost:1313/posts/dissertation-day4/">
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day4/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -70,7 +70,7 @@ $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \s
 
   
   
-  <link rel="stylesheet" href="/css/coder.css" media="screen">
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -80,7 +80,7 @@ $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \s
   
     
     
-    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -88,7 +88,7 @@ $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \s
  
   
     
-    <link rel="stylesheet" href="/css/custom.css" media="screen">
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -133,7 +133,7 @@ $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \s
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="http://localhost:1313/">
+    <a class="navigation-title" href="https://Zyed816.github.io/">
       Zyed
     </a>
     
@@ -186,7 +186,7 @@ $\text{Info-NCE}$ 中损失函数： $$\begin{aligned}L &amp;= \frac{1}{2N} \s
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="http://localhost:1313/posts/dissertation-day4/">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day4/">
               [毕业设计]Day4
             </a>
           </h1>
@@ -435,7 +435,7 @@ $$
 
   
   
-  <script src="/js/coder.js"></script>
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
   
 
   

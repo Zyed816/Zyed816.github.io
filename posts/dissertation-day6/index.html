@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <title>
   [毕业设计]Day6 · Zyed
 </title>
@@ -60,7 +60,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
 基线模型 链接到标题 共与 $7$ 种基线方法进行对比，最主要的两个基线方法是： $\text{GRACE}$ 和 $\text{GCA}$ ，因为它们都使用了 $InfoNCE$ 损失函数。我们对这两种方法进行优化。具体来说，使用它们进行 $\text{warm-up}$ 阶段，然后按照 $\text{IFL-GCL}$ 理论进行重采样 $\text{(resampling)}$ ，使用新的损失函数进一步训练编码器。按照这种思路得到的训练方法分别称为 $\text{IFL-GR}$ 以及 $\text{IFL-GC}$
 评价指标和流程 链接到标题 所有图对比学习 $\text{(GCL)}$ 方法最终都得到一个编码器 $f_\theta$，它能把语义相近的结点映射到相近的向量，如何衡量一个编码器的优劣呢？我们使用有标签的数据集，将原图 $G$ 中每个结点 $n_i$ 经过编码器 $f_\theta$ 编码后得到的编码向量 $H_i$ 作为输入，将原图 $G$ 按 $\text{1:1:8}$ 划分为训练集，验证集和测试集，训练一个分类器 $\text{classifier}$ ，以分类器在测试集上的准确率作为衡量编码器 $f_\theta$ 的指标">
 
-<meta property="og:url" content="http://localhost:1313/posts/dissertation-day6/">
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day6/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[毕业设计]Day6">
   <meta property="og:description" content="实验设置 链接到标题 数据集 链接到标题 使用 $9$ 个数据集，分独立同分布 $\text{(independent and identically distributed,IID)}$ 和分布外 $\text{(out-of-distribution,OOD)}$ 两种情景
@@ -76,7 +76,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
 
 
 
-<link rel="canonical" href="http://localhost:1313/posts/dissertation-day6/">
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day6/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -86,7 +86,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
 
   
   
-  <link rel="stylesheet" href="/css/coder.css" media="screen">
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -96,7 +96,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
   
     
     
-    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -104,7 +104,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
  
   
     
-    <link rel="stylesheet" href="/css/custom.css" media="screen">
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -149,7 +149,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="http://localhost:1313/">
+    <a class="navigation-title" href="https://Zyed816.github.io/">
       Zyed
     </a>
     
@@ -202,7 +202,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="http://localhost:1313/posts/dissertation-day6/">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day6/">
               [毕业设计]Day6
             </a>
           </h1>
@@ -329,7 +329,7 @@ $\text{IID}$ ： $\text{Cora,PubMed,CiteSeer,WikiCS,Computers,Photo}$ ，特点�
 
   
   
-  <script src="/js/coder.js"></script>
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
   
 
   

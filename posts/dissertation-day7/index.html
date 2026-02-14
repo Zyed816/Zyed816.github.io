@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <title>
   [毕业设计]Day7 · Zyed
 </title>
@@ -102,7 +102,7 @@ def drop_edge(edge_index, drop_prob):
   <meta name="twitter:title" content="[毕业设计]Day7">
   <meta name="twitter:description" content="数据加载模块 $\text{dataset.py}$ 链接到标题 import torch from torch_geometric.datasets import Planetoid import torch_geometric.transforms as T def get_dataset(root, name): &#34;&#34;&#34; 对应开源代码 main.py 中的 get_dataset 函数 功能：加载标准图数据集 &#34;&#34;&#34; dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures()) data = dataset[0] return data, dataset.num_features, dataset.num_classes # 测试一下 # data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;) # print(f&#34;Loaded {data}&#34;) 图增强模块 $\text{augmentation.py}$ 链接到标题 import torch from torch_geometric.utils import dropout_adj def drop_feature(x, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_feature 函数 功能：随机掩盖节点特征 &#34;&#34;&#34; if drop_prob &lt;= 0.: return x # 生成一个跟特征维度一样的 mask (shape: [F]) drop_mask = torch.empty( (x.size(1),), dtype=torch.float32, device=x.device ).uniform_(0, 1) &lt; drop_prob x = x.clone() x[:, drop_mask] = 0 # 将被 mask 的特征置为 0 return x def drop_edge(edge_index, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_edge 函数 功能：随机删除边 &#34;&#34;&#34; if drop_prob &lt;= 0.: return edge_index # 使用 PyG 的工具函数随机 drop 边 edge_index, _ = dropout_adj( edge_index, p=drop_prob, force_undirected=True, # 保持无向图性质 num_nodes=None, training=True ) return edge_index # GCA 特有的自适应增强 (复现 IFL-GC 时需要) # 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑 # 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展 编码器结构定义 链接到标题 确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
 
-<meta property="og:url" content="http://localhost:1313/posts/dissertation-day7/">
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day7/">
   <meta property="og:site_name" content="Zyed">
   <meta property="og:title" content="[毕业设计]Day7">
   <meta property="og:description" content="数据加载模块 $\text{dataset.py}$ 链接到标题 import torch from torch_geometric.datasets import Planetoid import torch_geometric.transforms as T def get_dataset(root, name): &#34;&#34;&#34; 对应开源代码 main.py 中的 get_dataset 函数 功能：加载标准图数据集 &#34;&#34;&#34; dataset = Planetoid(root=root, name=name, transform=T.NormalizeFeatures()) data = dataset[0] return data, dataset.num_features, dataset.num_classes # 测试一下 # data, num_features, num_classes = get_dataset(&#39;./datasets&#39;, &#39;Cora&#39;) # print(f&#34;Loaded {data}&#34;) 图增强模块 $\text{augmentation.py}$ 链接到标题 import torch from torch_geometric.utils import dropout_adj def drop_feature(x, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_feature 函数 功能：随机掩盖节点特征 &#34;&#34;&#34; if drop_prob &lt;= 0.: return x # 生成一个跟特征维度一样的 mask (shape: [F]) drop_mask = torch.empty( (x.size(1),), dtype=torch.float32, device=x.device ).uniform_(0, 1) &lt; drop_prob x = x.clone() x[:, drop_mask] = 0 # 将被 mask 的特征置为 0 return x def drop_edge(edge_index, drop_prob): &#34;&#34;&#34; 对应开源代码 gca_functional.py 中的 drop_edge 函数 功能：随机删除边 &#34;&#34;&#34; if drop_prob &lt;= 0.: return edge_index # 使用 PyG 的工具函数随机 drop 边 edge_index, _ = dropout_adj( edge_index, p=drop_prob, force_undirected=True, # 保持无向图性质 num_nodes=None, training=True ) return edge_index # GCA 特有的自适应增强 (复现 IFL-GC 时需要) # 对应 gca_functional.py 中的 adaptive_drop_edge 等逻辑 # 暂时我们可以先只实现统一的 drop，后续复现 IFL-GC 时再扩展 编码器结构定义 链接到标题 确保各种图对比学习方法训练出来的编码器 $f_\theta$ 结构一致，排除编码器结构对实验结果的影响">
@@ -115,7 +115,7 @@ def drop_edge(edge_index, drop_prob):
 
 
 
-<link rel="canonical" href="http://localhost:1313/posts/dissertation-day7/">
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day7/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -125,7 +125,7 @@ def drop_edge(edge_index, drop_prob):
 
   
   
-  <link rel="stylesheet" href="/css/coder.css" media="screen">
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -135,7 +135,7 @@ def drop_edge(edge_index, drop_prob):
   
     
     
-    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -143,7 +143,7 @@ def drop_edge(edge_index, drop_prob):
  
   
     
-    <link rel="stylesheet" href="/css/custom.css" media="screen">
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -188,7 +188,7 @@ def drop_edge(edge_index, drop_prob):
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="http://localhost:1313/">
+    <a class="navigation-title" href="https://Zyed816.github.io/">
       Zyed
     </a>
     
@@ -241,7 +241,7 @@ def drop_edge(edge_index, drop_prob):
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="http://localhost:1313/posts/dissertation-day7/">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day7/">
               [毕业设计]Day7
             </a>
           </h1>
@@ -1015,7 +1015,7 @@ def drop_edge(edge_index, drop_prob):
 
   
   
-  <script src="/js/coder.js"></script>
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
   
 
   
