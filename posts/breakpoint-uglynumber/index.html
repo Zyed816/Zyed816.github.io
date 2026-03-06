@@ -3,7 +3,7 @@
 
 <head>
   <title>
-  [breakpoint]丑数 · Zyed
+  [Breakpoint]丑数 · Zyed
 </title>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,14 +78,14 @@ public:
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="[breakpoint]丑数">
+  <meta name="twitter:title" content="[Breakpoint]丑数">
   <meta name="twitter:description" content="题目 链接到标题 丑数
 暴力 链接到标题 思想 链接到标题 找出 $n$ 所有的因数 $i$ ，判断 $i$ 是否是素数并且 $i \in \{2,3,5\}$
 代码 链接到标题 class Solution { private: bool isPrime(int n) { for(int i = 2; i * i &lt; n; i &#43;&#43;) { if(n % i == 0) { return false; } } return true; } public: bool isUgly(int n) { if(n &lt;= 0) return false; unordered_set&lt;int&gt; primes = {2, 3, 5}; for(int i = 2; i &lt;= n; i &#43;&#43;) { if(n % i == 0 &amp;&amp; isPrime(i) &amp;&amp; !primes.contains(i)) { return false; } } return true; } }; 复杂度 链接到标题 时间复杂度： $O(n * \sqrt{n})$ ，外层循环 $O(n)$ ， $isPrime()$ 函数 $O(\sqrt{n})$">
 
 <meta property="og:url" content="https://Zyed816.github.io/posts/breakpoint-uglynumber/">
   <meta property="og:site_name" content="Zyed">
-  <meta property="og:title" content="[breakpoint]丑数">
+  <meta property="og:title" content="[Breakpoint]丑数">
   <meta property="og:description" content="题目 链接到标题 丑数
 暴力 链接到标题 思想 链接到标题 找出 $n$ 所有的因数 $i$ ，判断 $i$ 是否是素数并且 $i \in \{2,3,5\}$
 代码 链接到标题 class Solution { private: bool isPrime(int n) { for(int i = 2; i * i &lt; n; i &#43;&#43;) { if(n % i == 0) { return false; } } return true; } public: bool isUgly(int n) { if(n &lt;= 0) return false; unordered_set&lt;int&gt; primes = {2, 3, 5}; for(int i = 2; i &lt;= n; i &#43;&#43;) { if(n % i == 0 &amp;&amp; isPrime(i) &amp;&amp; !primes.contains(i)) { return false; } } return true; } }; 复杂度 链接到标题 时间复杂度： $O(n * \sqrt{n})$ ，外层循环 $O(n)$ ， $isPrime()$ 函数 $O(\sqrt{n})$">
@@ -225,7 +225,7 @@ public:
         <div class="post-title">
           <h1 class="title">
             <a class="title-link" href="https://Zyed816.github.io/posts/breakpoint-uglynumber/">
-              [breakpoint]丑数
+              [Breakpoint]丑数
             </a>
           </h1>
         </div>

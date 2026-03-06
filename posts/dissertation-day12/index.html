@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [毕业设计]Day12 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  修改 gca_functional.py
+  
+    
+    链接到标题
+  
+
+从 https://github.com/CRIPAC-DIG/GCA/blob/main/pGRACE 下载 functional.py 和 utils.py 并重命名为 gca_functional.py 和 gca_utils.py，重新进行实验
+
+  使用 ${\text{LLM}}$ 进行特征增强
+  
+    
+    链接到标题
+  
+
+
+  在本地生成 geometric_data_processed.pt
+  
+    
+    链接到标题
+  
+
+新建文件 make_geometric_cora.py ，内容为
+from torch_geometric.datasets import Planetoid
+from torch_geometric.data import Data
+import torch
+import os
+
+# 1. 读取 PyG 自带的 Cora 数据
+root = r&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets&#39;  # 如果你 Planetoid 的数据根目录不同，在这里改
+dataset = Planetoid(root=root, name=&#39;Cora&#39;)
+data: Data = dataset[0]
+
+# 2. 保存成 geometric_data_processed.pt，形式是 [data][0] 能取到
+save_dir = r&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets\minilmdata\cora\processed&#39;
+os.makedirs(save_dir, exist_ok=True)
+save_path = os.path.join(save_dir, &#39;geometric_data_processed.pt&#39;)
+
+torch.save([data], save_path)
+print(&#34;saved to:&#34;, save_path)
+运行得到">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[毕业设计]Day12">
+  <meta name="twitter:description" content="修改 gca_functional.py 链接到标题 从 https://github.com/CRIPAC-DIG/GCA/blob/main/pGRACE 下载 functional.py 和 utils.py 并重命名为 gca_functional.py 和 gca_utils.py，重新进行实验
+使用 ${\text{LLM}}$ 进行特征增强 链接到标题 在本地生成 geometric_data_processed.pt 链接到标题 新建文件 make_geometric_cora.py ，内容为
+from torch_geometric.datasets import Planetoid from torch_geometric.data import Data import torch import os # 1. 读取 PyG 自带的 Cora 数据 root = r&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets&#39; # 如果你 Planetoid 的数据根目录不同，在这里改 dataset = Planetoid(root=root, name=&#39;Cora&#39;) data: Data = dataset[0] # 2. 保存成 geometric_data_processed.pt，形式是 [data][0] 能取到 save_dir = r&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets\minilmdata\cora\processed&#39; os.makedirs(save_dir, exist_ok=True) save_path = os.path.join(save_dir, &#39;geometric_data_processed.pt&#39;) torch.save([data], save_path) print(&#34;saved to:&#34;, save_path) 运行得到">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day12/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[毕业设计]Day12">
+  <meta property="og:description" content="修改 gca_functional.py 链接到标题 从 https://github.com/CRIPAC-DIG/GCA/blob/main/pGRACE 下载 functional.py 和 utils.py 并重命名为 gca_functional.py 和 gca_utils.py，重新进行实验
+使用 ${\text{LLM}}$ 进行特征增强 链接到标题 在本地生成 geometric_data_processed.pt 链接到标题 新建文件 make_geometric_cora.py ，内容为
+from torch_geometric.datasets import Planetoid from torch_geometric.data import Data import torch import os # 1. 读取 PyG 自带的 Cora 数据 root = r&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets&#39; # 如果你 Planetoid 的数据根目录不同，在这里改 dataset = Planetoid(root=root, name=&#39;Cora&#39;) data: Data = dataset[0] # 2. 保存成 geometric_data_processed.pt，形式是 [data][0] 能取到 save_dir = r&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets\minilmdata\cora\processed&#39; os.makedirs(save_dir, exist_ok=True) save_path = os.path.join(save_dir, &#39;geometric_data_processed.pt&#39;) torch.save([data], save_path) print(&#34;saved to:&#34;, save_path) 运行得到">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-06T20:26:00+08:00">
+    <meta property="article:modified_time" content="2026-03-06T20:26:00+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day12/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day12/">
+              [毕业设计]Day12
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-03-06T20:26:00&#43;08:00">
+                三月 6, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="修改-gca_functionalpy">
+  修改 <code>gca_functional.py</code>
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9-gca_functionalpy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>从 <a href="https://github.com/CRIPAC-DIG/GCA/blob/main/pGRACE"  class="external-link" target="_blank" rel="noopener">https://github.com/CRIPAC-DIG/GCA/blob/main/pGRACE</a> 下载 <code>functional.py</code> 和 <code>utils.py</code> 并重命名为 <code>gca_functional.py</code> 和 <code>gca_utils.py</code>，重新进行实验</p>
+<h2 id="使用--进行特征增强">
+  使用 ${\text{LLM}}$ 进行特征增强
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8--%e8%bf%9b%e8%a1%8c%e7%89%b9%e5%be%81%e5%a2%9e%e5%bc%ba">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="在本地生成-geometric_data_processedpt">
+  在本地生成 <code>geometric_data_processed.pt</code>
+  <a class="heading-link" href="#%e5%9c%a8%e6%9c%ac%e5%9c%b0%e7%94%9f%e6%88%90-geometric_data_processedpt">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>新建文件 <code>make_geometric_cora.py</code> ，内容为</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">torch_geometric.datasets</span> <span style="color:#ff7b72">import</span> Planetoid
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">torch_geometric.data</span> <span style="color:#ff7b72">import</span> Data
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">os</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 1. 读取 PyG 自带的 Cora 数据</span>
+</span></span><span style="display:flex;"><span>root <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets&#39;</span>  <span style="color:#8b949e;font-style:italic"># 如果你 Planetoid 的数据根目录不同，在这里改</span>
+</span></span><span style="display:flex;"><span>dataset <span style="color:#ff7b72;font-weight:bold">=</span> Planetoid(root<span style="color:#ff7b72;font-weight:bold">=</span>root, name<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;Cora&#39;</span>)
+</span></span><span style="display:flex;"><span>data: Data <span style="color:#ff7b72;font-weight:bold">=</span> dataset[<span style="color:#a5d6ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 2. 保存成 geometric_data_processed.pt，形式是 [data][0] 能取到</span>
+</span></span><span style="display:flex;"><span>save_dir <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets\minilmdata\cora\processed&#39;</span>
+</span></span><span style="display:flex;"><span>os<span style="color:#ff7b72;font-weight:bold">.</span>makedirs(save_dir, exist_ok<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">True</span>)
+</span></span><span style="display:flex;"><span>save_path <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(save_dir, <span style="color:#a5d6ff">&#39;geometric_data_processed.pt&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>torch<span style="color:#ff7b72;font-weight:bold">.</span>save([data], save_path)
+</span></span><span style="display:flex;"><span>print(<span style="color:#a5d6ff">&#34;saved to:&#34;</span>, save_path)
+</span></span></code></pre></div><p>运行得到</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>D:\dissertation\datasets\minilmdata\cora\processed\geometric_data_processed.pt
+</span></span></code></pre></div><h3 id="增加路径参数">
+  增加路径参数
+  <a class="heading-link" href="#%e5%a2%9e%e5%8a%a0%e8%b7%af%e5%be%84%e5%8f%82%e6%95%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><code>utils.py</code> 设置 ${\text{LLM}}$ 相关参数附近增加路径参数 <code>--minilm_root</code> ，用于指明本地目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	parser<span style="color:#ff7b72;font-weight:bold">.</span>add_argument(<span style="color:#a5d6ff">&#39;--llm_emb&#39;</span>, action<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;store_true&#34;</span>, help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;Use llm to enhance the TAG feature&#34;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#ff7b72;font-weight:bold">.</span>add_argument(<span style="color:#a5d6ff">&#39;--llm_name&#39;</span>, type<span style="color:#ff7b72;font-weight:bold">=</span>str, choices<span style="color:#ff7b72;font-weight:bold">=</span>[<span style="color:#a5d6ff">&#39;Llama-3.2-1B&#39;</span>, <span style="color:#a5d6ff">&#39;Llama-3.2-3B&#39;</span>, <span style="color:#a5d6ff">&#39;Qwen2.5-0.5B&#39;</span>, <span style="color:#a5d6ff">&#39;Qwen2.5-1.5B&#39;</span>, <span style="color:#a5d6ff">&#39;Qwen2.5-3B&#39;</span>, <span style="color:#a5d6ff">&#39;Qwen2.5-7B&#39;</span>], default<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;Llama-3.2-1B&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#ff7b72;font-weight:bold">.</span>add_argument(<span style="color:#a5d6ff">&#39;--llm_emb_dim&#39;</span>, type<span style="color:#ff7b72;font-weight:bold">=</span>int, default<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">1024</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># 新增：minilm 预处理数据的根路径</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#ff7b72;font-weight:bold">.</span>add_argument(<span style="color:#a5d6ff">&#39;--minilm_root&#39;</span>, type<span style="color:#ff7b72;font-weight:bold">=</span>str,
+</span></span><span style="display:flex;"><span>                        default<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets\minilmdata&#39;</span>,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;root directory of *minilmdata*/</span><span style="color:#a5d6ff">{dataset}</span><span style="color:#a5d6ff">/processed/geometric_data_processed.pt&#39;</span>)
+</span></span></code></pre></div><h3 id="修改硬编码路径">
+  修改硬编码路径
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9%e7%a1%ac%e7%bc%96%e7%a0%81%e8%b7%af%e5%be%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><code>main.py</code> 中修改为</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># data = torch.load(f&#39;/data1/lvnuoyan/minilmdata/{args.dataset.lower()}/processed/geometric_data_processed.pt&#39;)[0]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data_path <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(
+</span></span><span style="display:flex;"><span>                args<span style="color:#ff7b72;font-weight:bold">.</span>minilm_root,
+</span></span><span style="display:flex;"><span>                args<span style="color:#ff7b72;font-weight:bold">.</span>dataset<span style="color:#ff7b72;font-weight:bold">.</span>lower(),
+</span></span><span style="display:flex;"><span>                <span style="color:#a5d6ff">&#39;processed&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a5d6ff">&#39;geometric_data_processed.pt&#39;</span>,
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>            data <span style="color:#ff7b72;font-weight:bold">=</span> torch<span style="color:#ff7b72;font-weight:bold">.</span>load(data_path)[<span style="color:#a5d6ff">0</span>]
+</span></span></code></pre></div><h3 id="增加--节点嵌入路径参数">
+  增加 $\text{LLM}$ 节点嵌入路径参数
+  <a class="heading-link" href="#%e5%a2%9e%e5%8a%a0--%e8%8a%82%e7%82%b9%e5%b5%8c%e5%85%a5%e8%b7%af%e5%be%84%e5%8f%82%e6%95%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><code>utils.py</code> 设置 ${\text{LLM}}$ 相关参数附近增加路径参数 <code>--llm_emb_root'</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 新增：llm 节点嵌入文件所在根目录</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#ff7b72;font-weight:bold">.</span>add_argument(<span style="color:#a5d6ff">&#39;--llm_emb_root&#39;</span>, type<span style="color:#ff7b72;font-weight:bold">=</span>str,
+</span></span><span style="display:flex;"><span>                        default<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#39;D:\dissertation\openSourceCode\IFL-GCL-origin\datasets\TAG_LLM_emb&#39;</span>,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;root dir of </span><span style="color:#a5d6ff">{dataset}</span><span style="color:#a5d6ff">_</span><span style="color:#a5d6ff">{llm_name}</span><span style="color:#a5d6ff">_emb.pt&#39;</span>)
+</span></span></code></pre></div><h3 id="修改-mainpyget_dataset-中加载-llm_emb-的部分">
+  修改 <code>main.py:get_dataset</code> 中加载 <code>llm_emb</code> 的部分
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9-mainpyget_dataset-%e4%b8%ad%e5%8a%a0%e8%bd%bd-llm_emb-%e7%9a%84%e9%83%a8%e5%88%86">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic"># llm-emb as feature (x)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#8b949e;font-style:italic"># llm_emb = torch.load(f&#39;/home/wangzixu/DisShiftGRACE/datasets/TAG_LLM_emb/{args.dataset.lower()}_{args.llm_name}_emb.pt&#39;)</span>
+</span></span><span style="display:flex;"><span>    llm_emb_path <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(
+</span></span><span style="display:flex;"><span>        args<span style="color:#ff7b72;font-weight:bold">.</span>llm_emb_root,
+</span></span><span style="display:flex;"><span>        <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#39;</span><span style="color:#a5d6ff">{</span>args<span style="color:#ff7b72;font-weight:bold">.</span>dataset<span style="color:#ff7b72;font-weight:bold">.</span>lower()<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">_</span><span style="color:#a5d6ff">{</span>args<span style="color:#ff7b72;font-weight:bold">.</span>llm_name<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">_emb.pt&#39;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><p>然后运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&amp; D:/SoftWare/anaconda/envs/GCL/python.exe main.py --model GRACE --dataset Cora --senario ID --gpu_id <span style="color:#a5d6ff">0</span> --seed <span style="color:#a5d6ff">39788</span> --llm_emb --llm_name Llama-3.2-1B --theroy_view
+</span></span></code></pre></div><p>注意此时的 <code>cora_Llama-3.2-1B_emb.pt</code> 并不真正是利用 <code>Llama-3.2-1B</code> 生成的节点增强，而是使用 <code>make_dummy_cora_llm_emb.py</code> ，用当前的 <code>data.x</code> 生成一个伪 <code>cora_Llama-3.2-1B_emb.pt</code>，当作“LLM 特征”跑实验，验证 IFL-GCL 代码本身逻辑</p>
+<p>因此，接下来问题聚焦于如何获得 <code>TAG_LLM_emb</code> 文件夹下的各个 <code>.pt</code> 文件</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
