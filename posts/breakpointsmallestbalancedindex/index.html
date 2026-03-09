@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [Breakpoint]找出最小平衡下标 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  题目
+  
+    
+    链接到标题
+  
+
+找出最小平衡下标
+
+  尝试解决
+  
+    
+    链接到标题
+  
+
+
+  思路
+  
+    
+    链接到标题
+  
+
+计算前缀和与后缀积，遍历下标，满足条件时返回
+
+  代码
+  
+    
+    链接到标题
+  
+
+class Solution {
+public:
+    int smallestBalancedIndex(vector&lt;int&gt;&amp; nums) {
+        int n = nums.size();
+        vector&lt;int&gt; sumLeft(n, 0);
+        vector&lt;int&gt; pdtRight(n, 1);
+        for(int i = 1; i &lt; n; i &#43;&#43;) {
+            sumLeft[i] = sumLeft[i - 1] &#43; nums[i - 1]; 
+        }
+        for(int i = n - 2; i &gt;= 0; i --) {
+            pdtRight[i] = pdtRight[i &#43; 1] * nums[i &#43; 1];
+        }
+
+        int ans = -1;
+        for(int i = 0; i &lt; n; i &#43;&#43;) {
+            if(sumLeft[i] == pdtRight[i]) {
+                ans = i;
+                break;
+            }
+        }
+        return ans;
+    }
+};
+
+  结果
+  
+    
+    链接到标题
+  
+
+溢出">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[Breakpoint]找出最小平衡下标">
+  <meta name="twitter:description" content="题目 链接到标题 找出最小平衡下标
+尝试解决 链接到标题 思路 链接到标题 计算前缀和与后缀积，遍历下标，满足条件时返回
+代码 链接到标题 class Solution { public: int smallestBalancedIndex(vector&lt;int&gt;&amp; nums) { int n = nums.size(); vector&lt;int&gt; sumLeft(n, 0); vector&lt;int&gt; pdtRight(n, 1); for(int i = 1; i &lt; n; i &#43;&#43;) { sumLeft[i] = sumLeft[i - 1] &#43; nums[i - 1]; } for(int i = n - 2; i &gt;= 0; i --) { pdtRight[i] = pdtRight[i &#43; 1] * nums[i &#43; 1]; } int ans = -1; for(int i = 0; i &lt; n; i &#43;&#43;) { if(sumLeft[i] == pdtRight[i]) { ans = i; break; } } return ans; } }; 结果 链接到标题 溢出">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/breakpointsmallestbalancedindex/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[Breakpoint]找出最小平衡下标">
+  <meta property="og:description" content="题目 链接到标题 找出最小平衡下标
+尝试解决 链接到标题 思路 链接到标题 计算前缀和与后缀积，遍历下标，满足条件时返回
+代码 链接到标题 class Solution { public: int smallestBalancedIndex(vector&lt;int&gt;&amp; nums) { int n = nums.size(); vector&lt;int&gt; sumLeft(n, 0); vector&lt;int&gt; pdtRight(n, 1); for(int i = 1; i &lt; n; i &#43;&#43;) { sumLeft[i] = sumLeft[i - 1] &#43; nums[i - 1]; } for(int i = n - 2; i &gt;= 0; i --) { pdtRight[i] = pdtRight[i &#43; 1] * nums[i &#43; 1]; } int ans = -1; for(int i = 0; i &lt; n; i &#43;&#43;) { if(sumLeft[i] == pdtRight[i]) { ans = i; break; } } return ans; } }; 结果 链接到标题 溢出">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-08T20:26:00+08:00">
+    <meta property="article:modified_time" content="2026-03-08T20:26:00+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/breakpointsmallestbalancedindex/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/breakpointsmallestbalancedindex/">
+              [Breakpoint]找出最小平衡下标
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-03-08T20:26:00&#43;08:00">
+                三月 8, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="题目">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p><a href="https://leetcode.cn/problems/find-the-smallest-balanced-index/description/"  class="external-link" target="_blank" rel="noopener">找出最小平衡下标</a></p>
+<h2 id="尝试解决">
+  尝试解决
+  <a class="heading-link" href="#%e5%b0%9d%e8%af%95%e8%a7%a3%e5%86%b3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="思路">
+  思路
+  <a class="heading-link" href="#%e6%80%9d%e8%b7%af">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>计算前缀和与后缀积，遍历下标，满足条件时返回</p>
+<h3 id="代码">
+  代码
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> smallestBalancedIndex(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> n <span style="color:#ff7b72;font-weight:bold">=</span> nums.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> sumLeft(n, <span style="color:#a5d6ff">0</span>);
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> pdtRight(n, <span style="color:#a5d6ff">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> n; i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            sumLeft[i] <span style="color:#ff7b72;font-weight:bold">=</span> sumLeft[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">+</span> nums[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>]; 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> n <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">2</span>; i <span style="color:#ff7b72;font-weight:bold">&gt;=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">--</span>) {
+</span></span><span style="display:flex;"><span>            pdtRight[i] <span style="color:#ff7b72;font-weight:bold">=</span> pdtRight[i <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">*</span> nums[i <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> n; i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(sumLeft[i] <span style="color:#ff7b72;font-weight:bold">==</span> pdtRight[i]) {
+</span></span><span style="display:flex;"><span>                ans <span style="color:#ff7b72;font-weight:bold">=</span> i;
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="结果">
+  结果
+  <a class="heading-link" href="#%e7%bb%93%e6%9e%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>溢出</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Line 11: Char 43: runtime error: signed integer overflow: <span style="color:#a5d6ff">5283864854040960000</span> * <span style="color:#a5d6ff">896</span> cannot be represented in type <span style="color:#a5d6ff">&#39;value_type&#39;</span> <span style="color:#ff7b72;font-weight:bold">(</span>aka <span style="color:#a5d6ff">&#39;long long&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">(</span>solution.cpp<span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:20:43
+</span></span></code></pre></div><p>将 <code>sumLeft</code> ， <code>pdtRight</code> 存储类型改为 <code>long long</code> 仍然溢出</p>
+<blockquote>
+<p>C++ 中 int 范围为 $-2^{31} \sim 2^{31} - 1$ 即 $-2147483648 \sim 2147483647$ ，约 $-2 \times 10 ^{10} \sim   2 \times 10 ^{10}$</p>
+<p>long long 范围为 $-2^{63} \sim 2^{63} - 1$ ，约 $-10 ^{20} \sim 10 ^{20}$</p>
+</blockquote>
+<h2 id="题解">
+  题解
+  <a class="heading-link" href="#%e9%a2%98%e8%a7%a3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>由于 $nums[i] > 0$ ，所以 $sumLeft$ 是严格递增的， $pdtRight$ 是（非严格）递减的，画出函数图像，只存在零个或一个解</p>
+<p>可以先把 $sumLeft$ 算出来，然后倒着遍历 $nums$ ，同时计算 $pdt$ ，这样可以将 $pdtRight$ 简化为一个变量。</p>
+<p>倒着遍历时，$pdt$ 不断增大， $sumLeft$ 不断减小，如果 $pdt == sumLeft$ ，返回下标；如果发现 $pdt$ 已经比 $sumLeft$ 大了，返回 $-1$</p>
+<p>可以写出代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> smallestBalancedIndex(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> n <span style="color:#ff7b72;font-weight:bold">=</span> nums.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">long</span> <span style="color:#ff7b72">long</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> sumLeft(n, <span style="color:#a5d6ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> n; i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            sumLeft[i] <span style="color:#ff7b72;font-weight:bold">=</span> sumLeft[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">+</span> nums[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>]; 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">long</span> <span style="color:#ff7b72">long</span> pdt <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> n <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>; i <span style="color:#ff7b72;font-weight:bold">&gt;=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">--</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(pdt <span style="color:#ff7b72;font-weight:bold">&gt;</span> sumLeft[i]) {
+</span></span><span style="display:flex;"><span>             	<span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#ff7b72">else</span> <span style="color:#d2a8ff;font-weight:bold">if</span>(pdt <span style="color:#ff7b72;font-weight:bold">==</span> sumLeft[i]) {
+</span></span><span style="display:flex;"><span>                ans <span style="color:#ff7b72;font-weight:bold">=</span> i;
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            pdt <span style="color:#ff7b72;font-weight:bold">*=</span> nums[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>但是对于输入</p>
+<pre tabindex="0"><code>nums = [1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,359738368,1,536870913,536870912,64]
+</code></pre><p>$ptd$ 还是会溢出，原因是上面的代码在下标为 $i$ 时，只是判断了 $i$ 位置 $pdt$ 和 $sumLeft[i]$ 的关系，然后直接计算 <code>pdt *= nums[i]</code> ，即 $i - 1$ 位置上的 $pdt$ ，而没有提前判断是否溢出。因此在下标为 $i$ 时就要先判断 $i - 1$ 位置上的 $pdt$ 会不会溢出，判断方法为比较 $pdt \times nums[i]$ 与 $sumLeft[i - 1]$ 的大小，如果 $pdt \times nums[i] > sumLeft[i - 1]$ ，说明后面不会有满足条件的结果了，返回 $-1$ ，而为了避免溢出，选择除法形式即比较 $pdt$ 与 $sumLeft[i - 1] / nums[i]$ 的大小关系</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> smallestBalancedIndex(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> n <span style="color:#ff7b72;font-weight:bold">=</span> nums.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">long</span> <span style="color:#ff7b72">long</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> sumLeft(n, <span style="color:#a5d6ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> n; i <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            sumLeft[i] <span style="color:#ff7b72;font-weight:bold">=</span> sumLeft[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">+</span> nums[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>]; 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">long</span> <span style="color:#ff7b72">long</span> pdt <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> n <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>; i <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">--</span>) {		<span style="color:#8b949e;font-style:italic">// 因为下面有索引 [i - 1] ，所以这里 i &gt; 0
+</span></span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(pdt <span style="color:#ff7b72;font-weight:bold">==</span> sumLeft[i]) {				<span style="color:#8b949e;font-style:italic">// 又因为 sumLeft[0] = 0 而 pdtRight[0] &gt; 0
+</span></span></span><span style="display:flex;"><span>                ans <span style="color:#ff7b72;font-weight:bold">=</span> i;						<span style="color:#8b949e;font-style:italic">// 所以 0 不可能是答案，因此不用考虑特判 i = 0
+</span></span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(pdt <span style="color:#ff7b72;font-weight:bold">&gt;</span> sumLeft[i <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">/</span> nums[i]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            pdt <span style="color:#ff7b72;font-weight:bold">*=</span> nums[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>此时时间复杂度 $O(n)$ ，空间复杂度 $O(n)$</p>
+<p>先计算 $nums$ 的和，然后在倒序遍历的过程中减去遍历的数，也能求出前缀和。这样可以做到 $O(1)$ 空间</p>
+<h3 id="代码-1">
+  代码
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> smallestBalancedIndex(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> n <span style="color:#ff7b72;font-weight:bold">=</span> nums.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">long</span> <span style="color:#ff7b72">long</span> sum <span style="color:#ff7b72;font-weight:bold">=</span> reduce(nums.begin(), nums.end(), <span style="color:#a5d6ff">0LL</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">long</span> <span style="color:#ff7b72">long</span> pdt <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> n <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>; i <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">--</span>) {		<span style="color:#8b949e;font-style:italic">// 因为下面有索引 [i - 1] ，所以这里 i &gt; 0
+</span></span></span><span style="display:flex;"><span>            sum <span style="color:#ff7b72;font-weight:bold">-=</span> nums[i];
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(pdt <span style="color:#ff7b72;font-weight:bold">==</span> sum) {				<span style="color:#8b949e;font-style:italic">// 又因为 sumLeft[0] = 0 而 pdtRight[0] &gt; 0
+</span></span></span><span style="display:flex;"><span>                ans <span style="color:#ff7b72;font-weight:bold">=</span> i;						<span style="color:#8b949e;font-style:italic">// 所以 0 不可能是答案，因此不用考虑特判 i = 0
+</span></span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(pdt <span style="color:#ff7b72;font-weight:bold">&gt;</span> sum <span style="color:#ff7b72;font-weight:bold">/</span> nums[i]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            pdt <span style="color:#ff7b72;font-weight:bold">*=</span> nums[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="复杂度">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>时间复杂度： $O(n)$</p>
+<p>空间复杂度： $O(1)$</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
