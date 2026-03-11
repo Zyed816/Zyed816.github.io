@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [跟着灵神学算法]Day1 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  定长滑动窗口
+  
+    
+    链接到标题
+  
+
+
+  题目
+  
+    
+    链接到标题
+  
+
+1456.定长子串中元音的最大数目
+
+  我的思路
+  
+    
+    链接到标题
+  
+
+使用 $\text{left}$ ， $\text{right}$ 表滑动窗口的左边界和右边界，
+
+  我的代码
+  
+    
+    链接到标题
+  
+
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+        int ans = 0;
+        int left = 0;
+        int right = 0;
+        int curNum = 0;
+        unordered_set&lt;char&gt; vowels = {&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;};
+        for(right; right &lt; k; right &#43;&#43;) {
+            if(vowels.contains(s[right])) {
+                curNum &#43;&#43;;
+            }
+        }
+        right --;
+        ans = curNum;
+        left &#43;&#43;;
+        right &#43;&#43;;
+        for(right; right &lt; s.size();left &#43;&#43;, right &#43;&#43;) {
+            if(vowels.contains(s[left - 1])) {
+                curNum --;
+            }
+            if(vowels.contains(s[right])) {
+                curNum &#43;&#43;;
+            }
+            ans = max(ans, curNum);
+        }
+        return ans;
+    }
+};
+
+  模板
+  
+    
+    链接到标题
+  
+
+
+总结成三步：入-更新-出。">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[跟着灵神学算法]Day1">
+  <meta name="twitter:description" content="定长滑动窗口 链接到标题 题目 链接到标题 1456.定长子串中元音的最大数目
+我的思路 链接到标题 使用 $\text{left}$ ， $\text{right}$ 表滑动窗口的左边界和右边界，
+我的代码 链接到标题 class Solution { public: int maxVowels(string s, int k) { int ans = 0; int left = 0; int right = 0; int curNum = 0; unordered_set&lt;char&gt; vowels = {&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;}; for(right; right &lt; k; right &#43;&#43;) { if(vowels.contains(s[right])) { curNum &#43;&#43;; } } right --; ans = curNum; left &#43;&#43;; right &#43;&#43;; for(right; right &lt; s.size();left &#43;&#43;, right &#43;&#43;) { if(vowels.contains(s[left - 1])) { curNum --; } if(vowels.contains(s[right])) { curNum &#43;&#43;; } ans = max(ans, curNum); } return ans; } }; 模板 链接到标题 总结成三步：入-更新-出。">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/learnfrom0x3f-day1/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[跟着灵神学算法]Day1">
+  <meta property="og:description" content="定长滑动窗口 链接到标题 题目 链接到标题 1456.定长子串中元音的最大数目
+我的思路 链接到标题 使用 $\text{left}$ ， $\text{right}$ 表滑动窗口的左边界和右边界，
+我的代码 链接到标题 class Solution { public: int maxVowels(string s, int k) { int ans = 0; int left = 0; int right = 0; int curNum = 0; unordered_set&lt;char&gt; vowels = {&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;}; for(right; right &lt; k; right &#43;&#43;) { if(vowels.contains(s[right])) { curNum &#43;&#43;; } } right --; ans = curNum; left &#43;&#43;; right &#43;&#43;; for(right; right &lt; s.size();left &#43;&#43;, right &#43;&#43;) { if(vowels.contains(s[left - 1])) { curNum --; } if(vowels.contains(s[right])) { curNum &#43;&#43;; } ans = max(ans, curNum); } return ans; } }; 模板 链接到标题 总结成三步：入-更新-出。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-11T10:08:21+08:00">
+    <meta property="article:modified_time" content="2026-03-11T10:08:21+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/learnfrom0x3f-day1/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/learnfrom0x3f-day1/">
+              [跟着灵神学算法]Day1
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-03-11T10:08:21&#43;08:00">
+                三月 11, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：2 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="定长滑动窗口">
+  定长滑动窗口
+  <a class="heading-link" href="#%e5%ae%9a%e9%95%bf%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="题目">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><a href="https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/"  class="external-link" target="_blank" rel="noopener">1456.定长子串中元音的最大数目</a></p>
+<h3 id="我的思路">
+  我的思路
+  <a class="heading-link" href="#%e6%88%91%e7%9a%84%e6%80%9d%e8%b7%af">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>使用 $\text{left}$ ， $\text{right}$ 表滑动窗口的左边界和右边界，</p>
+<h3 id="我的代码">
+  我的代码
+  <a class="heading-link" href="#%e6%88%91%e7%9a%84%e4%bb%a3%e7%a0%81">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> maxVowels(string s, <span style="color:#ff7b72">int</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> left <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> right <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> curNum <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        unordered_set<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">char</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> vowels <span style="color:#ff7b72;font-weight:bold">=</span> {<span style="color:#a5d6ff">&#39;a&#39;</span>, <span style="color:#a5d6ff">&#39;e&#39;</span>, <span style="color:#a5d6ff">&#39;i&#39;</span>, <span style="color:#a5d6ff">&#39;o&#39;</span>, <span style="color:#a5d6ff">&#39;u&#39;</span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(right; right <span style="color:#ff7b72;font-weight:bold">&lt;</span> k; right <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(vowels.contains(s[right])) {
+</span></span><span style="display:flex;"><span>                curNum <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        right <span style="color:#ff7b72;font-weight:bold">--</span>;
+</span></span><span style="display:flex;"><span>        ans <span style="color:#ff7b72;font-weight:bold">=</span> curNum;
+</span></span><span style="display:flex;"><span>        left <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>        right <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(right; right <span style="color:#ff7b72;font-weight:bold">&lt;</span> s.size();left <span style="color:#ff7b72;font-weight:bold">++</span>, right <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(vowels.contains(s[left <span style="color:#ff7b72;font-weight:bold">-</span> <span style="color:#a5d6ff">1</span>])) {
+</span></span><span style="display:flex;"><span>                curNum <span style="color:#ff7b72;font-weight:bold">--</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(vowels.contains(s[right])) {
+</span></span><span style="display:flex;"><span>                curNum <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            ans <span style="color:#ff7b72;font-weight:bold">=</span> max(ans, curNum);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="模板">
+  模板
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<blockquote>
+<p>总结成三步：入-更新-出。</p>
+<p>入：下标为 i 的元素进入窗口，更新相关统计量。如果窗口左端点 i−k+1&lt;0，则尚未形成第一个窗口，重复第一步。
+更新：更新答案。一般是更新最大值/最小值。
+出：下标为 i−k+1 的元素离开窗口，更新相关统计量，为下一个循环做准备。
+以上三步适用于所有定长滑窗题目</p>
+<p>作者：灵茶山艾府
+链接：https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/solutions/2809359/tao-lu-jiao-ni-jie-jue-ding-chang-hua-ch-fzfo/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> maxVowels(string s, <span style="color:#ff7b72">int</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> cnt <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">while</span>(j <span style="color:#ff7b72;font-weight:bold">&lt;</span> s.size()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(s[j] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;a&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[j] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;e&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[j] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;i&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[j] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;o&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[j] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;u&#39;</span>) {
+</span></span><span style="display:flex;"><span>                cnt <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span>(j <span style="color:#ff7b72;font-weight:bold">-</span> i <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span> <span style="color:#ff7b72;font-weight:bold">==</span> k) {
+</span></span><span style="display:flex;"><span>                ans <span style="color:#ff7b72;font-weight:bold">=</span> ans <span style="color:#ff7b72;font-weight:bold">&gt;</span> cnt <span style="color:#ff7b72;font-weight:bold">?</span> <span style="color:#79c0ff;font-weight:bold">ans</span> : cnt;
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">if</span>(s[i] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;a&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[i] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;e&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[i] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;i&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[i] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;o&#39;</span> <span style="color:#ff7b72;font-weight:bold">||</span> s[i] <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#a5d6ff">&#39;u&#39;</span>) {
+</span></span><span style="display:flex;"><span>                    cnt <span style="color:#ff7b72;font-weight:bold">--</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                i <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            j <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="复杂度">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>时间复杂度： $O(n)$</p>
+<p>空间复杂度： $O(1)$</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
