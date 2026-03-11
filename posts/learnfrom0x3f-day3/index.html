@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>
+  [跟着灵神学算法]Day3 · Zyed
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Zyed">
+<meta name="description" content="
+  不定长滑动窗口（越长越合法/求最短/最小）
+  
+    
+    链接到标题
+  
+
+
+  题目
+  
+    
+    链接到标题
+  
+
+长度最小的子数组
+
+  代码（模板）
+  
+    
+    链接到标题
+  
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector&lt;int&gt;&amp; nums) {
+        int ans = INT_MAX;
+        int sum = 0;
+        int i = 0;
+        for(int j = 0; j &lt; nums.size(); j &#43;&#43;) {
+            sum &#43;= nums[j];
+            while(sum &gt;= target) {
+                ans = min(ans, j - i &#43; 1);
+                sum -= nums[i &#43;&#43;];
+            }
+        }
+        return ans == INT_MAX ? 0 : ans;
+    }
+};
+
+  复杂度
+  
+    
+    链接到标题
+  
+
+时间复杂度： $O(n)$">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[跟着灵神学算法]Day3">
+  <meta name="twitter:description" content="不定长滑动窗口（越长越合法/求最短/最小） 链接到标题 题目 链接到标题 长度最小的子数组
+代码（模板） 链接到标题 class Solution { public: int minSubArrayLen(int target, vector&lt;int&gt;&amp; nums) { int ans = INT_MAX; int sum = 0; int i = 0; for(int j = 0; j &lt; nums.size(); j &#43;&#43;) { sum &#43;= nums[j]; while(sum &gt;= target) { ans = min(ans, j - i &#43; 1); sum -= nums[i &#43;&#43;]; } } return ans == INT_MAX ? 0 : ans; } }; 复杂度 链接到标题 时间复杂度： $O(n)$">
+
+<meta property="og:url" content="https://Zyed816.github.io/posts/learnfrom0x3f-day3/">
+  <meta property="og:site_name" content="Zyed">
+  <meta property="og:title" content="[跟着灵神学算法]Day3">
+  <meta property="og:description" content="不定长滑动窗口（越长越合法/求最短/最小） 链接到标题 题目 链接到标题 长度最小的子数组
+代码（模板） 链接到标题 class Solution { public: int minSubArrayLen(int target, vector&lt;int&gt;&amp; nums) { int ans = INT_MAX; int sum = 0; int i = 0; for(int j = 0; j &lt; nums.size(); j &#43;&#43;) { sum &#43;= nums[j]; while(sum &gt;= target) { ans = min(ans, j - i &#43; 1); sum -= nums[i &#43;&#43;]; } } return ans == INT_MAX ? 0 : ans; } }; 复杂度 链接到标题 时间复杂度： $O(n)$">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-11T17:46:26+08:00">
+    <meta property="article:modified_time" content="2026-03-11T17:46:26+08:00">
+
+
+
+
+<link rel="canonical" href="https://Zyed816.github.io/posts/learnfrom0x3f-day3/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://Zyed816.github.io/">
+      Zyed
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://Zyed816.github.io/posts/learnfrom0x3f-day3/">
+              [跟着灵神学算法]Day3
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-03-11T17:46:26&#43;08:00">
+                三月 11, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：2 分钟
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="不定长滑动窗口越长越合法求最短最小">
+  不定长滑动窗口（越长越合法/求最短/最小）
+  <a class="heading-link" href="#%e4%b8%8d%e5%ae%9a%e9%95%bf%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3%e8%b6%8a%e9%95%bf%e8%b6%8a%e5%90%88%e6%b3%95%e6%b1%82%e6%9c%80%e7%9f%ad%e6%9c%80%e5%b0%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="题目">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/description/"  class="external-link" target="_blank" rel="noopener">长度最小的子数组</a></p>
+<h3 id="代码模板">
+  代码（模板）
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> minSubArrayLen(<span style="color:#ff7b72">int</span> target, vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> INT_MAX;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> sum <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; j <span style="color:#ff7b72;font-weight:bold">&lt;</span> nums.size(); j <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            sum <span style="color:#ff7b72;font-weight:bold">+=</span> nums[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">while</span>(sum <span style="color:#ff7b72;font-weight:bold">&gt;=</span> target) {
+</span></span><span style="display:flex;"><span>                ans <span style="color:#ff7b72;font-weight:bold">=</span> min(ans, j <span style="color:#ff7b72;font-weight:bold">-</span> i <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>);
+</span></span><span style="display:flex;"><span>                sum <span style="color:#ff7b72;font-weight:bold">-=</span> nums[i <span style="color:#ff7b72;font-weight:bold">++</span>];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans <span style="color:#ff7b72;font-weight:bold">==</span> INT_MAX <span style="color:#ff7b72;font-weight:bold">?</span> <span style="color:#a5d6ff">0</span> <span style="color:#ff7b72;font-weight:bold">:</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="复杂度">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>时间复杂度： $O(n)$</p>
+<p>空间复杂度： $O(1)$</p>
+<h3 id="一点思考">
+  一点思考
+  <a class="heading-link" href="#%e4%b8%80%e7%82%b9%e6%80%9d%e8%80%83">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>越短越合法/求最长/最大维护的是一个满足限制的滑动窗口， $j$ 每次右移后，更新统计量，然后根据限制条件移动 $i$ ，最终得到下一个满足限制的窗口，更新答案</p>
+<p>越长越合法/求最短/最小维护的是一个不满足限制的滑动窗口， $j$ 每次右移后，更新统计量，然后根据限制条件移动 $i$ ，过程中窗口是合法的，不断更新答案，最终得到下一个不满足限制的窗口</p>
+<h2 id="不定长滑动窗口求子数组个数">
+  不定长滑动窗口（求子数组个数）
+  <a class="heading-link" href="#%e4%b8%8d%e5%ae%9a%e9%95%bf%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3%e6%b1%82%e5%ad%90%e6%95%b0%e7%bb%84%e4%b8%aa%e6%95%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="越短越合法">
+  越短越合法
+  <a class="heading-link" href="#%e8%b6%8a%e7%9f%ad%e8%b6%8a%e5%90%88%e6%b3%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="题目-1">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p><a href="https://leetcode.cn/problems/subarray-product-less-than-k/description/"  class="external-link" target="_blank" rel="noopener">乘积小于K的子数组</a></p>
+<h4 id="代码模板-1">
+  代码（模板）
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> numSubarrayProductLessThanK(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums, <span style="color:#ff7b72">int</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> pdt <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; j <span style="color:#ff7b72;font-weight:bold">&lt;</span> nums.size(); j <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            pdt <span style="color:#ff7b72;font-weight:bold">*=</span> nums[j]; 
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">while</span>(i <span style="color:#ff7b72;font-weight:bold">&lt;=</span> j <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> pdt <span style="color:#ff7b72;font-weight:bold">&gt;=</span> k) {
+</span></span><span style="display:flex;"><span>                pdt <span style="color:#ff7b72;font-weight:bold">/=</span> nums[i <span style="color:#ff7b72;font-weight:bold">++</span>];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            ans <span style="color:#ff7b72;font-weight:bold">+=</span> j <span style="color:#ff7b72;font-weight:bold">-</span> i <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>维护的是一个满足限制的滑动窗口，统计子数组个数时，由于子数组越短，越能满足题目要求，所以除了 $[i,j]$，还有 $[i+1,j],[i+2,j],…,[i,j]$ 都是满足要求的，这样的数组有 $j - i + 1$ 个，因此有 <code>ans += j - i + 1</code></p>
+<h4 id="复杂度-1">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>时间复杂度： $O(n)$</p>
+<p>空间复杂度： $O(1)$</p>
+<h3 id="越长越合法">
+  越长越合法
+  <a class="heading-link" href="#%e8%b6%8a%e9%95%bf%e8%b6%8a%e5%90%88%e6%b3%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="题目-2">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p><a href="https://leetcode.cn/problems/number-of-substrings-containing-all-three-characters/description/"  class="external-link" target="_blank" rel="noopener">包含所有三种字符的子字符串数目</a></p>
+<h4 id="代码模板-2">
+  代码（模板）
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> numberOfSubstrings(string s) {
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">char</span>, <span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;</span> cnt;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; j <span style="color:#ff7b72;font-weight:bold">&lt;</span> s.size(); j <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            cnt[s[j]] <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">while</span>(cnt[<span style="color:#a5d6ff">&#39;a&#39;</span>] <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> cnt[<span style="color:#a5d6ff">&#39;b&#39;</span>] <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> cnt[<span style="color:#a5d6ff">&#39;c&#39;</span>] <span style="color:#ff7b72;font-weight:bold">&gt;</span> <span style="color:#a5d6ff">0</span>) {
+</span></span><span style="display:flex;"><span>                cnt[s[i <span style="color:#ff7b72;font-weight:bold">++</span>]] <span style="color:#ff7b72;font-weight:bold">--</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            ans <span style="color:#ff7b72;font-weight:bold">+=</span> i;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>维护的是一个不满足限制的滑动窗口， $[i,j]$ 是不满足的，但是 $[i - 1, j]$ 是满足的，因为越长越满足，对于一个 $j$ ，除了 $[i - 1,j]$ 外， $[i - 2,j],[i - 3,j] ... [0,j]$ 都是满足的，一共有 $i$ 个，所以 <code>ans += i</code></p>
+<h4 id="复杂度-2">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>时间复杂度： $O(n)$</p>
+<p>空间复杂度： $O(1)$</p>
+<h3 id="恰好型滑动窗口">
+  恰好型滑动窗口
+  <a class="heading-link" href="#%e6%81%b0%e5%a5%bd%e5%9e%8b%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="题目-3">
+  题目
+  <a class="heading-link" href="#%e9%a2%98%e7%9b%ae-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p><a href="https://leetcode.cn/problems/binary-subarrays-with-sum/description/"  class="external-link" target="_blank" rel="noopener">和相同的二元子数组</a></p>
+<h4 id="代码模板-3">
+  代码（模板）
+  <a class="heading-link" href="#%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">private</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> solve(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums, <span style="color:#ff7b72">int</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> ans <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> sum <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">int</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span>(<span style="color:#ff7b72">int</span> j <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; j <span style="color:#ff7b72;font-weight:bold">&lt;</span> nums.size(); j <span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>            sum <span style="color:#ff7b72;font-weight:bold">+=</span> nums[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">while</span>(i <span style="color:#ff7b72;font-weight:bold">&lt;=</span> j <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> sum <span style="color:#ff7b72;font-weight:bold">&gt;=</span> k) {
+</span></span><span style="display:flex;"><span>                sum <span style="color:#ff7b72;font-weight:bold">-=</span> nums[i];
+</span></span><span style="display:flex;"><span>                i <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            ans <span style="color:#ff7b72;font-weight:bold">+=</span> i;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span><span style="color:#ff7b72;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">int</span> numSubarraysWithSum(vector<span style="color:#ff7b72;font-weight:bold">&lt;</span><span style="color:#ff7b72">int</span><span style="color:#ff7b72;font-weight:bold">&gt;&amp;</span> nums, <span style="color:#ff7b72">int</span> goal) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> <span style="color:#d2a8ff;font-weight:bold">solve</span>(nums, goal) <span style="color:#ff7b72;font-weight:bold">-</span> solve(nums, goal <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>转化为两个”越长越合法“类型的问题，求差</p>
+<p>在</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>			<span style="color:#ff7b72">while</span>(i <span style="color:#ff7b72;font-weight:bold">&lt;=</span> j <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> sum <span style="color:#ff7b72;font-weight:bold">&gt;=</span> k) {
+</span></span><span style="display:flex;"><span>                sum <span style="color:#ff7b72;font-weight:bold">-=</span> nums[i];
+</span></span><span style="display:flex;"><span>                i <span style="color:#ff7b72;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span></code></pre></div><p>位置要注意判断是否会出现 <code>sum &gt;= k</code> 恒成立的情况，如果存在，要补充限制条件 <code>i &lt;= j</code></p>
+<h4 id="复杂度-3">
+  复杂度
+  <a class="heading-link" href="#%e5%a4%8d%e6%9d%82%e5%ba%a6-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>时间复杂度： $O(n)$</p>
+<p>空间复杂度： $O(1)$</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2026
+     Zyed 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
