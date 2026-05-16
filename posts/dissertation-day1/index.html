@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh">
-
-<head>
-  <title>
-  [毕业设计]Day1 · Zyed
-</title>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
-
-
-
-
-<meta name="author" content="Zyed">
-<meta name="description" content="
+<!doctype html><html lang=zh><head><title>[毕业设计]Day1 · Zyed</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Zyed"><meta name=description content="
   图对比学习的定义
   
     
@@ -21,194 +6,14 @@
   
 
 
-Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
-<meta name="keywords" content="blog,developer,personal">
-
-
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="[毕业设计]Day1">
-  <meta name="twitter:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
-
-<meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day1/">
-  <meta property="og:site_name" content="Zyed">
-  <meta property="og:title" content="[毕业设计]Day1">
-  <meta property="og:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.">
-  <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-02-01T21:54:58+08:00">
-    <meta property="article:modified_time" content="2026-02-01T21:54:58+08:00">
-
-
-
-
-<link rel="canonical" href="https://Zyed816.github.io/posts/dissertation-day1/">
-
-
-<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-
-
-  
-  
-  <link rel="stylesheet" href="/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
-
-
-
-
-
-
-  
-    
-    
-    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
-  
-
-
-
- 
-  
-    
-    <link rel="stylesheet" href="/css/custom.min.70b5c45ca97bb3c12ecb7d6f8ae68a958b30af9ad2c7e84363cdf2b7b7b6e6c4.css" integrity="sha256-cLXEXKl7s8Euy31viuaKlYswr5rSx&#43;hDY83yt7e25sQ=" crossorigin="anonymous" media="screen" />
-  
-
-
-
-
-
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
-<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
-
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-
-
-
-
-
-
-</head>
-
-
-
-
-
-
-<body class="preload-transitions colorscheme-auto">
-  
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
-</div>
-
-
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    
-    <a class="navigation-title" href="https://Zyed816.github.io/">
-      Zyed
-    </a>
-    
-    
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link " href="/posts/">博客</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link " href="/about/">关于</a>
-            </li>
-          
-        
-        
-          
-          
-          
-            
-          
-            
-              
-                <li class="navigation-item menu-separator">
-                  <span>|</span>
-                </li>
-                
-              
-              <li class="navigation-item">
-                <a href="/en/">English</a>
-              </li>
-            
-          
-        
-      </ul>
-    
-  </section>
-</nav>
-
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">
-            <a class="title-link" href="https://Zyed816.github.io/posts/dissertation-day1/">
-              [毕业设计]Day1
-            </a>
-          </h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
-              <time datetime="2026-02-01T21:54:58&#43;08:00">
-                二月 1, 2026
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fa-solid fa-clock" aria-hidden="true"></i>
-              阅读时间：4 分钟
-            </span>
-          </div>
-          
-          
-          
-        </div>
-      </header>
-
-      <div class="post-content">
-        
-        <h2 id="图对比学习的定义">
-  图对比学习的定义
-  <a class="heading-link" href="#%e5%9b%be%e5%af%b9%e6%af%94%e5%ad%a6%e4%b9%a0%e7%9a%84%e5%ae%9a%e4%b9%89">
-    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
-    <span class="sr-only">链接到标题</span>
-  </a>
-</h2>
-<blockquote>
-<p><strong>Problem Formulation</strong>. Let <strong>G</strong> = (<strong>X</strong>, <strong>A</strong>) denote a graph, where <strong>X</strong> ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. <strong>A</strong> ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(<strong>G</strong>) that maps graph <strong>G</strong> into the node representations <strong>H</strong> ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.</p>
-</blockquote>
-<p>对于每篇论文有一个长度为 $3$ 的特征向量 $x_i$ ，每个位置上的数字代表与某领域的关联度，各领域顺序为 $\text{[图 医药 芯片]}$。例如，某论文特征向量为 $\text{[1.0 0 0]}$ ，说明这是一片图领域的论文，不涉及医药以及芯片领域的内容。</p>
-<p>现有五篇论文，它们的特征向量 $x_{1-5}$ 构成特征矩阵 $X$
-</p>
-$$
+Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="[毕业设计]Day1"><meta name=twitter:description content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure."><meta property="og:url" content="https://Zyed816.github.io/posts/dissertation-day1/"><meta property="og:site_name" content="Zyed"><meta property="og:title" content="[毕业设计]Day1"><meta property="og:description" content="图对比学习的定义 链接到标题 Problem Formulation. Let G = (X, A) denote a graph, where X ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. A ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(G) that maps graph G into the node representations H ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure."><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-02-01T21:54:58+08:00"><meta property="article:modified_time" content="2026-02-01T21:54:58+08:00"><link rel=canonical href=https://Zyed816.github.io/posts/dissertation-day1/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/custom.min.f1a2193c7f74b2f419b56d33989327178beb6cdbeea8de03ebdeace2a51510fd.css integrity="sha256-8aIZPH90svQZtW0zmJMnF4vrbNvuqN4D696s4qUVEP0=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel=stylesheet><style>html{scroll-behavior:smooth}</style><script defer src=/js/custom.min.458ca63ea700e3a6e3fb7e50c729510393ecf54980a6665643b53d3b10009532.js integrity="sha256-RYymPqcA46bj+35QxylRA5Ps9UmApmZWQ7U9OxAAlTI=" crossorigin=anonymous></script></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://Zyed816.github.io/>Zyed
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/posts/>博客</a></li><li class=navigation-item><a class=navigation-link href=/about/>关于</a></li><li class="navigation-item menu-separator"><span>|</span></li><li class=navigation-item><a href=/en/>English</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://Zyed816.github.io/posts/dissertation-day1/>[毕业设计]Day1</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2026-02-01T21:54:58+08:00>二月 1, 2026
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+阅读时间：4 分钟</span></div></div></header><div class=post-content><h2 id=图对比学习的定义>图对比学习的定义
+<a class=heading-link href=#%e5%9b%be%e5%af%b9%e6%af%94%e5%ad%a6%e4%b9%a0%e7%9a%84%e5%ae%9a%e4%b9%89><i class="fa-solid fa-link" aria-hidden=true title=链接到标题></i>
+<span class=sr-only>链接到标题</span></a></h2><blockquote><p><strong>Problem Formulation</strong>. Let <strong>G</strong> = (<strong>X</strong>, <strong>A</strong>) denote a graph, where <strong>X</strong> ∈ $\mathbb{R}^{N\times F}$ denotes the nodes’ feature map, and $x_i$ is the feature of $i$-th node $n_i$. <strong>A</strong> ∈ $\mathbb{R}^{N\times N}$ denotes the adjacency matrix, where $A_{ij}$ = 1 if and only if there is an edge from $n_i$ to $n_j$. GCL aims at training a GNN encoder $f_\theta$(<strong>G</strong>) that maps graph <strong>G</strong> into the node representations <strong>H</strong> ∈ $\mathbb{R}^{N\times d}$ in a low-dimensional space, which captures the essential intrinsic information from both features and structure.</p></blockquote><p>对于每篇论文有一个长度为 $3$ 的特征向量 $x_i$ ，每个位置上的数字代表与某领域的关联度，各领域顺序为 $\text{[图 医药 芯片]}$。例如，某论文特征向量为 $\text{[1.0 0 0]}$ ，说明这是一片图领域的论文，不涉及医药以及芯片领域的内容。</p><p>现有五篇论文，它们的特征向量 $x_{1-5}$ 构成特征矩阵 $X$</p>$$
 X = \begin{pmatrix}
 1.0 & 1.0 & 0.0 \\
 1.0 & 0.9 & 0.0 \\
@@ -223,10 +28,7 @@ X = \begin{pmatrix}
 \leftarrow n_4(\text{芯片}) \\
 \leftarrow n_5(\text{芯片})
 \end{matrix}
-$$<p>
-邻接矩阵 $A$ 用来表示论文之间的引用关系，$A_{ij}$ = 1 表示论文 $n_i$ 引用了论文 $n_j$，这五篇论文的引用关系如下
-</p>
-$$
+$$<p>邻接矩阵 $A$ 用来表示论文之间的引用关系，$A_{ij}$ = 1 表示论文 $n_i$ 引用了论文 $n_j$，这五篇论文的引用关系如下</p>$$
 A = \begin{pmatrix}
 0 & 1 & 1 & 0 & 0 \\
 1 & 0 & 1 & 0 & 0 \\
@@ -234,10 +36,7 @@ A = \begin{pmatrix}
 0 & 0 & 0 & 0 & 1 \\
 0 & 0 & 0 & 1 & 0 \\
 \end{pmatrix}
-$$<p>
-图对比学习的目的就是得到一个编码器 $f_\theta$ ，它能将输入 $G = (X,A)$ 映射成一个 $N \times d$ 的矩阵 $H$，例如一个 $f_\theta$ 将  $G$ 映射成
-</p>
-$$
+$$<p>图对比学习的目的就是得到一个编码器 $f_\theta$ ，它能将输入 $G = (X,A)$ 映射成一个 $N \times d$ 的矩阵 $H$，例如一个 $f_\theta$ 将 $G$ 映射成</p>$$
 H = \begin{pmatrix}
 0.97 & 0.97 & 0.03 \\
 0.97 & 0.97 & 0.03 \\
@@ -245,35 +44,15 @@ H = \begin{pmatrix}
 0.05 & 0.05 & 0.95 \\
 0.05 & 0.05 & 0.95 \\
 \end{pmatrix}
-$$<p>
-在这个矩阵中， $n_1$ , $n_2$ , $n_3$ 对应的向量 $h_1$ , $h_2$ , $h_3$ 非常接近，可以将他们归为同一类论文。 $n_4$ , $n_5$ 同理</p>
-<h2 id="通用范式">
-  通用范式
-  <a class="heading-link" href="#%e9%80%9a%e7%94%a8%e8%8c%83%e5%bc%8f">
-    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
-    <span class="sr-only">链接到标题</span>
-  </a>
-</h2>
-<h3 id="得到增强视图的节点表示">
-  得到增强视图的节点表示($\text{node representation}$)
-  <a class="heading-link" href="#%e5%be%97%e5%88%b0%e5%a2%9e%e5%bc%ba%e8%a7%86%e5%9b%be%e7%9a%84%e8%8a%82%e7%82%b9%e8%a1%a8%e7%a4%ba">
-    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
-    <span class="sr-only">链接到标题</span>
-  </a>
-</h3>
-<blockquote>
-<p>节点表示(node representaion)指的是经过编码器 $f_\theta$ 映射后的 $N * d$ 矩阵，也就是之前提到的 $H$ 。这里得到两个节点表示，分别记为 $U$ ，$V$</p>
-</blockquote>
-<p>利用特征掩蔽($\text{feature masking}$)和边丢弃($\text{edge dropping}$)技术生成原图 $G$ 的两个增强视图 $G^{aug1}$ 和 $G^{aug2}$ 。例如，论文 $n_1$ 的特征向量经过特征掩蔽后变为
-</p>
-$$
+$$<p>在这个矩阵中， $n_1$ , $n_2$ , $n_3$ 对应的向量 $h_1$ , $h_2$ , $h_3$ 非常接近，可以将他们归为同一类论文。 $n_4$ , $n_5$ 同理</p><h2 id=通用范式>通用范式
+<a class=heading-link href=#%e9%80%9a%e7%94%a8%e8%8c%83%e5%bc%8f><i class="fa-solid fa-link" aria-hidden=true title=链接到标题></i>
+<span class=sr-only>链接到标题</span></a></h2><h3 id=得到增强视图的节点表示>得到增强视图的节点表示($\text{node representation}$)
+<a class=heading-link href=#%e5%be%97%e5%88%b0%e5%a2%9e%e5%bc%ba%e8%a7%86%e5%9b%be%e7%9a%84%e8%8a%82%e7%82%b9%e8%a1%a8%e7%a4%ba><i class="fa-solid fa-link" aria-hidden=true title=链接到标题></i>
+<span class=sr-only>链接到标题</span></a></h3><blockquote><p>节点表示(node representaion)指的是经过编码器 $f_\theta$ 映射后的 $N * d$ 矩阵，也就是之前提到的 $H$ 。这里得到两个节点表示，分别记为 $U$ ，$V$</p></blockquote><p>利用特征掩蔽($\text{feature masking}$)和边丢弃($\text{edge dropping}$)技术生成原图 $G$ 的两个增强视图 $G^{aug1}$ 和 $G^{aug2}$ 。例如，论文 $n_1$ 的特征向量经过特征掩蔽后变为</p>$$
 n_1 = \begin{pmatrix}
 1.0 & 0.0 & 0.0
 \end{pmatrix}
-$$<p>
-那么
-</p>
-$$
+$$<p>那么</p>$$
 X^{aug1} = \begin{pmatrix}
 1.0 & 0.0 & 0.0 \\
 1.0 & 0.9 & 0.0 \\
@@ -291,18 +70,12 @@ A^{aug1} = A = \begin{pmatrix}
 \end{pmatrix}
 \qquad % 这里增加了1个大空格
 G^{aug1} = (X^{aug1},A^{aug1})
-$$<p>
-论文 $n_1$ 的邻接矩阵向量经过边丢弃，失去 $n_1$ 对 $n_2$ 的引用
-</p>
-$$
+$$<p>论文 $n_1$ 的邻接矩阵向量经过边丢弃，失去 $n_1$ 对 $n_2$ 的引用</p>$$
 a_1 = \begin{pmatrix}
 0 & 0 & 1 & 0 & 0
 \end{pmatrix}
-$$<p>
-那么
-</p>
-$$
-X^{aug2} = X =  \begin{pmatrix}
+$$<p>那么</p>$$
+X^{aug2} = X = \begin{pmatrix}
 1.0 & 1.0 & 0.0 \\
 1.0 & 0.9 & 0.0 \\
 0.9 & 1.0 & 0.1 \\
@@ -319,10 +92,7 @@ A^{aug2} = \begin{pmatrix}
 \end{pmatrix}
 \qquad % 这里增加了1个大空格
 G^{aug2} = (X^{aug2},A^{aug2})
-$$<p>
-然后分别经过 $f_\theta$ 映射得到
-</p>
-$$
+$$<p>然后分别经过 $f_\theta$ 映射得到</p>$$
 U = f_\theta(\mathbf{G}^{aug1}) = \begin{pmatrix}
 U_1 \\
 U_2 \\
@@ -338,147 +108,21 @@ V_3 \\
 V_4 \\
 V_5 \\
 \end{pmatrix}
-$$<h3 id="划分正负样本对集合">
-  划分正负样本对集合
-  <a class="heading-link" href="#%e5%88%92%e5%88%86%e6%ad%a3%e8%b4%9f%e6%a0%b7%e6%9c%ac%e5%af%b9%e9%9b%86%e5%90%88">
-    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
-    <span class="sr-only">链接到标题</span>
-  </a>
-</h3>
-<p>由同一个结点编码得到的向量 $u_i$ $v_i$ 组成两个正样本对 $\{(u_i,v_i),(v_i,u_i)\}$ 。正样本对集合
-</p>
-$$
+$$<h3 id=划分正负样本对集合>划分正负样本对集合
+<a class=heading-link href=#%e5%88%92%e5%88%86%e6%ad%a3%e8%b4%9f%e6%a0%b7%e6%9c%ac%e5%af%b9%e9%9b%86%e5%90%88><i class="fa-solid fa-link" aria-hidden=true title=链接到标题></i>
+<span class=sr-only>链接到标题</span></a></h3><p>由同一个结点编码得到的向量 $u_i$ $v_i$ 组成两个正样本对 $\{(u_i,v_i),(v_i,u_i)\}$ 。正样本对集合</p>$$
 D^{aug+} = \{(u_i,v_i),(v_i,u_i)\}^{N}_{i=1} = \{(u_1,v_1),(v_1,u_1),\ldots,(u_5,v_5),(v_5,u_5)\}
-$$<p>
-其他结点对组成负样本对集合
-</p>
-$$
+$$<p>其他结点对组成负样本对集合</p>$$
 D^{aug-} = \{(u_i,v_i),(v_i,u_i)\}^{N}_{i \ne j,\ i,j=1}
-$$<h3 id="计算损失函数并优化">
-  计算损失函数并优化$f_\theta$
-  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0%e5%b9%b6%e4%bc%98%e5%8c%96">
-    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
-    <span class="sr-only">链接到标题</span>
-  </a>
-</h3>
-<p>$\text{InfoNCE}$ 损失函数计算方式
-</p>
-$$
+$$<h3 id=计算损失函数并优化>计算损失函数并优化$f_\theta$
+<a class=heading-link href=#%e8%ae%a1%e7%ae%97%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0%e5%b9%b6%e4%bc%98%e5%8c%96><i class="fa-solid fa-link" aria-hidden=true title=链接到标题></i>
+<span class=sr-only>链接到标题</span></a></h3><p>$\text{InfoNCE}$ 损失函数计算方式</p>$$
 L = \frac{1}{2N} \sum_{i=1}^N (l_{u_i, v_i} + l_{v_i, u_i})
-$$<p>
-其中
-</p>
-$$
+$$<p>其中</p>$$
 l_{u_i, v_i} = -\log \frac{s_{\theta}(u_i, v_i)}{\sum_{j \ne i,\ j=1}^N s_{\theta}(u_i, u_j) + \sum_{j=1}^N s_{\theta}(u_i, v_j)}
-$$<p>
-$s_\theta(u_i,v_i)$ 为 $u_i$ , $v_i$ 之间的余弦相似度，计算方法为
-</p>
-$$
+$$<p>$s_\theta(u_i,v_i)$ 为 $u_i$ , $v_i$ 之间的余弦相似度，计算方法为</p>$$
 s_{\theta}(u_i, v_j) = \exp(\text{cos}(\mathbf{U}_i, \mathbf{V}_j) / \tau)
-$$<p>
-注意：$u_i,v_i$ 表示不同增强视图中的结点，$\mathbf{U_i,V_i}$ 表示该节点的编码向量</p>
-<p>得到总损失 $L$ 后反向传播优化 $f_\theta$</p>
-
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-        
-        
-        
-        
-      </footer>
-    </article>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
-    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-  
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
-    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
-    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-    onload="renderMathInElement(document.body,
-      {
-        delimiters: [
-          {left: '$$', right: '$$', display:true},
-          {left: '$', right: '$', display:false},
-          {left: '\\(', right: '\\)', display: false},
-          {left: '\\[', right: '\\]', display: true}
-        ],
-        throwOnError: false
-      }
-    );"></script>
-  </section>
-
-    </div>
-
-    <footer class="footer">
-  <section class="container">
-    ©
-    
-      2019 -
-    
-    2026
-     Zyed 
-    ·
-    
-    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
-    
-  </section>
-</footer>
-
-  </main>
-
-  
-
-  
-  
-  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</body>
-</html>
+$$<p>注意：$u_i,v_i$ 表示不同增强视图中的结点，$\mathbf{U_i,V_i}$ 表示该节点的编码向量</p><p>得到总损失 $L$ 后反向传播优化 $f_\theta$</p></div><footer></footer></article><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css integrity=sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0 crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js integrity=sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],throwOnError:!1})'></script></section></div><footer class=footer><section class=container>&copy;
+2019 -
+2026
+Zyed</section></footer></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
